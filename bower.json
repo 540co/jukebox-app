@@ -1,5 +1,5 @@
 {
-  "name": "jukeboxApp",
+  "name": "jukebox",
   "version": "0.1.0",
   "dependencies": {
     "angular-animate": "#1.5.6",
