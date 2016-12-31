@@ -2,29 +2,25 @@
   'use strict';
 
   angular
-    .module('jukeboxApp')
+    .module('app')
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, toastr) {
+  function MainController() {
     var vm = this;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1482593145201;
-    vm.showToastr = showToastr;
+    vm.awesomeThings = [
+      {'name':'540','url': 'https://540.co'}, 
+      {'name':'Yeoman','url': 'http://yeoman.io'}, 
+      {'name':'AngularJS','url': 'https://angularjs.org'}, 
+      {'name':'Gulp','url': 'http://gulpjs.com'}
+    ];
 
     activate();
 
     function activate() {
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
+
     }
 
-    function showToastr() {
-      toastr.info('View Jukebox on <a href="https://github.com/540co/jukebox-app" target="_blank"><b>GitHub</b></a>');
-      vm.classAnimation = '';
-    }
   }
 })();

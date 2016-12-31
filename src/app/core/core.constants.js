@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('jukeboxApp')
+    .module('app.core')
     .constant('moment', moment);
 
 })();

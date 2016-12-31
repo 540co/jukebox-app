@@ -1,8 +1,10 @@
 (function() {
   'use strict';
 
-  angular.module('jukeboxApp', [
-    'app.core'
-  ]);
+  angular
+    .module('app', [
+    	'app.core',
+    	'app.directives'
+    	]);
 
 })();

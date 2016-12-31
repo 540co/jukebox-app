@@ -13,14 +13,14 @@ gulp.task('partials', function () {
     path.join(conf.paths.src, '/app/**/*.html'),
     path.join(conf.paths.tmp, '/serve/app/**/*.html')
   ])
-    .pipe($.htmlmin({
-      removeEmptyAttributes: true,
-      removeAttributeQuotes: true,
-      collapseBooleanAttributes: true,
-      collapseWhitespace: true
+    .pipe($.minifyHtml({
+      empty: true,
+      spare: true,
+      quotes: true,
+      loose:  true
     }))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'jukeboxApp',
+      module: 'jukebox',
       root: 'app'
     }))
     .pipe(gulp.dest(conf.paths.tmp + '/partials/'));
@@ -49,18 +49,19 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.sourcemaps.write('maps'))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
-    // .pipe($.sourcemaps.init())
-    .pipe($.cssnano())
+    .pipe($.sourcemaps.init())
+    .pipe($.minifyCss({ processImport: false }))
     .pipe($.rev())
-    // .pipe($.sourcemaps.write('maps'))
+    .pipe($.sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
     .pipe($.revReplace())
     .pipe(htmlFilter)
-    .pipe($.htmlmin({
-      removeEmptyAttributes: true,
-      removeAttributeQuotes: true,
-      collapseBooleanAttributes: true,
-      collapseWhitespace: true
+    .pipe($.minifyHtml({
+      empty: true,
+      spare: true,
+      quotes: true,
+      conditionals: true,
+      loose:  true
     }))
     .pipe(htmlFilter.restore)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
@@ -71,9 +72,15 @@ gulp.task('html', ['inject', 'partials'], function () {
 // Custom fonts are handled by the "other" task
 gulp.task('fonts', function () {
   return gulp.src($.mainBowerFiles())
-    .pipe($.filter('**/*.{eot,otf,svg,ttf,woff,woff2}'))
+    .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
     .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
+});
+
+// Only applies for google analytics
+gulp.task('ga', function () {
+  return gulp.src(conf.paths.src + '/assets/scripts/ga.js')
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/assets/scripts/')));
 });
 
 gulp.task('other', function () {
@@ -90,7 +97,11 @@ gulp.task('other', function () {
 });
 
 gulp.task('clean', function () {
-  return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
+  return $.del([
+    path.join(conf.paths.dist, '/'), 
+    path.join(conf.paths.tmp, '/'),
+    path.join(conf.paths.cov, '/')
+  ]);
 });
 
-gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('build', ['html', 'fonts', 'ga', 'other']);

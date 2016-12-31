@@ -49,7 +49,7 @@ module.exports = function(config) {
 
     ngHtml2JsPreprocessor: {
       stripPrefix: conf.paths.src + '/',
-      moduleName: 'jukeboxApp'
+      moduleName: 'jukebox'
     },
 
     logLevel: 'WARN',
@@ -72,11 +72,14 @@ module.exports = function(config) {
     ],
 
     coverageReporter: {
-      type : 'lcov',
-      dir : 'coverage/'
+      dir : 'coverage/',
+      reporters: [
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: 'report-lcov' }
+      ]
     },
 
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
     proxies: {
       '/assets/': path.join('/base/', conf.paths.src, '/assets/')

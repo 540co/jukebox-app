@@ -2,13 +2,16 @@
   'use strict';
 
   angular
-    .module('jukeboxApp')
+    .module('app.core')
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log) {
+  function runBlock($log, Angularytics) {
 
     $log.debug('runBlock end');
+
+    Angularytics.init();
+
   }
 
 })();

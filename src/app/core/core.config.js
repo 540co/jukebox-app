@@ -2,20 +2,16 @@
   'use strict';
 
   angular
-    .module('jukeboxApp')
+    .module('app.core')
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig) {
+  function config($logProvider, AngularyticsProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
-    // Set options third-party lib
-    toastrConfig.allowHtml = true;
-    toastrConfig.timeOut = 3000;
-    toastrConfig.positionClass = 'toast-top-right';
-    toastrConfig.preventDuplicates = true;
-    toastrConfig.progressBar = true;
+    // Enable Google Analytics Tracking for SPA
+    AngularyticsProvider.setEventHandlers(['Console', 'GoogleUniversal']);
   }
 
 })();

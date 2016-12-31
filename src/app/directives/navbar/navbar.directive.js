@@ -6,7 +6,7 @@
    * @example <jukebox-navbar></jukebox-navbar>
    */
   angular
-    .module('jukeboxApp')
+    .module('app.directives')
     .directive('jukeboxNavbar', jukeboxNavbar);
 
   function jukeboxNavbar() {
@@ -15,7 +15,8 @@
       templateUrl: 'app/directives/navbar/navbar.html',
       controller: 'NavbarController',
       controllerAs: 'vm',
-      bindToController: true
+      bindToController: true,
+      scope: {}
     };
 
     return directive;

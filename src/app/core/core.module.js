@@ -3,13 +3,14 @@
 
   angular
     .module('app.core', [
-      'ngAnimate',
-      'ngCookies',
-      'ngTouch',
-      'ngSanitize',
-      'ngMessages',
-      'ngAria',
-      'ui.router',
-      'toastr'
-    ]);
+    	'angularytics',
+		'ngAnimate',
+		'ngAria',
+		'ngCookies',
+		'ngMessages',
+		'ngSanitize',
+		'ngTouch',
+		'ui.router'
+	]);
+
 })();

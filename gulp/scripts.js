@@ -20,7 +20,11 @@ gulp.task('scripts', function() {
 
 function buildScripts() {
   return gulp.src(path.join(conf.paths.src, '/app/**/*.js'))
-    .pipe($.eslint())
+    .pipe($.eslint({
+	    rules: {
+	        'no-mixed-spaces-and-tabs': 0,
+	    }
+    }))
     .pipe($.eslint.format())
     .pipe($.size())
 };
