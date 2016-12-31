@@ -2,13 +2,12 @@
   'use strict';
 
   angular
-    .module('jukeboxApp')
+    .module('app.directives')
     .controller('NavbarController', NavbarController);
 
   NavbarController.$inject = [];
 
   function NavbarController() {
-    
   }
 
 })();

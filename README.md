@@ -1,25 +1,30 @@
 # Jukebox
 
-Angular app showcasing EADS APIs
-
+This application is a proof-of-concept. This app focuses on the management of Songs, Albums, Artists, Playlists, and Users.
 
 ## Getting started
 
-Clone repo.
+Run the following commands in the location that you'd like to place the repository:
+
+```bash
+get clone https://github.com/540co/jukebox-app.git
+cd jukebox-app
+```
 
 #### Install dependencies
 
-Install node dependencies
+Run the following commands from the root directory of the repository:
 
-```
+```bash
 npm install
-```
-
-Install bower dependencies
-
-```
 bower install
 ```
+#### Run the application
+
+Run the following command to serve the application:
+```bash
+gulp serve
+``` 
 
 #### Gulp tasks
 
@@ -29,5 +34,3 @@ bower install
 - `gulp clean` to remove all files from the build and tmp folders
 - `gulp test` to run your unit tests with Karma
 - `gulp test:auto` to run your unit tests with Karma in watch mode
-- `gulp protractor` to launch your e2e tests with Protractor
-- `gulp protractor:dist` to launch your e2e tests with Protractor on the dist
