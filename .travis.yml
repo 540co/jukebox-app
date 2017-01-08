@@ -6,6 +6,7 @@ branches:
   only:
   - master
   - develop
+  - test
 cache:
   directories:
   - node_modules
@@ -22,7 +23,24 @@ script:
 after_success:
 - cp coverage/*/lcov.info .
 - codeclimate-test-reporter < lcov.info
-notifications:
-  webhooks: <INSERT URL HERE>
-  slack:
-    secure: <INSERT TOKEN HERE>
+before_deploy:
+  - gulp build
+  - export UPLOAD_DIR=$(hexdump -n 16 -e '4/4 "%08X" 1 "\n"' /dev/random)
+  - echo "UPLOAD_DIR = $UPLOAD_DIR"
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+  - ruby ./.deploy/slack.rb -c frontend -s initiated -b $TRAVIS_BRANCH
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    skip_cleanup: true
+    bucket: 540-jukebox-app
+    local-dir: dist
+    upload-dir: $UPLOAD_DIR
+    on:
+      all_branches: true
+after_deploy:
+  - ./.deploy/s3_sync.sh
+  - ./.deploy/cf_invalidation.sh
+  - ruby ./.deploy/slack.rb -c frontend -s success -b $TRAVIS_BRANCH
