@@ -4,7 +4,8 @@
   angular
     .module('app', [
     	'app.core',
-    	'app.directives'
+    	'app.directives',
+      'app.services'
     	]);
 
 })();
