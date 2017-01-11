@@ -19,12 +19,19 @@ Run the following commands from the root directory of the repository:
 npm install
 bower install
 ```
+
+#### Set Up Config File
+```bash
+cp src/app/app.config-example.js src/app/app.config.js
+```
+Open the app.config.js file and update with the relevant keys.
+
 #### Run the application
 
 Run the following command to serve the application:
 ```bash
 gulp serve
-``` 
+```
 
 #### Gulp tasks
 
