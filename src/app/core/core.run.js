@@ -6,9 +6,7 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, Angularytics) {
-
-    $log.debug('runBlock end');
+  function runBlock(Angularytics) {
 
     Angularytics.init();
 

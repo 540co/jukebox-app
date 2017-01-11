@@ -5,13 +5,10 @@
     .module('app.services')
     .service('Resource', Resource);
 
-  Resource.$inject = ['$http', '$q'];
+  Resource.$inject = ['$http', '$q', 'configService'];
 
-  function Resource($http, $q) {
-    var appConfig = {
-      'baseUrl': '<INSERT URL HERE>',
-      'bearerToken': '<INSERT TOKEN HERE>'
-    };
+  function Resource($http, $q, configService) {
+    var appConfig = configService.getConfig();
 
     // Set Authorization header for all requests
     $http.defaults.headers.common.Authorization = 'Bearer ' + appConfig.bearerToken;

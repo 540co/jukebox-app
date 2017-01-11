@@ -9,4 +9,4 @@ dist/
 build/
 **/.DS_Store
 **/.log
-src/app/app.config.js
+**/app.config.js
