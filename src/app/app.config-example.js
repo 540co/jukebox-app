@@ -1,4 +1,3 @@
 var configData = {
-  'baseUrl': '<INSERT URL HERE>',
-  'bearerToken': '<INSERT TOKEN HERE>'
+  'baseUrl': '<INSERT URL HERE>'
 };
