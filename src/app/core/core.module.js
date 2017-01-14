@@ -3,7 +3,9 @@
 
   angular
     .module('app.core', [
-      'angularytics',
+      'angular-md5',
+      'angulartics',
+      'angulartics.google.analytics',
   		'ngAnimate',
   		'ngAria',
   		'ngCookies',

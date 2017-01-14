@@ -1,0 +1,22 @@
+<div id="login" class="container-fluid">
+  <div class="signin-wrapper">
+    <form class="form-signin" name="signInForm" ng-submit="vm.login()">
+      <h2 class="form-signin-heading">Jukebox Sign In</h2>
+
+      <!-- Username -->
+      <div class="form-group" ng-class="{ 'has-error': signInForm.username.$dirty && signInForm.username.$error.required }">
+        <input type="text" class="form-control" name="username" placeholder="username" ng-model="vm.username" required/>
+        <span ng-show="signInForm.username.$dirty && signInForm.username.$error.required" class="help-block">Username is required</span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group" ng-class="{ 'has-error': signInForm.password.$dirty && signInForm.password.$error.required }">
+        <input type="password" class="form-control" name="password" placeholder="password" ng-model="vm.password" required/>
+        <span ng-show="signInForm.password.$dirty && signInForm.password.$error.required" class="help-block">Password is required</span>
+      </div>
+
+      <p ng-if="vm.loginError">{{vm.loginError}}</p>
+      <button class="btn btn-lg btn-primary btn-block" ng-disabled="signInForm.$invalid" type="submit">Login</button>
+    </form>
+  </div>
+</div>

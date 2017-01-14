@@ -5,7 +5,8 @@
     .module('app', [
     	'app.core',
     	'app.directives',
-      'app.services'
-    	]);
+      'app.services',
+      'app.login'
+    ]);
 
 })();

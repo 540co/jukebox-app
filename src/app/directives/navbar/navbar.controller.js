@@ -5,9 +5,19 @@
     .module('app.directives')
     .controller('NavbarController', NavbarController);
 
-  NavbarController.$inject = [];
+  NavbarController.$inject = ['$state', 'authService'];
 
-  function NavbarController() {
+  function NavbarController($state, authService) {
+    var vm = this;
+
+    vm.logout = logout;
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    function logout() {
+      authService.clearCredentials();
+      $state.go('login');
+    }
   }
 
 })();

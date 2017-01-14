@@ -9,10 +9,7 @@
 
   function Resource($http, $q, configService) {
     var appConfig = configService.getConfig();
-
-    // Set Authorization header for all requests
-    $http.defaults.headers.common.Authorization = 'Bearer ' + appConfig.bearerToken;
-
+    
     function Resource(path) {
       this.path = path;
       this.api = {
