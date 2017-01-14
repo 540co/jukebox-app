@@ -10,4 +10,4 @@
     m.parentNode.insertBefore(a, m)
   })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
   ga('create', '<INSERT GA TRACKING ID HERE>', 'auto'); //add GA tracking ID (DEV OR PROD)
-  ga('send', 'pageview');
+  // ga('send', 'pageview');

@@ -6,12 +6,9 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, AngularyticsProvider) {
+  function config($logProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
-
-    // Enable Google Analytics Tracking for SPA
-    AngularyticsProvider.setEventHandlers(['Console', 'GoogleUniversal']);
   }
 
 })();

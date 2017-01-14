@@ -20,11 +20,12 @@ gulp.task('scripts', function() {
 
 function buildScripts() {
   return gulp.src(path.join(conf.paths.src, '/app/**/*.js'))
-    .pipe($.eslint({
-	    rules: {
-	        'no-mixed-spaces-and-tabs': 0,
-	    }
-    }))
-    .pipe($.eslint.format())
-    .pipe($.size())
-};
+    // NOTE: uncomment if you want eslint in terminal output for gulp
+    // .pipe($.eslint({
+	  //   rules: {
+	  //       'no-mixed-spaces-and-tabs': 0,
+	  //   }
+    // }))
+    // .pipe($.eslint.format())
+    .pipe($.size());
+}
