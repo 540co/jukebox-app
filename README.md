@@ -1,4 +1,4 @@
-![Jukebox Logo](assets/jukebox-logo.png)
+![Jukebox Logo](.assets/jukebox-logo.png)
 
 This application is a proof-of-concept. This app focuses on the management of songs, albums, artists, playlists, and users.
 
