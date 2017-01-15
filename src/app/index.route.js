@@ -16,8 +16,8 @@
       })
       .state('home', {
         url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
+        templateUrl: 'app/home/home.html',
+        controller: 'HomeController',
         controllerAs: 'vm'
       });
 

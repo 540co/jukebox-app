@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  describe('directive navbar', function() {
+  describe('Directive Navbar', function() {
     var $compile, $scope;
 
     // NOTE: need to manually inject all modules the navbar deals with (gulp is not injecting correctly)
