@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # Update Google Analytics if building for production
-#if [ "$TRAVIS_BRANCH" = "master" ]; then
-#  mv dist/js/ga-example.js dist/js/ga.js
-#  sed -i -e "s/<INSERT GA TRACKING ID HERE>/$GA_TRACKING_ID/g" dist/js/ga.js
-#fi
+GA_TRACKING_ID=$GA_TRACKING_ID_DEV
+
+if [ "$TRAVIS_BRANCH" = "master" ]; then
+  GA_TRACKING_ID=$GA_TRACKING_ID_PROD
+fi
+sed -i -e "s/<INSERT GA TRACKING ID HERE>/$GA_TRACKING_ID/g" src/assets/scripts/ga.js
 
 # Update Config file based on environment
 BASE_URL=$BASE_URL_DEV
