@@ -1,3 +1,3 @@
 var configData = {
-  'baseUrl': '<INSERT URL HERE>'
+  'baseUrl': '<INSERT BASE URL HERE>'
 };
