@@ -83,12 +83,6 @@ gulp.task('ga', function () {
     .pipe(gulp.dest(path.join(conf.paths.dist, '/assets/scripts/')));
 });
 
-// locate images
-// gulp.task('images', function () {
-//   return gulp.src(conf.paths.src + '/assets/images/*')
-//     .pipe(gulp.dest(path.join(conf.paths.dist, '/images/')));
-// });
-
 gulp.task('other', function () {
   var fileFilter = $.filter(function (file) {
     return file.stat.isFile();
