@@ -14,7 +14,7 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
 fi
 
 mv src/app/app.config-example.js src/app/app.config.js
-sed -i -e "s/<INSERT BASE URL HERE>/$BASE_URL/g" src/app/app.config.js
+sed -i -e "s|<INSERT BASE URL HERE>|$BASE_URL|g" src/app/app.config.js
 
 # Build application
 gulp build
