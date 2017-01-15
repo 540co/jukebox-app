@@ -1,6 +1,6 @@
-# Jukebox
+![Jukebox Logo](assets/jukebox-logo.png)
 
-This application is a proof-of-concept. This app focuses on the management of Songs, Albums, Artists, Playlists, and Users.
+This application is a proof-of-concept. This app focuses on the management of songs, albums, artists, playlists, and users.
 
 ## Getting started
 
@@ -20,11 +20,17 @@ npm install
 bower install
 ```
 
-#### Set Up Config File
+#### Configure application
 ```bash
 cp src/app/app.config-example.js src/app/app.config.js
 ```
 Open the app.config.js file and update with the relevant keys.
+
+#### Configure Google Analytics
+
+From within the cloned folder `jukebox-app` run:
+
+Edit the tracking code in `src/assets/scripts/ga.js` and update accordingly.
 
 #### Run the application
 
