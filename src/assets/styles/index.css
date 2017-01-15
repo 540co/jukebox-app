@@ -136,9 +136,7 @@ a {
   background: #5091da;
 }
 .intro.image-background {
-  /* TODO: figure out gulp task to switch location of styles folder*/
-  /*background: url('../images/cover.jpg') center center no-repeat;*/
-  background: url('./../assets/images/cover.jpg') center center no-repeat;
+  background: url('../images/cover.jpg') center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
