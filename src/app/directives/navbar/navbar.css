@@ -1,0 +1,52 @@
+.material-navbar {
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.298039);
+}
+.material-navbar__nav > li > .material-navbar__link {
+  -webkit-transition: background-color 0.4s ease-out 0s;
+  transition: background-color 0.4s ease-out 0s;
+}
+.material-navbar {
+  background-color: #fff;
+}
+.material-navbar__brand {
+  color: #000;
+}
+.material-navbar__nav > li > .material-navbar__link {
+  color: #000;
+}
+.material-navbar__nav > li > .material-navbar__link:hover {
+  background-color: #f7f7f7;
+}
+.material-navbar__nav > li > .material-navbar__link:active {
+  background-color: #c9c9c9;
+}
+.materail-navbar__icon-bar {
+  background-color: #000;
+}
+.materil-navbar__collapse {
+  border-top-color: #514C5E;
+}
+.material-navbar_primary {
+  background-color: #514C5E;
+}
+.material-navbar_primary .material-navbar__brand {
+  color: #fff;
+}
+.material-navbar_primary .material-navbar__nav > li > .material-navbar__link {
+  color: #fff;
+}
+.material-navbar_primary .material-navbar__nav > li > .material-navbar__link:hover {
+  background-color: #514C5E;
+}
+.material-navbar_primary .material-navbar__nav > li > .material-navbar__link:active {
+  background-color: #514C5E;
+}
+.material-navbar_primary .materail-navbar__icon-bar {
+  background-color: #fff;
+}
+.material-navbar_primary .materil-navbar__collapse {
+  border-top-color: #514C5E;
+}

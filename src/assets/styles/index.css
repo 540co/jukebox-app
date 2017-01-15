@@ -4,6 +4,7 @@
   1. Global
   2. Login
   3. Home
+  4. Music Card
 ----------------------------------------*/
 
 /*----------------------------------------
@@ -11,6 +12,13 @@
 ----------------------------------------*/
 body {
   height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Oxygen', sans-serif;
+  color: #514C5E;
+}
+
+a {
+  color: #514C5E;
 }
 
 .browsehappy {
@@ -22,6 +30,10 @@ body {
 
 .navbar {
   margin-bottom: 0px;
+}
+
+.section-gray {
+  background: #f4f4f4;
 }
 
 /*----------------------------------------
@@ -70,6 +82,9 @@ body {
 /*----------------------------------------
   3. Home
 ----------------------------------------*/
+#logo {
+  display: inline-block;
+}
 .intro {
   position: relative;
   width: 100%;
@@ -121,7 +136,9 @@ body {
   background: #5091da;
 }
 .intro.image-background {
-  background: url('../images/cover.jpg') center center no-repeat;
+  /* TODO: figure out gulp task to switch location of styles folder*/
+  /*background: url('../images/cover.jpg') center center no-repeat;*/
+  background: url('./../assets/images/cover.jpg') center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -145,4 +162,46 @@ body {
 .intro a:hover,
 .intro a:focus {
   color: #fff;
+}
+.discover {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+.discover h2 {
+  padding-bottom: 20px;
+}
+
+/*----------------------------------------
+  3. Music Card
+----------------------------------------*/
+.music-card {
+  margin: 10px auto;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+.music-card > .image img {
+  height: 150;
+  width: 300px;
+}
+.music-card > .info {
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.music-card > .info > .title {
+  font-size: 1.3em;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+.music-card > .info > .artist {
+  color: #52C0AE;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
