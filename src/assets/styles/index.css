@@ -5,6 +5,7 @@
   2. Login
   3. Home
   4. Music Card
+  5. Artist
 ----------------------------------------*/
 
 /*----------------------------------------
@@ -15,6 +16,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Oxygen', sans-serif;
   color: #514C5E;
+  margin-top: 50px;
 }
 
 a {
@@ -109,6 +111,7 @@ a {
   min-height: 600px;
   text-align: center;
   color: #514C5E;
+  margin-top: -50px;
 }
 .intro h1,
 .intro h2,
@@ -188,7 +191,7 @@ a {
 }
 
 /*----------------------------------------
-  3. Music Card
+  4. Music Card
 ----------------------------------------*/
 .music-card {
   margin: 10px auto;
@@ -219,4 +222,27 @@ a {
   font-size: 0.8em;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/*----------------------------------------
+  5. Artist
+----------------------------------------*/
+
+#artist-search {
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+.artist-title {
+  margin-left: 20px;
+  font-size: 18px;
+}
+
+.top-search-artists h5 {
+  margin-bottom: 20px;
+}
+
+.top-search-artists p {
+  padding-bottom: 10px;
+  border-bottom: solid 1px #e8e8e8;
 }

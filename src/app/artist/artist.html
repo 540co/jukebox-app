@@ -1,0 +1,74 @@
+<jukebox-navbar></jukebox-navbar>
+
+<section id="artists" class="artists">
+  <div class="container">
+      <h2>Artists</h2>
+
+      <div class="row" id="artist-search">
+        <div class="col-xs-7">
+    	    <div class="input-group">
+              <div class="input-group-btn search-panel">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  	<span id="search_concept">View</span> <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">10</a></li>
+                    <li><a href="#">25</a></li>
+                    <li><a href="#">50</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">All</a></li>
+                  </ul>
+              </div>
+              <input type="hidden" name="search_param" value="all" id="search_param">
+              <input type="text" class="form-control" name="x" placeholder="Search" ng-model="searchArtist">
+              <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+              </span>
+          </div>
+      </div>
+  	</div>
+
+    <div class="row">
+      <div class="col-md-7">
+
+        <div ng-repeat="artists in vm.artists | filter:searchArtist">
+          <img src="assets/images/profile.png" height="50px"alt="" class="img-circle">
+          <a class="artist-title" ui-sref="artistDetail({artistId: artists.id})">{{artists.name}}</a>
+          <hr>
+        </div>
+
+        <nav aria-label="Page navigation" class="pull-right">
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="col-md-4 col-md-offset-1">
+        <div class="top-search-artists">
+          <h5 class="text-uppercase"><strong>Top searched artists</strong></h5>
+          <p>1. <a ui-sref="artistDetail({artistId: 1})">Foo Fighters</a></p>
+          <p>2. <a ui-sref="artistDetail({artistId: 2})">Red Hot Chili Peppers</a></p>
+          <p>3. <a ui-sref="artistDetail({artistId: 3})">Pretty Lights</a></p>
+          <p>4. <a ui-sref="artistDetail({artistId: 4})">Eric Church</a></p>
+          <p>5. <a ui-sref="artistDetail({artistId: 5})">Billy Joel</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

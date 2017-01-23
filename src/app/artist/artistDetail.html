@@ -1,0 +1,29 @@
+<jukebox-navbar></jukebox-navbar>
+
+<section id="artist-detail" class="artist-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>{{vm.artist.name}}</h2>
+        <p>Click on an album to lean more!</p>
+
+        <h3>Albums ({{vm.artist.albums.totalCount}})</h3>
+        <div class="row" ng-if="vm.albums">
+          <div class="col-sm-2" ng-repeat="album in vm.albums">
+            <img ng-src="{{album.coverArt}}" class="img-responsive cover-art">
+            <br>
+            <div>
+              <p>
+                <strong>{{album.title}}</strong>
+                <br>
+                <a href="">Details</a>
+              </p>
+            </div>
+          </div>
+          <!-- end col -->
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+  </div>
+</section>
