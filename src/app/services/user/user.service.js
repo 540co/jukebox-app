@@ -14,6 +14,7 @@
 
     service.getCurrentUser = getCurrentUser;
     service.listCurrentUrl = listCurrentUrl;
+
    /**
     * URL Helper Method
     */

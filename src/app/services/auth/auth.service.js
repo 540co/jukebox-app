@@ -37,7 +37,8 @@
               username: userData.username,
               firstName: userData.firstName,
               lastName: userData.lastName
-          }
+          },
+          sessionId: authToken
       };
 
       // set default auth header for http requests

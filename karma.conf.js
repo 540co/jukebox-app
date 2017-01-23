@@ -62,6 +62,10 @@ module.exports = function(config) {
 
     browsers : ['PhantomJS'],
 
+    exclude: [
+      conf.paths.src + '/**/*.run.js'
+    ],
+
     plugins : [
       'karma-phantomjs-launcher',
       'karma-angular-filesort',
