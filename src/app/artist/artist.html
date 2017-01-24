@@ -3,9 +3,8 @@
 <section id="artists" class="artists">
   <div class="container">
       <h2>Artists</h2>
-
       <div class="row" id="artist-search">
-        <div class="col-xs-7">
+        <div class="col-xs-6">
     	    <div class="input-group">
               <div class="input-group-btn search-panel">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -30,7 +29,7 @@
   	</div>
 
     <div class="row">
-      <div class="col-md-7">
+      <div class="col-md-6">
 
         <div ng-repeat="artists in vm.artists | filter:searchArtist">
           <img src="assets/images/profile.png" height="50px"alt="" class="img-circle">
@@ -59,15 +58,7 @@
         </nav>
       </div>
 
-      <div class="col-md-4 col-md-offset-1">
-        <div class="top-search-artists">
-          <h5 class="text-uppercase"><strong>Top searched artists</strong></h5>
-          <p>1. <a ui-sref="artistDetail({artistId: 1})">Foo Fighters</a></p>
-          <p>2. <a ui-sref="artistDetail({artistId: 2})">Red Hot Chili Peppers</a></p>
-          <p>3. <a ui-sref="artistDetail({artistId: 3})">Pretty Lights</a></p>
-          <p>4. <a ui-sref="artistDetail({artistId: 4})">Eric Church</a></p>
-          <p>5. <a ui-sref="artistDetail({artistId: 5})">Billy Joel</a></p>
-        </div>
+      <div class="col-md-6">
       </div>
     </div>
   </div>

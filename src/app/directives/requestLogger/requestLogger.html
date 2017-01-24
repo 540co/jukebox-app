@@ -1,0 +1,20 @@
+<section id="request-logger" class="request-logger" ng-class="{'rl-open': vm.rlOpen, 'rl-closed': !vm.rlOpen}">
+  <div class="log-header">
+    <div class="col-md-11" ng-click="vm.rlOpen = (!vm.rlOpen)">
+      Jukebox API Explorer
+    </div>
+    <div class="col-md-1">
+      <span class="badge pull-right" ng-click="vm.clearLog()">clear</span>
+    </div>
+  </div>
+
+  <div class="log-body" ng-class="{'rl-open': vm.rlOpen, 'rl-closed': !vm.rlOpen}">
+    <div class="api-call" ng-repeat="call in calls | orderBy:'$index':true">
+      <p collapse-toggler><span class="label label-success request-type">{{call.config.method}}</span> {{call.config.url}}</p>
+      <div class="collapse">
+        <p collapse-toggler>Response</p>
+        <pre class="collapse">{{call.data | json}}</pre>
+      </div>
+    </div>
+  </div>
+</section>
