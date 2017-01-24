@@ -5,11 +5,12 @@
     .module('app.services')
     .service('Resource', Resource);
 
-  Resource.$inject = ['$http', '$q', 'configService'];
+  Resource.$inject = ['$http', '$q', 'configService', '$rootScope'];
 
-  function Resource($http, $q, configService) {
+  function Resource($http, $q, configService, $rootScope) {
     var appConfig = configService.getConfig();
-    
+    $rootScope.calls = [];
+
     function Resource(path) {
       this.path = path;
       this.api = {
@@ -60,6 +61,7 @@
       }
 
       function apiUpdate(id, data) {
+        // logReq('PUT', instanceUrl(path, id), data)
         return $http.put(instanceUrl(path, id), data);
       }
 
@@ -104,6 +106,8 @@
       }
 
       function requestComplete(response) {
+        $rootScope.response = response;
+        $rootScope.calls.push($rootScope.response);
         return response.data.data;
       }
 

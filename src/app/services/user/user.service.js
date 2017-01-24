@@ -4,9 +4,9 @@
   angular.module('app.services')
     .service('userService', userService);
 
-  userService.$inject = ['$http', '$q', 'configService', 'Resource'];
+  userService.$inject = ['$http', '$q', '$rootScope', 'configService', 'Resource'];
 
-  function userService($http, $q, configService, Resource) {
+  function userService($http, $q, $rootScope, configService, Resource) {
 
     var path = '/users';
     var service = new Resource(path);
@@ -42,6 +42,7 @@
     }
 
     function requestComplete(response) {
+      $rootScope.calls.push(response);
       return response.data.data;
     }
 

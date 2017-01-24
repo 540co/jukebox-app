@@ -11,7 +11,7 @@
   function ArtistController(artistService) {
     var vm = this;
     vm.artists = null;
-    
+
     activate();
 
     ////////////////////////////////////////////////////////////////////////////

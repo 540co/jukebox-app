@@ -4,9 +4,9 @@
   angular.module('app.services')
     .service('artistService', artistService);
 
-  artistService.$inject = ['$http', '$q', 'configService', 'Resource'];
+  artistService.$inject = ['$http', '$q', 'configService', 'Resource', '$rootScope'];
 
-  function artistService($http, $q, configService, Resource) {
+  function artistService($http, $q, configService, Resource, $rootScope) {
 
     var path = '/artists';
     var service = new Resource(path);
@@ -40,6 +40,7 @@
     }
 
     function requestComplete(response) {
+      $rootScope.calls.push(response);
       return response.data.data;
     }
 
