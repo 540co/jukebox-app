@@ -6,6 +6,7 @@
   3. Home
   4. Music Card
   5. Artist
+  6. Album
 ----------------------------------------*/
 
 /*----------------------------------------
@@ -36,6 +37,18 @@ a {
 
 .section-gray {
   background: #f4f4f4;
+}
+
+.jb-purple {
+  color: #514C5E;
+}
+
+.jb-green {
+  color: #52C0AE;
+}
+
+.jb-orange {
+  color: #E75E3C;
 }
 
 /*----------------------------------------
@@ -228,7 +241,7 @@ a {
   5. Artist
 ----------------------------------------*/
 
-#artist-search {
+#artist-search, #album-search {
   margin-top: 25px;
   margin-bottom: 40px;
 }
@@ -245,4 +258,16 @@ a {
 .top-search-artists p {
   padding-bottom: 10px;
   border-bottom: solid 1px #e8e8e8;
+}
+
+
+/*----------------------------------------
+  6. Album
+----------------------------------------*/
+.album-content-wrapper {
+  padding-top: 95px
+}
+
+#album-detail {
+  margin-bottom: 50px;
 }

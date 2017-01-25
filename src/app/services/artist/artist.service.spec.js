@@ -6,7 +6,6 @@
     var $httpBackend = null;
     var instanceJSON = {"data": {}};
 
-
     beforeEach(function() {
       module('app.services');
       inject(function(_artistService_, _$httpBackend_) {
