@@ -1,10 +1,10 @@
 <jukebox-navbar></jukebox-navbar>
 
-<section id="artists" class="artists">
+<section id="songs">
   <div class="container">
-      <h2>Artists</h2>
-      <div class="row" id="artist-search">
-        <div class="col-md-6">
+      <h2>Songs</h2>
+      <div class="row" id="song-search">
+        <div class="col-xs-6">
     	    <div class="input-group">
               <div class="input-group-btn search-panel">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -20,7 +20,7 @@
                   </ul>
               </div>
               <input type="hidden" name="search_param" value="all" id="search_param">
-              <input type="text" class="form-control" name="x" placeholder="Search" ng-model="searchArtist">
+              <input type="text" class="form-control" name="x" placeholder="Search" ng-model="searchSong">
               <span class="input-group-btn">
                   <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
               </span>
@@ -30,12 +30,18 @@
 
     <div class="row">
       <div class="col-md-6">
-
-        <div ng-repeat="artists in vm.artists | filter:searchArtist">
-          <img src="assets/images/profile.png" height="50px"alt="" class="img-circle">
-          <a class="artist-title" ui-sref="artistDetail({artistId: artists.id})">{{artists.name}}</a>
-          <hr>
-        </div>
+        <br>
+        <table class="table table-striped">
+          <tbody>
+            <tr ng-repeat="song in vm.songs | filter:searchSong">
+              <td>{{$index + 1}}</td>
+              <td>
+                <a class="" ui-sref="songDetail({songId: song.id})">{{song.title}}</a>
+              </td>
+              <td>{{song.duration}}</td>
+            </tr>
+          </tbody>
+        </table>
 
         <nav aria-label="Page navigation" class="pull-right">
           <ul class="pagination">

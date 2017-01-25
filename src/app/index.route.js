@@ -49,6 +49,21 @@
         params: {
           albumId: null
         },
+      })
+      .state('songs', {
+        url: '/songs',
+        templateUrl: 'app/songs/songs.html',
+        controller: 'SongController',
+        controllerAs: 'vm'
+      })
+      .state('songDetail', {
+        url: '/songs/:songId',
+        templateUrl: 'app/songs/songDetail.html',
+        controller: 'SongDetailController',
+        controllerAs: 'vm',
+        params: {
+          songId: null
+        },
       });
 
     $urlRouterProvider.otherwise('/');
