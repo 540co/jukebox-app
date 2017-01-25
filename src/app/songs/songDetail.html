@@ -1,0 +1,27 @@
+<jukebox-navbar></jukebox-navbar>
+
+<section id="song-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <br><br>
+        <div class="album-art-wrapper">
+          <img ng-src="{{vm.song.album.coverArt}}" width="225px" class="img-responsive" alt="Album cover art">
+        </div>
+      </div>
+      <div class="col-md-8">
+        <br>
+        <h2><i class="fa fa-music"></i> {{vm.song.title}}</h2>
+
+        <div class="song-content-wrapper lead">
+          <p>Artist: <a class="jb-orange" ui-sref="artistDetail({artistId: vm.song.artist.id})">{{vm.song.artist.name}}</a></p>
+
+          <p>Album: <a class="jb-green" ui-sref="albumDetail({albumId: vm.song.album.id})">{{vm.song.album.title}}</a></p>
+
+          <p>Duration: {{vm.song.duration}}</p>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+  </div>
+</section>
