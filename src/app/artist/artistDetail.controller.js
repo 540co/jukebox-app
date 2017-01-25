@@ -12,7 +12,7 @@
     var vm = this;
     vm.artist = null;
     vm.albums = null;
-    
+
     var artistId = $stateParams.artistId;
 
     activate();

@@ -1,0 +1,31 @@
+<jukebox-navbar></jukebox-navbar>
+
+<section id="album-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="album-art-wrapper">
+          <h2>{{vm.album.title}}</h2>
+          <p>By <a ui-sref="artistDetail({artistId: vm.album.artist.id})"><strong class="jb-orange">{{vm.album.artist.name}}</strong></a> • {{vm.album.releasedOn | date:'yyyy'}} • {{vm.album.songs.totalCount}} songs</p>
+          <img ng-src="{{vm.album.coverArt}}" class="img-responsive" alt="Album cover art">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="album-content-wrapper">
+          <div class="table-responsive">
+          <table class="table table-striped">
+            <tbody>
+              <tr ng-repeat="song in vm.songs">
+                <td>{{$index + 1}}</td>
+                <td>{{song.title}}</td>
+                <td class="text-right"><span class="label label-default">{{song.duration}}</span></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+  </div>
+</section>

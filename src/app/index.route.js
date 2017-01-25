@@ -33,6 +33,21 @@
         controllerAs: 'vm',
         params: {
           artistId: null
+        }
+      })
+      .state('albums', {
+        url: '/albums',
+        templateUrl: 'app/album/album.html',
+        controller: 'AlbumController',
+        controllerAs: 'vm'
+      })
+      .state('albumDetail', {
+        url: '/albums/:albumId',
+        templateUrl: 'app/album/albumDetail.html',
+        controller: 'AlbumDetailController',
+        controllerAs: 'vm',
+        params: {
+          albumId: null
         },
       });
 
