@@ -9,8 +9,5 @@
       vm = _$controller_('HomeController');
     }));
 
-    it('should call the artists', function() {
-      //TODO
-    });
   });
 })();
