@@ -70,6 +70,30 @@
         templateUrl: 'app/playlist/playlist.html',
         controller: 'PlaylistController',
         controllerAs: 'vm'
+      })
+      .state('playlistDetail', {
+        url: '/playlists/:playlistId',
+        templateUrl: 'app/playlist/playlistDetail.html',
+        controller: 'PlaylistDetailController',
+        controllerAs: 'vm',
+        params: {
+          playlistId: null
+        },
+      })
+      .state('myPlaylists', {
+        url: '/playlists',
+        templateUrl: 'app/playlist/myPlaylists/myPlaylists.html',
+        controller: 'MyPlaylistController',
+        controllerAs: 'vm'
+      })
+      .state('myPlaylists.detail', {
+        url: '/:playlistId',
+        templateUrl: 'app/playlist/myPlaylists/myPlaylistDetail.html',
+        controller: 'MyPlaylistDetailController',
+        controllerAs: 'vm',
+        params: {
+          playlistId: null
+        },
       });
 
     $urlRouterProvider.otherwise('/');

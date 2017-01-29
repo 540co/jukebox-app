@@ -40,5 +40,27 @@
       expect(errorResponse.status).toEqual(400);
     });
 
+    it('calls resource user playlist url from getUserPlaylists', function(){
+      var resourceInstance = null;
+      $httpBackend.when('GET', userService.listPlaylistUrl(userService.path, '1')).respond(200, instanceJSON);
+      $httpBackend.expectGET(userService.listPlaylistUrl(userService.path, '1'));
+      userService.getUserPlaylists('1').then(function(response){
+        resourceInstance = response;
+      });
+      $httpBackend.flush();
+      expect(resourceInstance).toEqual(instanceJSON.data);
+    });
+
+    it('fails to call resource list current user url from getCurrentUser', function(){
+      var errorResponse = null;
+      $httpBackend.when('GET', userService.listPlaylistUrl(userService.path, '1')).respond(400);
+      $httpBackend.expectGET(userService.listPlaylistUrl(userService.path, '1'));
+      userService.getUserPlaylists('1').then(null, function(e){
+        errorResponse = e;
+      });
+      $httpBackend.flush();
+      expect(errorResponse.status).toEqual(400);
+    });
+
   });
 })();

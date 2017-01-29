@@ -1,24 +1,27 @@
 (function() {
   'use strict';
 
-  describe('Playlist Controller', function(){
+  describe('My Playlist Controller', function(){
     var vm = null;
-    var playlistService = null;
+    var userService = null;
     var controller = null;
+    var rootScope = null;
 
     beforeEach(module('app'));
-    beforeEach(inject(function(_$controller_, _playlistService_) {
-      playlistService = _playlistService_;
-
+    beforeEach(inject(function(_$controller_, _userService_) {
+      userService = _userService_;
+      rootScope = {"globals": {"currentUser": {'id': '1'}}};
+      
       controller = function () {
-        return _$controller_('PlaylistController', {
-          playlistService: playlistService
+        return _$controller_('MyPlaylistController', {
+          userService: userService,
+          $rootScope: rootScope
         });
       };
     }));
 
     it('should get a all playlists on controller init', function() {
-      spyOn(playlistService, 'all').and.callFake(function() {
+      spyOn(userService, 'getUserPlaylists').and.callFake(function() {
         return {
           then: function(success) {
             success([{},{}]);
@@ -32,7 +35,7 @@
 
 
     it('should fail to get playlists', function() {
-      spyOn(playlistService, 'all').and.callFake(function() {
+      spyOn(userService, 'getUserPlaylists').and.callFake(function() {
         return {
           then: function(success, err) {
             err({});

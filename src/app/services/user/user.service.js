@@ -13,13 +13,19 @@
     var appConfig = configService.getConfig();
 
     service.getCurrentUser = getCurrentUser;
+    service.getUserPlaylists = getUserPlaylists;
     service.listCurrentUrl = listCurrentUrl;
+    service.listPlaylistUrl = listPlaylistUrl;
 
    /**
     * URL Helper Method
     */
     function listCurrentUrl(resourcePath) {
       return appConfig.baseUrl + resourcePath + '/current';
+    }
+
+    function listPlaylistUrl(resourcePath, userId) {
+      return appConfig.baseUrl + resourcePath + '/' + userId + '/playlists';
     }
 
    /**
@@ -32,6 +38,10 @@
       });
     }
 
+    function apiUserPlaylists(id) {
+      return $http.get(listPlaylistUrl(service.path, id));
+    }
+
    /**
     * Service Methods
     */
@@ -42,6 +52,17 @@
     }
 
     function requestComplete(response) {
+      $rootScope.calls.push(response);
+      return response.data.data;
+    }
+
+    function getUserPlaylists(id) {
+      return apiUserPlaylists(id)
+        .then(userPlaylistComplete)
+        .catch(requestFailed);
+    }
+
+    function userPlaylistComplete(response) {
       $rootScope.calls.push(response);
       return response.data.data;
     }

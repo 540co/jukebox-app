@@ -3,25 +3,26 @@
 
   angular
     .module('app')
-    .controller('PlaylistController', PlaylistController);
+    .controller('MyPlaylistController', MyPlaylistController);
 
-    PlaylistController.$inject = ['playlistService'];
+    MyPlaylistController.$inject = ['$rootScope', 'userService'];
 
   /** @ngInject */
-  function PlaylistController(playlistService) {
+  function MyPlaylistController($rootScope, userService) {
     var vm = this;
     vm.playlists = null;
-
+    
+    var currentUser = $rootScope.globals.currentUser.id;
     activate();
 
     ////////////////////////////////////////////////////////////////////////////
 
     function activate() {
-      getPlaylists();
+      getPlaylists(currentUser);
     }
 
-    function getPlaylists() {
-      return playlistService.all()
+    function getPlaylists(id) {
+      return userService.getUserPlaylists(id)
         .then(getPlaylistsComplete, requestFailed);
     }
 

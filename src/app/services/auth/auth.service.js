@@ -34,6 +34,7 @@
       // NOTE: $rootScope is not best practice, but its easy to access data accross all controller scopes
       $rootScope.globals = {
           currentUser: {
+              id: userData.id,
               username: userData.username,
               firstName: userData.firstName,
               lastName: userData.lastName
