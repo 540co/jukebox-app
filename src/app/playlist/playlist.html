@@ -1,0 +1,53 @@
+<jukebox-navbar></jukebox-navbar>
+
+<div id="wrapper">
+       <!-- Sidebar -->
+       <div id="sidebar-wrapper">
+           <ul class="sidebar-nav">
+               <li class="sidebar-brand">PLAYLISTS</li>
+               <li ng-repeat="playlist in vm.playlists">
+                   <a href="#">{{playlist.name}}</a>
+               </li>
+           </ul>
+       </div>
+       <!-- /#sidebar-wrapper -->
+
+       <!-- Page Content -->
+       <div id="page-content-wrapper">
+           <div class="container-fluid">
+               <div class="row">
+                   <div class="col-lg-12">
+                       <h1>Playlist #1</h1>
+                       <p>Created By <a><strong class="jb-orange">Tony Stark</strong></a> • 7 songs, 9 hr 2 min</p>
+                       <div class="row">
+                         <div class="col-md-6">
+                           <br>
+                           <table class="table table-striped">
+                             <tbody>
+                               <tr ng-repeat="song in vm.songs | filter:searchSong">
+                                 <td>{{$index + 1}}</td>
+                                 <td>
+                                   <a class="" ui-sref="songDetail({songId: song.id})">{{song.title}}</a>
+                                 </td>
+                                 <td>{{song.duration}}</td>
+                               </tr>
+                             </tbody>
+                           </table>
+                         </div>
+                       </div>
+                       <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <!-- /#page-content-wrapper -->
+
+   </div>
+   <!-- /#wrapper -->
+    <!-- Menu Toggle Script -->
+   <script>
+   $("#menu-toggle").click(function(e) {
+       e.preventDefault();
+       $("#wrapper").toggleClass("toggled");
+   });
+   </script>

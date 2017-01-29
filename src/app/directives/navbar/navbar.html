@@ -21,7 +21,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{globals.currentUser.firstName}} {{globals.currentUser.lastName}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a>My playlists</a></li>
+            <li><a ui-sref="playlists">My playlists</a></li>
             <li role="separator" class="divider"></li>
             <li><a ng-click="vm.logout()">Log out</a></li>
           </ul>

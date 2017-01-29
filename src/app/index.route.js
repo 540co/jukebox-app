@@ -64,6 +64,12 @@
         params: {
           songId: null
         },
+      })
+      .state('playlists', {
+        url: '/playlists',
+        templateUrl: 'app/playlist/playlist.html',
+        controller: 'PlaylistController',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');
