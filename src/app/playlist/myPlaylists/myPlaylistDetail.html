@@ -1,0 +1,30 @@
+
+<section ng-if="vm.songs">
+  <h1>{{vm.playlist.name}}</h1>
+  <p>Created By <strong class="jb-orange">{{vm.playlist.user.username}}</strong> • {{vm.playlist.songs.totalCount}} songs</p>
+  <div class="row">
+    <div class="col-md-6">
+      <br>
+      <table class="table table-striped">
+        <tbody>
+          <tr ng-repeat="song in vm.songs | filter:searchSong">
+            <td>{{$index + 1}}</td>
+            <td>
+              <a class="" ui-sref="songDetail({songId: song.id})">{{song.title}}</a>
+            </td>
+            <td>{{song.duration}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+</section>
+
+<!-- Menu Toggle Script -->
+<script>
+$("#menu-toggle").click(function(e) {
+   e.preventDefault();
+   $("#wrapper").toggleClass("toggled");
+});
+</script>

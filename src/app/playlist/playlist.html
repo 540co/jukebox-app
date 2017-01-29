@@ -1,8 +1,8 @@
 <jukebox-navbar></jukebox-navbar>
 
-<section id="songs">
+<section id="playlists" class="playlists">
   <div class="container">
-      <h2>Songs</h2>
+      <h2>Playlists</h2>
       <div class="row" id="song-search">
         <div class="col-xs-6">
     	    <div class="input-group">
@@ -20,7 +20,7 @@
                   </ul>
               </div>
               <input type="hidden" name="search_param" value="all" id="search_param">
-              <input type="text" class="form-control" name="x" placeholder="Search" ng-model="searchSong">
+              <input type="text" class="form-control" name="x" placeholder="Search" ng-model="searchPlaylist">
               <span class="input-group-btn">
                   <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
               </span>
@@ -33,12 +33,11 @@
         <br>
         <table class="table table-striped">
           <tbody>
-            <tr ng-repeat="song in vm.songs | filter:searchSong">
+            <tr ng-repeat="playlist in vm.playlists | filter:searchPlaylist">
               <td>{{$index + 1}}</td>
               <td>
-                <a class="" ui-sref="songDetail({songId: song.id})">{{song.title}}</a>
+                <a class="" ui-sref="playlistDetail({playlistId: playlist.id})">{{playlist.name}}</a>
               </td>
-              <td>{{song.duration}}</td>
             </tr>
           </tbody>
         </table>
