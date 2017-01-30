@@ -39,5 +39,49 @@
       $httpBackend.flush();
       expect(errorResponse.status).toEqual(400);
     });
+
+    it('calls resource list song url from addPlaylistSongs', function(){
+      var resourceInstance = null;
+      $httpBackend.when('POST', playlistService.listSongUrl(playlistService.path, '1')).respond(200, instanceJSON);
+      $httpBackend.expectPOST(playlistService.listSongUrl(playlistService.path, '1'));
+      playlistService.addPlaylistSongs('1', {}).then(function(response){
+        resourceInstance = response;
+      });
+      $httpBackend.flush();
+      expect(resourceInstance).toEqual(instanceJSON.data);
+    });
+
+    it('fails to call resource list song url from addPlaylistSongs', function(){
+      var errorResponse = null;
+      $httpBackend.when('POST', playlistService.listSongUrl(playlistService.path, '1')).respond(400);
+      $httpBackend.expectPOST(playlistService.listSongUrl(playlistService.path, '1'));
+      playlistService.addPlaylistSongs('1').then(null, function(e){
+        errorResponse = e;
+      });
+      $httpBackend.flush();
+      expect(errorResponse.status).toEqual(400);
+    });
+
+    it('calls resource list song url from removePlaylistSongs', function(){
+      var resourceInstance = null;
+      $httpBackend.when('DELETE', playlistService.listSongUrl(playlistService.path, '1')).respond(200, instanceJSON);
+      $httpBackend.expectDELETE(playlistService.listSongUrl(playlistService.path, '1'));
+      playlistService.removePlaylistSongs('1', {}).then(function(response){
+        resourceInstance = response;
+      });
+      $httpBackend.flush();
+      expect(resourceInstance).toEqual(instanceJSON.data);
+    });
+
+    it('fails to call resource list song url from removePlaylistSongs', function(){
+      var errorResponse = null;
+      $httpBackend.when('DELETE', playlistService.listSongUrl(playlistService.path, '1')).respond(400);
+      $httpBackend.expectDELETE(playlistService.listSongUrl(playlistService.path, '1'));
+      playlistService.removePlaylistSongs('1').then(null, function(e){
+        errorResponse = e;
+      });
+      $httpBackend.flush();
+      expect(errorResponse.status).toEqual(400);
+    });
   });
 })();

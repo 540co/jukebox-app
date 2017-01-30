@@ -10,7 +10,7 @@
 
   <div class="log-body" ng-class="{'rl-open': vm.rlOpen, 'rl-closed': !vm.rlOpen}">
     <div class="api-call" ng-repeat="call in calls | orderBy:'$index':true">
-      <p collapse-toggler><span class="label label-success request-type">{{call.config.method}}</span> {{call.config.url}}</p>
+      <p collapse-toggler><span class="label request-type" ng-class="{'label-info': call.config.method == 'GET', 'label-success': call.config.method == 'POST', 'label-danger': call.config.method == 'DELETE', 'label-warning': call.config.method == 'PUT'}">{{call.config.method}}</span> {{call.config.url}}</p>
       <div class="collapse">
         <p collapse-toggler>Response</p>
         <pre class="collapse">{{call.data | json}}</pre>

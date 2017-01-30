@@ -7,13 +7,16 @@
     var controller = null;
     var mockPlaylist = {'title': 'playlist1'};
     var mockSongs = [{'title': 'foo'}, {'title': 'bar'}];
+    var $log;
 
     beforeEach(module('app'));
-    beforeEach(inject(function(_$controller_, _playlistService_) {
+    beforeEach(inject(function(_$controller_, _$log_, _playlistService_) {
+      $log = _$log_;
       playlistService = _playlistService_;
 
       controller = function () {
         return _$controller_('MyPlaylistDetailController', {
+          $log:$log,
           playlistService: playlistService
         });
       };
@@ -43,6 +46,67 @@
       vm = controller();
       expect(vm.songs.length).toEqual(2);
     });
+
+    it('should add a song to a playlist', function() {
+      spyOn($log, 'log');
+      spyOn(playlistService, 'addPlaylistSongs').and.callFake(function() {
+        return {
+          then: function(success) {
+            success(mockSongs);
+          }
+        };
+      });
+      vm = controller();
+      vm.addPlaylistSongs('2', '3');
+
+      expect($log.log).toHaveBeenCalled();
+    });
+
+    it('should fail to add a song to a playlist', function() {
+      spyOn($log, 'error');
+      spyOn(playlistService, 'addPlaylistSongs').and.callFake(function() {
+        return {
+          then: function(success, err) {
+            err({});
+          }
+        };
+      });
+      vm = controller();
+      vm.addPlaylistSongs('foo', 'bar');
+
+      expect($log.error).toHaveBeenCalled();
+    });
+
+    it('should delete a song to a playlist', function() {
+      spyOn($log, 'log');
+      spyOn(playlistService, 'removePlaylistSongs').and.callFake(function() {
+        return {
+          then: function(success) {
+            success(mockSongs);
+          }
+        };
+      });
+      vm = controller();
+      vm.destroyPlaylistSongs('2', '3');
+
+      expect($log.log).toHaveBeenCalled();
+    });
+
+    it('should fail to delete a song to a playlist', function() {
+      spyOn($log, 'error');
+      spyOn(playlistService, 'removePlaylistSongs').and.callFake(function() {
+        return {
+          then: function(success, err) {
+            err({});
+          }
+        };
+      });
+      vm = controller();
+      vm.destroyPlaylistSongs('foo', 'bar');
+
+      expect($log.error).toHaveBeenCalled();
+    });
+
 
     it('should fail to get playlist songs', function() {
       spyOn(playlistService, 'getPlaylistSongs').and.callFake(function() {

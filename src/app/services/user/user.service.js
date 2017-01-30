@@ -64,6 +64,7 @@
 
     function userPlaylistComplete(response) {
       $rootScope.calls.push(response);
+      $rootScope.myPlaylists = response.data.data;
       return response.data.data;
     }
 

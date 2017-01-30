@@ -81,7 +81,7 @@
         },
       })
       .state('myPlaylists', {
-        url: '/playlists',
+        url: '/myplaylists',
         templateUrl: 'app/playlist/myPlaylists/myPlaylists.html',
         controller: 'MyPlaylistController',
         controllerAs: 'vm'
@@ -94,6 +94,7 @@
         params: {
           playlistId: null
         },
+        parent: 'myPlaylists'
       });
 
     $urlRouterProvider.otherwise('/');

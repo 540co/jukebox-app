@@ -99,7 +99,7 @@
           .catch(requestFailed);
       }
 
-      function destroy(id) {
+      function destroy(id, path) {
         return apiDestroy(id)
           .then(requestComplete)
           .catch(requestFailed);
