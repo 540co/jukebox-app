@@ -50,14 +50,6 @@
     }
 
     function addPlaylistSongs(playlistId, data) {
-      console.log('service', data);
-      // // NOTE: must set content-type, angular defaults to
-      // // content-type: text/plain;charset=UTF-8 for whatever wierd reason
-      // var config = {
-      //   "data": requestData,
-      //    "headers":  {'content-type':'application/json'}
-      // };
-
       return apiCreatePlaylistSongs(playlistId, data)
         .then(createPlaylistSongsComplete)
         .catch(requestFailed);
@@ -88,7 +80,6 @@
     }
 
     function createPlaylistSongsComplete(response) {
-      console.log('response', response);
       $rootScope.calls.push(response);
       return response.data.data;
     }

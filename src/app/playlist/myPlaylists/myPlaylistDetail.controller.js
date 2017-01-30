@@ -45,25 +45,29 @@
       vm.songs = data;
     }
 
-    function requestFailed(err) {
-      $log.error('err', err);
-    }
-
     function destroyPlaylistSongs(id, data){
       var requestData = formatRequest(data);
       playlistService.removePlaylistSongs(id, requestData)
-        .then(success, requestFailed);
+        .then(removeSongComplete, requestFailed);
+    }
+
+    function removeSongComplete(data) {
+      $log.log('Deleted song from playlist');
     }
 
     function addPlaylistSongs(id, data){
       console.log(data);
       var requestData = formatRequest(data);
       playlistService.addPlaylistSongs(id, requestData)
-        .then(success, requestFailed);
+        .then(addSongComplete, requestFailed);
     }
 
-    function success(data) {
+    function addSongComplete(data) {
       $log.log('Added song to playlist');
+    }
+
+    function requestFailed(err) {
+      $log.error('err', err);
     }
 
     function formatRequest(data) {
