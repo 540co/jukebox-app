@@ -95,11 +95,6 @@
           playlistId: null
         },
         parent: 'myPlaylists'
-        // resolve: {
-        //   playlists: ['userService', function(userService){
-        //       return userService.getUserPlaylists('1');
-        //   }]
-        // }
       });
 
     $urlRouterProvider.otherwise('/');

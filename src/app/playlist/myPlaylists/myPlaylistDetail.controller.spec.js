@@ -20,8 +20,6 @@
           playlistService: playlistService
         });
       };
-
-      // spyOn($log, 'log').and.callThrough();
     }));
 
     it('should get a all playlists on controller init', function() {
