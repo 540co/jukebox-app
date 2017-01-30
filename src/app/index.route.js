@@ -81,7 +81,7 @@
         },
       })
       .state('myPlaylists', {
-        url: '/playlists',
+        url: '/myplaylists',
         templateUrl: 'app/playlist/myPlaylists/myPlaylists.html',
         controller: 'MyPlaylistController',
         controllerAs: 'vm'
@@ -94,6 +94,12 @@
         params: {
           playlistId: null
         },
+        parent: 'myPlaylists'
+        // resolve: {
+        //   playlists: ['userService', function(userService){
+        //       return userService.getUserPlaylists('1');
+        //   }]
+        // }
       });
 
     $urlRouterProvider.otherwise('/');
