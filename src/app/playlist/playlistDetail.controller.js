@@ -5,10 +5,10 @@
     .module('app')
     .controller('PlaylistDetailController', PlaylistDetailController);
 
-    PlaylistDetailController.$inject = ['$stateParams', 'playlistService'];
+    PlaylistDetailController.$inject = ['$log', '$stateParams', 'playlistService'];
 
   /** @ngInject */
-  function PlaylistDetailController($stateParams, playlistService) {
+  function PlaylistDetailController($log, $stateParams, playlistService) {
     var vm = this;
     vm.playlist = null;
     vm.songs = null;
