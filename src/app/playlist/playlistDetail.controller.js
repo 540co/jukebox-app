@@ -12,9 +12,7 @@
     var vm = this;
     vm.playlist = null;
     vm.songs = null;
-
     vm.addPlaylistSongs = addPlaylistSongs;
-    vm.destroyPlaylistSongs = destroyPlaylistSongs;
 
     var playlistId = $stateParams.playlistId;
 
@@ -43,16 +41,6 @@
 
     function getPlaylistSongsComplete(data) {
       vm.songs = data;
-    }
-
-    function destroyPlaylistSongs(id, data){
-      var requestData = formatRequest(data);
-      playlistService.removePlaylistSongs(id, requestData)
-        .then(removeSongComplete, requestFailed);
-    }
-
-    function removeSongComplete(data) {
-      $log.log('Deleted song from playlist');
     }
 
     function addPlaylistSongs(id, data){

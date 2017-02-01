@@ -5,14 +5,13 @@
     .module('app')
     .controller('SongController', SongController);
 
-    SongController.$inject = ['playlistService', 'songService'];
+    SongController.$inject = ['$log', 'playlistService', 'songService'];
 
   /** @ngInject */
-  function SongController(playlistService, songService) {
+  function SongController($log, playlistService, songService) {
     var vm = this;
     vm.songs = null;
     vm.addPlaylistSongs = addPlaylistSongs;
-    vm.destroyPlaylistSongs = destroyPlaylistSongs;
 
     activate();
 
@@ -33,16 +32,6 @@
 
     function requestFailed(err) {
       console.log('err', err);
-    }
-
-    function destroyPlaylistSongs(id, data){
-      var requestData = formatRequest(data);
-      playlistService.removePlaylistSongs(id, requestData)
-        .then(removeSongComplete, requestFailed);
-    }
-
-    function removeSongComplete(data) {
-      $log.log('Deleted song from playlist');
     }
 
     function addPlaylistSongs(id, data){

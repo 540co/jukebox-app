@@ -44,6 +44,19 @@
       expect(vm.songs.length).toEqual(2);
     });
 
+    it('should add song to a playlist', function() {
+      spyOn(playlistService, 'addPlaylistSongs').and.callFake(function() {
+        return {
+          then: function(success) {
+            success({});
+          }
+        };
+      });
+      vm = controller();
+      vm.addPlaylistSongs('1', '40');
+      expect(playlistService.addPlaylistSongs).toHaveBeenCalled();
+    });
+
     it('should fail to get playlist songs', function() {
       spyOn(playlistService, 'getPlaylistSongs').and.callFake(function() {
         return {
@@ -67,6 +80,18 @@
 
       vm = controller();
       expect(vm.playlist).toBe(null);
+    });
+
+    it('should fail to add song to a playlist', function() {
+      spyOn(playlistService, 'addPlaylistSongs').and.callFake(function() {
+        return {
+          then: function(success, err) {
+            err({});
+          }
+        };
+      });
+      vm = controller();
+      vm.addPlaylistSongs('1', '40');
     });
   });
 })();
