@@ -11,7 +11,7 @@
   function MyPlaylistController($rootScope, userService) {
     var vm = this;
     vm.playlists = null;
-    
+
     var currentUser = $rootScope.globals.currentUser.id;
     activate();
 

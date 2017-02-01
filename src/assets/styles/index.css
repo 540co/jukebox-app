@@ -425,6 +425,10 @@ a {
         position: relative;
         margin-right: 0;
     }
+
+    /*#menu-toggle {
+      display: none;
+    }*/
 }
 
 

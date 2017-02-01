@@ -10,6 +10,7 @@
   function Resource($http, $q, configService, $rootScope) {
     var appConfig = configService.getConfig();
     $rootScope.calls = [];
+    $rootScope.requests = [];
 
     function Resource(path) {
       this.path = path;
@@ -106,8 +107,7 @@
       }
 
       function requestComplete(response) {
-        $rootScope.response = response;
-        $rootScope.calls.push($rootScope.response);
+        $rootScope.calls.push(response);
         return response.data.data;
       }
 

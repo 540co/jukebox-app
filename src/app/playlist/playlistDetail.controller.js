@@ -13,6 +13,9 @@
     vm.playlist = null;
     vm.songs = null;
 
+    vm.addPlaylistSongs = addPlaylistSongs;
+    vm.destroyPlaylistSongs = destroyPlaylistSongs;
+
     var playlistId = $stateParams.playlistId;
 
     activate();
@@ -42,10 +45,36 @@
       vm.songs = data;
     }
 
-    function requestFailed(err) {
-      console.log('err', err);
+    function destroyPlaylistSongs(id, data){
+      var requestData = formatRequest(data);
+      playlistService.removePlaylistSongs(id, requestData)
+        .then(removeSongComplete, requestFailed);
     }
 
+    function removeSongComplete(data) {
+      $log.log('Deleted song from playlist');
+    }
+
+    function addPlaylistSongs(id, data){
+      console.log(data);
+      var requestData = formatRequest(data);
+      playlistService.addPlaylistSongs(id, requestData)
+        .then(addSongComplete, requestFailed);
+    }
+
+    function addSongComplete(data) {
+      $log.log('Added song to playlist');
+    }
+
+    function requestFailed(err) {
+      $log.error('err', err);
+    }
+
+    function formatRequest(data) {
+      var request = {};
+      request.data = [{'id': data}];
+      return request;
+    }
 
   }
 })();
