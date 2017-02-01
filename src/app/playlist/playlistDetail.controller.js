@@ -5,13 +5,14 @@
     .module('app')
     .controller('PlaylistDetailController', PlaylistDetailController);
 
-    PlaylistDetailController.$inject = ['$stateParams', 'playlistService'];
+    PlaylistDetailController.$inject = ['$log', '$stateParams', 'playlistService'];
 
   /** @ngInject */
-  function PlaylistDetailController($stateParams, playlistService) {
+  function PlaylistDetailController($log, $stateParams, playlistService) {
     var vm = this;
     vm.playlist = null;
     vm.songs = null;
+    vm.addPlaylistSongs = addPlaylistSongs;
 
     var playlistId = $stateParams.playlistId;
 
@@ -42,10 +43,26 @@
       vm.songs = data;
     }
 
-    function requestFailed(err) {
-      console.log('err', err);
+    function addPlaylistSongs(id, data){
+      console.log(data);
+      var requestData = formatRequest(data);
+      playlistService.addPlaylistSongs(id, requestData)
+        .then(addSongComplete, requestFailed);
     }
 
+    function addSongComplete(data) {
+      $log.log('Added song to playlist');
+    }
+
+    function requestFailed(err) {
+      $log.error('err', err);
+    }
+
+    function formatRequest(data) {
+      var request = {};
+      request.data = [{'id': data}];
+      return request;
+    }
 
   }
 })();

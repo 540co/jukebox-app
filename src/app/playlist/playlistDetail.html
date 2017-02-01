@@ -19,6 +19,26 @@
                     <a class="" ui-sref="songDetail({songId: song.id})">{{song.title}}</a>
                   </td>
                   <td>{{song.duration}}</td>
+                  <td>
+                    <div class="dropdown">
+                      <a id="dropdownLabel" data-toggle="dropdown">
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        <li role="menuitem"><a href="#">Go to Artist</a></li>
+                        <li role="menuitem"><a ui-sref="songDetail({songId: song.id})">Go to Song</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                          <a tabindex="-1" href="#">Add to Playlist</a>
+                          <ul class="dropdown-menu">
+                            <li><a tabindex="-1" href="#">New Playlist</a></li>
+                            <li class="divider"></li>
+                            <li ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, song.id)">{{playlist.name}}</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>

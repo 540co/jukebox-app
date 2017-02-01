@@ -12,7 +12,13 @@
     <div class="api-call" ng-repeat="call in calls | orderBy:'$index':true">
       <p collapse-toggler><span class="label request-type" ng-class="{'label-info': call.config.method == 'GET', 'label-success': call.config.method == 'POST', 'label-danger': call.config.method == 'DELETE', 'label-warning': call.config.method == 'PUT'}">{{call.config.method}}</span> {{call.config.url}}</p>
       <div class="collapse">
+        <p collapse-toggler>Request</p>
+        <pre class="collapse" ng-if="call.config.data">{{call.config.data | json}}</pre>
+        <pre class="collapse" ng-if="!call.config.data">Request body was not sent</pre>
+      </div>
+      <div class="collapse">
         <p collapse-toggler>Response</p>
+        <p class="collapse">Status Code: {{call.status}}</p>
         <pre class="collapse">{{call.data | json}}</pre>
       </div>
     </div>
