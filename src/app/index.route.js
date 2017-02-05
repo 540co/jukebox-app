@@ -14,6 +14,12 @@
         controller: 'LoginController',
         controllerAs: 'vm'
       })
+      .state('info', {
+        url: '/info',
+        templateUrl: 'app/info/info.html',
+        controller: 'InfoController',
+        controllerAs: 'vm'
+      })
       .state('home', {
         url: '/',
         templateUrl: 'app/home/home.html',

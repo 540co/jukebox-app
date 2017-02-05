@@ -30,7 +30,7 @@
                       <li ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, song.id)">{{playlist.name}}</a></li>
                     </ul>
                     <li class="divider"></li>
-                    <li role="menuitem"><a href="#" ng-click="vm.destroyPlaylistSongs(vm.playlist.id, song.id)">Remove from this Playlist</a></li>
+                    <li role="menuitem"><a ng-click="vm.destroyPlaylistSongs(vm.playlist.id, song.id)">Remove from this Playlist</a></li>
                     <li role="menuitem"><a href="#">Share...</a></li>
                   </li>
                 </ul>

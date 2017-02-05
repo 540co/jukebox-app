@@ -484,3 +484,14 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+
+
+/*----------------------------------------
+  9. Info
+----------------------------------------*/
+.info {
+  margin-bottom: 50px;
+}
+.info label > a {
+  color: #ffffff;
+}
