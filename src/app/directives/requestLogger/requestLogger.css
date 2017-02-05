@@ -11,6 +11,7 @@
   border-top-right-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
   z-index: 10;
+  transition: all 0.5s ease;
 }
 
 .request-logger .log-body {
@@ -31,6 +32,10 @@
 
 .request-logger .request-type {
   margin-right: 10px;
+}
+
+.dropdown:hover {
+  cursor: pointer;
 }
 
 .log-header {

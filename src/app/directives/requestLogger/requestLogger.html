@@ -9,17 +9,30 @@
   </div>
 
   <div class="log-body" ng-class="{'rl-open': vm.rlOpen, 'rl-closed': !vm.rlOpen}">
-    <div class="api-call" ng-repeat="call in calls | orderBy:'$index':true">
-      <p collapse-toggler><span class="label request-type" ng-class="{'label-info': call.config.method == 'GET', 'label-success': call.config.method == 'POST', 'label-danger': call.config.method == 'DELETE', 'label-warning': call.config.method == 'PUT'}">{{call.config.method}}</span> {{call.config.url}}</p>
+    <div class="api-call" ng-repeat="call in calls | orderBy:'$index':true" >
+      <p collapse-toggler class="dropdown"><span class="label request-type" ng-class="{'label-info': call.config.method == 'GET', 'label-success': call.config.method == 'POST', 'label-danger': call.config.method == 'DELETE', 'label-warning': call.config.method == 'PUT'}">{{call.config.method}}</span> {{call.config.url}}</p>
       <div class="collapse">
-        <p collapse-toggler>Request</p>
-        <pre class="collapse" ng-if="call.config.data">{{call.config.data | json}}</pre>
-        <pre class="collapse" ng-if="!call.config.data">Request body was not sent</pre>
+        <p collapse-toggler class="dropdown" ng-click="requestClicked = !requestClicked"><span ng-class="{'fa fa-caret-right': !requestClicked, 'fa fa-caret-down': requestClicked}" ></span> Request</p>
+
+        <div class="collapse">
+          <p collapse-toggler class="dropdown" ng-click="requestHeaderClicked = !requestHeaderClicked">&nbsp;&nbsp;<span ng-class="{'fa fa-caret-right': !requestHeaderClicked, 'fa fa-caret-down': requestHeaderClicked}" ></span> Headers</p>
+          <pre class="collapse" ng-if="call.config.headers">{{call.config.headers | json}}</pre>
+        </div>
+        <div class="collapse">
+          <p collapse-toggler class="dropdown" ng-click="requestBodyClicked = !requestBodyClicked">&nbsp;&nbsp;<span ng-class="{'fa fa-caret-right': !requestBodyClicked, 'fa fa-caret-down': requestBodyClicked}" ></span> Body</p>
+          <pre class="collapse" ng-if="call.config.data">{{call.config.data | json}}</pre>
+          <pre class="collapse" ng-if="!call.config.data">Request body was not sent</pre>
+        </div>
+
       </div>
       <div class="collapse">
-        <p collapse-toggler>Response</p>
-        <p class="collapse">Status Code: {{call.status}}</p>
-        <pre class="collapse">{{call.data | json}}</pre>
+        <p collapse-toggler class="dropdown" ng-click="responseClicked = !responseClicked"><span ng-class="{'fa fa-caret-right': !responseClicked, 'fa fa-caret-down': responseClicked}" ></span> Response</p>
+        <p class="collapse">&nbsp;&nbsp;Status Code: {{call.status}}</p>
+
+        <div class="collapse">
+          <p collapse-toggler class="dropdown" ng-click="responseBodyClicked = !responseBodyClicked">&nbsp;&nbsp;<span ng-class="{'fa fa-caret-right': !responseBodyClicked, 'fa fa-caret-down': responseBodyClicked}" ></span> Body</p>
+          <pre class="collapse">{{call.data | json}}</pre>
+        </div>
       </div>
     </div>
   </div>
