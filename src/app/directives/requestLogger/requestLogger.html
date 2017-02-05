@@ -1,9 +1,9 @@
 <section id="request-logger" class="request-logger" ng-class="{'rl-open': vm.rlOpen, 'rl-closed': !vm.rlOpen}">
   <div class="log-header">
-    <div class="col-md-11" ng-click="vm.rlOpen = (!vm.rlOpen)">
+    <div class="col-md-11 col-xs-10" ng-click="vm.rlOpen = (!vm.rlOpen)">
       Jukebox API Explorer
     </div>
-    <div class="col-md-1">
+    <div class="col-md-1 col-xs-2 clearfix">
       <span class="badge pull-right" ng-click="vm.clearLog()">clear</span>
     </div>
   </div>
@@ -13,7 +13,6 @@
       <p collapse-toggler class="dropdown"><span class="label request-type" ng-class="{'label-info': call.config.method == 'GET', 'label-success': call.config.method == 'POST', 'label-danger': call.config.method == 'DELETE', 'label-warning': call.config.method == 'PUT'}">{{call.config.method}}</span> {{call.config.url}}</p>
       <div class="collapse">
         <p collapse-toggler class="dropdown" ng-click="requestClicked = !requestClicked"><span ng-class="{'fa fa-caret-right': !requestClicked, 'fa fa-caret-down': requestClicked}" ></span> Request</p>
-
         <div class="collapse">
           <p collapse-toggler class="dropdown" ng-click="requestHeaderClicked = !requestHeaderClicked">&nbsp;&nbsp;<span ng-class="{'fa fa-caret-right': !requestHeaderClicked, 'fa fa-caret-down': requestHeaderClicked}" ></span> Headers</p>
           <pre class="collapse" ng-if="call.config.headers">{{call.config.headers | json}}</pre>
