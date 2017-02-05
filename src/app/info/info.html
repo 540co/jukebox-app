@@ -1,0 +1,176 @@
+<jukebox-navbar></jukebox-navbar>
+
+<!-- info-->
+<section id="info" class="info">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-9">
+
+        <h3>About</h3>
+        <p>
+          Jukebox is an example angular app that demonstrates the use of the
+          Enterprise APIs for Data Sharing (EADS) Handbook (<a href="https://eads.540.co" target="_blank">https://eads.540.co/</a>).
+          The application showcases tactics, techniques, and procedures (TTPs) explained in the EADS Handbook. The goal
+          is to help balance RESTful API interfaces with a positive developer experience (DX).
+        </p>
+
+        <hr>
+
+        <h3>Examples</h3>
+        <p>
+          Jukebox demonstrates many techniques from the EADS Handbook.
+          The below examples with describe which page you can find a specific API request.
+          Use the API Explorer console to insect an API request.
+        </p>
+
+        <ul>
+          <li>Summary Representations</li>
+          <li>Detailed Representations</li>
+          <li>Pagination</li>
+          <li>Filtering</li>
+          <li>Sorting</li>
+          <li>Creating Resources</li>
+          <li>Updating Resources</li>
+          <li>Deleting Resources</li>
+        </ul>
+
+        <hr>
+
+        <!-- Summary -->
+        <h4>1. Summary Representations</h4>
+        <p>
+          When retrieving a list of resource objects, the response will include a subset of the attributes for that resource.
+          More information about summary representations can be explained here: <a href="https://eads.540.co/#summary-representations" target="_blank">https://eads.540.co/#summary-representations</a>
+        </p>
+        <p>Example: <code>GET /artists</code></p>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="artists">Artists</a></label>
+          <label class="label label-default"><a ui-sref="albums">Albums</a></label>
+          <label class="label label-default"><a ui-sref="songs">Songs</a></label>
+          <label class="label label-default"><a ui-sref="playlists">Playlists</a></label>
+        </div>
+
+        <hr>
+
+        <!-- Detail -->
+        <h4>2. Detailed Representations</h4>
+        <p>
+          When retrieving an individual resource, the response will typically include all attributes for that resource.
+          More information about detailed representations can be explained here: <a href="https://eads.540.co/#detailed-representations" target="_blank">https://eads.540.co/#detailed-representations</a>
+        </p>
+
+        <p>Example: <code>GET /albums/4</code></p>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="albumDetail({albumId: 4})">Album Detail</a></label>
+          <label class="label label-default"><a ui-sref="artistDetail({artistId: 4})">Artist Detail</a></label>
+          <label class="label label-default"><a ui-sref="songDetail({songId: 81})">Song Detail</a></label>
+          <label class="label label-default"><a ui-sref="playlistDetail({playlistId: 2})">Playlist Detail</a></label>
+        </div>
+
+        <hr>
+
+        <!-- Pagination -->
+        <h4>3. Pagination</h4>
+        <p>
+          When retrieving an individual resource, the API <code>MUST</code> provide links to traverse a paginated data set (“pagination links”). These links MUST be provided using the Link header as defined in RFC5988.
+          More information about pagination can be explained here: <a href="https://eads.540.co/#pagination" target="_blank">https://eads.540.co/#pagination</a>
+        </p>
+
+        <p>Example: <code>GET /songs?limit=10&offset=20</code></p>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="artists">Artists</a></label>
+          <label class="label label-default"><a ui-sref="albums">Albums</a></label>
+          <label class="label label-default"><a ui-sref="songs">Songs</a></label>
+          <label class="label label-default"><a ui-sref="playlists">Playlists</a></label>
+        </div>
+
+        <hr>
+
+        <!-- Filtering -->
+        <h4>4. Filtering</h4>
+        <p>
+          When retrieving an individual resource, the API <code>MAY</code> choose to support requests to filter resource collections based on one or more criterion.
+          More information about filtering can be explained here: <a href="https://eads.540.co/#filtering" target="_blank">https://eads.540.co/#filtering</a>
+        </p>
+
+        <p>Example: <code>GET /albums?filters=artist.name%3D%3DAC/DC</code></p>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="albums">Albums</a></label>
+        </div>
+
+        <hr>
+
+        <!-- Sorting -->
+        <h4>5. Sorting</h4>
+        <p>
+          When retrieving an individual resource, the API <code>MAY</code> choose to support requests to sort resource collections based on one or more “sort fields”.
+          More information about sorting can be explained here: <a href="https://eads.540.co/#sorting" target="_blank">https://eads.540.co/#sorting</a>
+        </p>
+
+        <p>Example: <code>GET /albums?sort=title</code></p>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="albums">Albums</a></label>
+        </div>
+
+        <hr>
+
+        <!-- Creating Resources -->
+        <h4>6. Creating Resources</h4>
+        <p>
+          A resource can be created by sending a POST request to the collections endpoint for that resource type. The request MUST include a single resource object.
+          More information about creating resources can be explained here: <a href="https://eads.540.co/#creating-resources" target="_blank">https://eads.540.co/#creating-resources</a>
+        </p>
+
+        <p>Example: <code>POST /playlists</code></p>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="myPlaylists">Playlists</a></label>
+        </div>
+
+        <hr>
+
+        <!-- Updating Resources -->
+        <h4>7. Updating Resources</h4>
+        <p>
+          A resource can be created by sending a POST request to the collections endpoint for that resource type. The request MUST include a single resource object.
+          More information about creating resources can be explained here: <a href="https://eads.540.co/#updating-resources" target="_blank">https://eads.540.co/#updating-resources</a>
+        </p>
+
+        <p>Example: <code>PATCH /playlists/1</code></p>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="myPlaylists">Playlists</a></label>
+        </div>
+
+        <hr>
+
+        <!-- Deleting Resources -->
+        <h4>8. Deleting Resources</h4>
+        <p>
+          An individual resource can be deleted by making a DELETE request to the resource’s URL.
+          More information about creating resources can be explained here: <a href="https://eads.540.co/#updating-resources" target="_blank">https://eads.540.co/#updating-resources</a>
+        </p>
+
+        <p>Example: <code>DELETE /playlists/4</code></p>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="myPlaylists">Playlists</a></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
