@@ -11,6 +11,7 @@
   border-top-right-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
   z-index: 10;
+  transition: all 0.5s ease;
 }
 
 .request-logger .log-body {
@@ -27,10 +28,15 @@
   border: none;
   overflow-y: scroll;
   height: 500px;
+  width: 100%;
 }
 
 .request-logger .request-type {
   margin-right: 10px;
+}
+
+.dropdown:hover {
+  cursor: pointer;
 }
 
 .log-header {
@@ -48,4 +54,33 @@
 .rl-closed {
   height: 45px;
   overflow-y: hidden;
+}
+
+
+@media(max-width:668px) {
+  .request-logger{
+    padding-bottom: 25px;
+    margin-top: -25px;
+    position: fixed;
+    height: 300px;
+    width: 280px;
+    bottom: 0;
+    right: 50px;
+    background: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
+    z-index: 10;
+    transition: all 0.5s ease;
+  }
+
+  /*.rl-open {
+    height: 500px;
+  }*/
+
+  .rl-closed {
+    height: 45px;
+    overflow-y: hidden;
+  }
+
 }
