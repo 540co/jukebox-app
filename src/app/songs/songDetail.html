@@ -19,6 +19,21 @@
           <p>Album: <a class="jb-green" ui-sref="albumDetail({albumId: vm.song.album.id})">{{vm.song.album.title}}</a></p>
 
           <p>Duration: {{vm.song.duration}}</p>
+          <br>
+
+
+          <div class="btn-group" uib-dropdown>
+           <button id="split-button" type="button" class="btn btn-default">Add</button>
+           <button type="button" class="btn btn-default" uib-dropdown-toggle>
+             <span class="caret"></span>
+             <span class="sr-only">Split button!</span>
+           </button>
+           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+             <li role="menuitem"><a href="#">New Playlist</a></li>
+             <li class="divider"></li>
+             <li role="menuitem" ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, vm.song.id)">{{playlist.name}}</a></li>
+           </ul>
+         </div>
         </div>
       </div>
       <!-- end col -->
