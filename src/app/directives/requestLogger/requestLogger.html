@@ -1,7 +1,7 @@
 <section id="request-logger" class="request-logger" ng-class="{'rl-open': vm.rlOpen, 'rl-closed': !vm.rlOpen}">
   <div class="log-header">
     <div class="col-md-11 col-xs-10" ng-click="vm.rlOpen = (!vm.rlOpen)">
-      Jukebox API Explorer
+      Jukebox API Explorer ({{calls.length}})
     </div>
     <div class="col-md-1 col-xs-2 clearfix">
       <span class="badge pull-right" ng-click="vm.clearLog()">clear</span>
