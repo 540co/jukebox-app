@@ -42,8 +42,8 @@ describe('Resource', function() {
     });
 
     it('calls update on resource instance url', function(){
-      $httpBackend.when('PUT', resource.instanceUrl(path, 'ABCD1234')).respond(200,'');
-      $httpBackend.expectPUT(resource.instanceUrl(path, 'ABCD1234'));
+      $httpBackend.when('PATCH', resource.instanceUrl(path, 'ABCD1234')).respond(200,'');
+      $httpBackend.expectPATCH(resource.instanceUrl(path, 'ABCD1234'));
       resource.api.update('ABCD1234', {});
       $httpBackend.flush();
     });
@@ -123,8 +123,8 @@ describe('Resource', function() {
 
     it('calls update on resource instance url from update', function(){
       var resourceInstance = null;
-      $httpBackend.when('PUT', resource.instanceUrl(path, 'ABCD1234')).respond(200, instanceJSON);
-      $httpBackend.expectPUT(resource.instanceUrl(path, 'ABCD1234'));
+      $httpBackend.when('PATCH', resource.instanceUrl(path, 'ABCD1234')).respond(200, instanceJSON);
+      $httpBackend.expectPATCH(resource.instanceUrl(path, 'ABCD1234'));
       resource.update('ABCD1234', {}).then(function(response){
         resourceInstance = response;
       });
@@ -134,8 +134,8 @@ describe('Resource', function() {
 
     it('fails update on resource instance url from update', function(){
       var errorResponse = null;
-      $httpBackend.when('PUT', resource.instanceUrl(path, 'ABCD1234')).respond(400);
-      $httpBackend.expectPUT(resource.instanceUrl(path, 'ABCD1234'));
+      $httpBackend.when('PATCH', resource.instanceUrl(path, 'ABCD1234')).respond(400);
+      $httpBackend.expectPATCH(resource.instanceUrl(path, 'ABCD1234'));
       resource.update('ABCD1234', {}).then(null, function(e){
         errorResponse = e;
       });

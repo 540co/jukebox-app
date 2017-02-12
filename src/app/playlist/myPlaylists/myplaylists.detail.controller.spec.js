@@ -132,5 +132,21 @@
       vm = controller();
       expect(vm.playlist).toBe(null);
     });
+
+    it('should delete a playlist', function() {
+      spyOn($log, 'log');
+      spyOn(playlistService, 'destroy').and.callFake(function() {
+        return {
+          then: function(success) {
+            success({});
+          }
+        };
+      });
+      vm = controller();
+      vm.destroyPlaylist();
+
+      expect($log.log).toHaveBeenCalled();
+    });
+
   });
 })();
