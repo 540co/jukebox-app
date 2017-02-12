@@ -62,8 +62,7 @@
       }
 
       function apiUpdate(id, data) {
-        // logReq('PUT', instanceUrl(path, id), data)
-        return $http.put(instanceUrl(path, id), data);
+        return $http.patch(instanceUrl(path, id), data);
       }
 
       function apiDestroy(id) {

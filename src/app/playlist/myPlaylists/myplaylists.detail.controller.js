@@ -5,16 +5,19 @@
     .module('app')
     .controller('MyPlaylistDetailController', MyPlaylistDetailController);
 
-    MyPlaylistDetailController.$inject = ['$log', '$stateParams', 'playlistService'];
+    MyPlaylistDetailController.$inject = ['$log', '$state', '$stateParams', 'playlistService'];
 
   /** @ngInject */
-  function MyPlaylistDetailController($log, $stateParams, playlistService) {
+  function MyPlaylistDetailController($log, $state, $stateParams, playlistService) {
     var vm = this;
     vm.playlist = null;
     vm.songs = null;
 
     vm.addPlaylistSongs = addPlaylistSongs;
     vm.destroyPlaylistSongs = destroyPlaylistSongs;
+
+    // vm.editPlaylist = editPlaylist;
+    vm.destroyPlaylist = destroyPlaylist;
 
     var playlistId = $stateParams.playlistId;
 
@@ -64,6 +67,16 @@
 
     function addSongComplete(data) {
       $log.log('Added song to playlist');
+    }
+
+    function destroyPlaylist(){
+      playlistService.destroy(playlistId)
+        .then(destroyPlaylistComplete, requestFailed);
+    }
+
+    function destroyPlaylistComplete(data) {
+      $log.log('Playlist removed!');
+      $state.go('myPlaylists', {}, {reload:true});
     }
 
     function requestFailed(err) {

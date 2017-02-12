@@ -1,0 +1,24 @@
+
+<section>
+  <h1>Jukebox Playlist</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <form name="vm.jukeboxPlaylistForm" ng-submit="submitForm(vm.jukeboxPlaylistForm.$valid)" novalidate>
+        <!-- Program  PNO-->
+        <div class="form-group" ng-class="{ 'has-error' : (vm.jukeboxPlaylistForm.name.$invalid && !vm.jukeboxPlaylistForm.name.$pristine)}">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Playlist Name" ng-model="vm.playlist.name" ng-maxlength="50">
+          <p ng-show="vm.jukeboxPlaylistForm.name.$invalid" class="help-block">{{vm.adminProgramEditForm.pno.message}}</p>
+          <p ng-show="(vm.jukeboxPlaylistForm.name.$error.required && (vm.jukeboxPlaylistForm.name.$touched || !vm.jukeboxPlaylistForm.name.$pristine))" class="help-block">Name is required</p>
+          <p ng-show="vm.jukeboxPlaylistForm.name.$error.maxlength" class="help-block">50 is the maximum length</p>
+        </div>
+        <div class="pull-right">
+          <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+          <button class="btn btn-primary" type="submit" ng-disabled="vm.jukeboxPlaylistForm.$invalid || vm.jukeboxPlaylistForm.$pristine" ng-click="vm.submit()">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>

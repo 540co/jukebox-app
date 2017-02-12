@@ -12,12 +12,14 @@
     var vm = this;
     vm.playlists = null;
 
-    var currentUser = $rootScope.globals.currentUser.id;
+    var currentUser = null;
+
     activate();
 
     ////////////////////////////////////////////////////////////////////////////
 
     function activate() {
+      currentUser = $rootScope.globals.currentUser.id;
       getPlaylists(currentUser);
     }
 

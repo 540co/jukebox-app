@@ -88,19 +88,33 @@
       })
       .state('myPlaylists', {
         url: '/myplaylists',
-        templateUrl: 'app/playlist/myPlaylists/myPlaylists.html',
+        templateUrl: 'app/playlist/myPlaylists/myplaylists.html',
         controller: 'MyPlaylistController',
         controllerAs: 'vm'
       })
+      .state('myPlaylists.create', {
+        url: '/create',
+        templateUrl: 'app/playlist/myPlaylists/myplaylists.create.html',
+        controller: 'MyPlaylistCreateController',
+        controllerAs: 'vm'
+      })
+      .state('myPlaylists.edit', {
+        url: '/edit/:playlistId',
+        templateUrl: 'app/playlist/myPlaylists/myplaylists.edit.html',
+        controller: 'MyPlaylistEditController',
+        controllerAs: 'vm',
+        params: {
+          playlistId: null
+        }
+      })
       .state('myPlaylists.detail', {
         url: '/:playlistId',
-        templateUrl: 'app/playlist/myPlaylists/myPlaylistDetail.html',
+        templateUrl: 'app/playlist/myPlaylists/myplaylists.detail.html',
         controller: 'MyPlaylistDetailController',
         controllerAs: 'vm',
         params: {
           playlistId: null
-        },
-        parent: 'myPlaylists'
+        }
       });
 
     $urlRouterProvider.otherwise('/');
