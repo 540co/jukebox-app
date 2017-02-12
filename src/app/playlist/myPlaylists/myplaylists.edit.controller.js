@@ -62,7 +62,8 @@
      */
     function updatePlaylistComplete(data) {
       $log.log('Playlist updated!');
-      $state.go('myPlaylists.detail', {playlistId: data.id}, {reload:true});
+      $state.reload();
+      // $state.go('myPlaylists.detail', {playlistId: data.id}, {reload:true});
     }
 
     /**
