@@ -8,6 +8,9 @@
   5. Artist
   6. Album
   7. Songs
+  8. Side Menu
+  9. Dropdown Submenu
+  10. Info
 ----------------------------------------*/
 
 /*----------------------------------------
@@ -222,17 +225,17 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 ----------------------------------------*/
 .music-card {
   margin: 10px auto;
-  border-radius: 6px;
+  border-radius: 2px;
   background: #fff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
   overflow: hidden;
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 240px;
 }
 .music-card > .image img {
-  height: 150;
-  width: 300px;
+  height: 150px;
+  width: 250px;
 }
 .music-card > .info {
   left: 0;
@@ -260,11 +263,6 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
   margin-bottom: 40px;
 }
 
-.artist-title {
-  margin-left: 20px;
-  font-size: 18px;
-}
-
 .top-search-artists h5 {
   margin-bottom: 20px;
 }
@@ -286,61 +284,13 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
   margin-bottom: 50px;
 }
 
-.album-container {
-  align-items: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9));
-  color: #fff;
-  display: flex;
-  height: 100px;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-}
-
-.image {
-  background: center/cover;
-}
-
-.image::before {
-  background: inherit;
-  content: '';
-  -webkit-filter: blur(8px);
-  filter: blur(8px);
-  height: 100vh;
-  left: 0;
-  position: absolute;
-  top: 0;
-  transform: scale(1.03);
-  width: 100%;
-  z-index: -1;
-}
-
-.content {
-  margin-top: 0;
-  margin-left: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-family: 'Open Sans', sans-serif;
-  opacity: .75;
-}
-.content a, .content h2 {
-  color: #fff;
-  text-decoration: none;
-}
-.content a:hover {
-  border-bottom: 0.1em solid;
-}
-.content h1 {
-  margin: 1em 0;
-}
-
 /*----------------------------------------
   7. Songs
 ----------------------------------------*/
 #song-detail {
   /*background: #e8e8e8;*/
   padding-bottom: 50px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);*/
 }
 
 .song-content-wrapper {
@@ -483,7 +433,7 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 
 
 /*----------------------------------------
-  8. Dropdown Submenu
+  9. Dropdown Submenu
 ----------------------------------------*/
 
 .dropdown-submenu {
@@ -536,7 +486,7 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 
 
 /*----------------------------------------
-  9. Info
+  10. Info
 ----------------------------------------*/
 .info {
   margin-bottom: 50px;
