@@ -28,30 +28,29 @@
       </div>
   	</div>
 
-    <div class="album-container" ng-repeat="album in vm.albums | filter:searchAlbum">
-      <div class="image" style="background-image: url({{album.coverArt}})"></div>
-      <img ng-src="{{album.coverArt}}"  width="100px" alt="">
-      <div class="content">
-        <h4><a ui-sref="albumDetail({albumId: album.id})">
-         {{album.title}}
-       </a></h4>
-        <p>{{album.artist.name}}</p>
-        <!-- <p>Season Of The Assassin</p> -->
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <!-- Keeping for reference -->
-    <!-- <div class="row">
-      <div class="col-md-6">
-
-        <div ng-repeat="album in vm.albums | filter:searchAlbum">
-          <img ng-src="{{album.coverArt}}" height="50px"alt="" class="img-rounded">
-          <a class="artist-title" ui-sref="albumDetail({albumId: album.id})">{{album.title}}</a>
-          <hr>
-        </div>
+    <div class="row">
+      <div class="col-md-8">
+        <br>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>ALBUM</th>
+              <th>ARTIST</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="album in vm.albums | filter:searchAlbum">
+              <td>{{$index + 1}}</td>
+              <td>
+                <a ui-sref="albumDetail({albumId: album.id})">{{album.title}}</a>
+              </td>
+              <td>
+                <a ui-sref="artistDetail({artistId: album.artist.id})">{{album.artist.name}}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <nav aria-label="Page navigation" class="pull-right">
           <ul class="pagination">
@@ -73,7 +72,6 @@
           </ul>
         </nav>
       </div>
-
-      <div class="col-md-6">
-      </div>
-    </div> -->
+    </div>
+  </div>
+</section>

@@ -4,7 +4,7 @@
 <section id="playlist-detail" class="playlist-detail">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <h2>{{vm.playlist.name}}</h2>
 
         <p>Created By <strong class="jb-orange">{{vm.playlist.user.username}}</strong> • {{vm.playlist.songs.totalCount}} songs</p>
@@ -12,6 +12,14 @@
           <div class="col-md-12">
             <br>
             <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>SONG</th>
+                  <th><i class="fa fa-clock-o"></i></th>
+                  <th><i class="fa fa-pencil"></i></th>
+                </tr>
+              </thead>
               <tbody>
                 <tr ng-repeat="song in vm.songs | filter:searchSong">
                   <td>{{$index + 1}}</td>

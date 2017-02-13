@@ -29,13 +29,23 @@
   	</div>
 
     <div class="row">
-      <div class="col-md-6">
-
-        <div ng-repeat="artists in vm.artists | filter:searchArtist">
-          <img src="assets/images/profile.png" height="50px"alt="" class="img-circle">
-          <a class="artist-title" ui-sref="artistDetail({artistId: artists.id})">{{artists.name}}</a>
-          <hr>
-        </div>
+      <div class="col-md-8">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>ARTIST</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="artists in vm.artists | filter:searchArtist">
+              <td>{{$index + 1}}</td>
+              <td>
+                <a ui-sref="artistDetail({artistId: artists.id})">{{artists.name}}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <nav aria-label="Page navigation" class="pull-right">
           <ul class="pagination">
