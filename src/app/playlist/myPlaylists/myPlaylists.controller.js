@@ -10,9 +10,8 @@
   /** @ngInject */
   function MyPlaylistController($rootScope, userService) {
     var vm = this;
-    vm.playlists = null;
-
     var currentUser = null;
+    vm.playlists = null;
 
     activate();
 

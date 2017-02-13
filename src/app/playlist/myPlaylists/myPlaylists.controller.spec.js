@@ -11,7 +11,7 @@
     beforeEach(inject(function(_$controller_, _userService_) {
       userService = _userService_;
       rootScope = {"globals": {"currentUser": {'id': '1'}}};
-      
+
       controller = function () {
         return _$controller_('MyPlaylistController', {
           userService: userService,
@@ -32,7 +32,6 @@
       vm = controller();
       expect(vm.playlists.length).toEqual(2);
     });
-
 
     it('should fail to get playlists', function() {
       spyOn(userService, 'getUserPlaylists').and.callFake(function() {
