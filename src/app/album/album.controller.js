@@ -5,12 +5,16 @@
     .module('app')
     .controller('AlbumController', AlbumController);
 
-    AlbumController.$inject = ['albumService'];
+    AlbumController.$inject = ['albumService', 'pagerService'];
 
   /** @ngInject */
-  function AlbumController(albumService) {
+  function AlbumController(albumService, pagerService) {
     var vm = this;
+    var linkHeader = null;
+    var totalCount = null;
+
     vm.albums = null;
+    vm.onChange = onChange;
 
     activate();
 
@@ -18,19 +22,29 @@
 
     function activate() {
       getAlbums();
+      vm.currentPage = 1;
     }
 
-    function getAlbums() {
-      return albumService.all()
+    function getAlbums(override) {
+      return albumService.all(override)
         .then(getAlbumsComplete, getAlbumsFailed);
     }
 
     function getAlbumsComplete(data) {
-      vm.albums = data;
+      totalCount = data.data.meta.pagination.totalCount;
+      linkHeader = data.headers('Link');
+
+      vm.pager = pagerService.getPager(totalCount, linkHeader);
+      vm.albums = data.data.data;
     }
 
     function getAlbumsFailed(err) {
       console.log('err', err);
+    }
+
+    function onChange(path, page) {
+      getAlbums(path);
+      vm.currentPage = page;
     }
 
 

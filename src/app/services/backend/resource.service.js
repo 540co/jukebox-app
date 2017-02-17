@@ -49,8 +49,13 @@
        *************************************************************************
        */
 
-      function apiList() {
-        return $http.get(listUrl(path));
+      function apiList(override) {
+        if(override){
+          return $http.get(override);
+        }
+        else {
+          return $http.get(listUrl(path));
+        }
       }
 
       function apiInstanceById(id) {
@@ -75,8 +80,8 @@
        *************************************************************************
        */
 
-      function all() {
-        return apiList()
+      function all(override) {
+        return apiList(override)
           .then(requestComplete)
           .catch(requestFailed);
       }
@@ -107,7 +112,7 @@
 
       function requestComplete(response) {
         $rootScope.calls.push(response);
-        return response.data.data;
+        return response;
       }
 
       function requestFailed(e) {

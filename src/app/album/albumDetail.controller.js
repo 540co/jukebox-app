@@ -30,7 +30,7 @@
     }
 
     function getAlbumComplete(data) {
-      vm.album = data;
+      vm.album = data.data.data;
     }
 
     function getAlbumSongs(id) {

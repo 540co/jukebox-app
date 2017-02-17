@@ -31,7 +31,7 @@
     }
 
     function getPlaylistComplete(data) {
-      vm.playlist = data;
+      vm.playlist = data.data.data;
     }
 
     function getPlaylistSongs(id) {

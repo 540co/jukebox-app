@@ -34,15 +34,13 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>#</th>
               <th>SONG</th>
               <th><i class="fa fa-clock-o"></i></th>
               <th><i class="fa fa-pencil"></i></th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="song in vm.songs | filter:searchSong">
-              <td>{{$index + 1}}</td>
+            <tr ng-repeat="song in vm.songs">
               <td>
                 <a class="" ui-sref="songDetail({songId: song.id})">{{song.title}}</a>
               </td>
@@ -70,24 +68,14 @@
             </tr>
           </tbody>
         </table>
-
-        <nav aria-label="Page navigation" class="pull-right">
-          <ul class="pagination">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
+        <nav>
+            <p></p>
+          <ul class="pager">
+            <p>{{vm.currentPage}} of {{vm.pager.totalPages}}</p>
+            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.firstLink)">First</button></li>
+            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.prevLink, (vm.currentPage - 1))" ng-disabled="!vm.pager.prevLink" >&lsaquo;</button></li>
+            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.nextLink, (vm.currentPage + 1))" ng-disabled="!vm.pager.nextLink">&rsaquo;</button></li>
+            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.lastLink)">Last</button></li>
           </ul>
         </nav>
       </div>
