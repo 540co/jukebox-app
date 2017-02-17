@@ -5,7 +5,7 @@
     var vm = null;
     var playlistService = null;
     var controller = null;
-    var mockPlaylist = {'title': 'playlist1'};
+    var mockPlaylist = {'data':{'data':{'title': 'playlist1'}}};
     var mockSongs = [{'title': 'foo'}, {'title': 'bar'}];
 
     beforeEach(module('app'));

@@ -6,7 +6,7 @@
     var songService = null;
     var playlistService = null;
     var controller = null;
-    var mockSong = {'title': 'song1'};
+    var mockSong = {'data':{'data':{'title': 'song1'}}};
     var mockSongs = [{'title': 'foo'}, {'title': 'bar'}];
 
     beforeEach(module('app'));
@@ -45,7 +45,6 @@
       vm = controller();
       expect(vm.song).toBe(null);
     });
-
 
     it('should add a song to a playlist', function() {
       spyOn(playlistService, 'addPlaylistSongs').and.callFake(function() {

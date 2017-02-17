@@ -30,7 +30,7 @@
     }
 
     function getArtistComplete(data) {
-      vm.artist = data;
+      vm.artist = data.data.data;
     }
 
     function getArtistFailed(err) {

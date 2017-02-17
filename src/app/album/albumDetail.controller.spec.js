@@ -5,7 +5,7 @@
     var vm = null;
     var albumService = null;
     var controller = null;
-    var mockAlbum = {'title': 'album1'};
+    var mockAlbum = {'data':{'data':{'title': 'album1'}}};
     var mockSongs = [{'title': 'foo'}, {'title': 'bar'}];
 
     beforeEach(module('app'));

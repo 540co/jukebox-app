@@ -63,7 +63,7 @@ describe('Resource', function() {
         resourceArray = response;
       });
       $httpBackend.flush();
-      expect(resourceArray).toEqual(listJSON.data);
+      expect(resourceArray.data.data).toEqual(listJSON.data);
     });
 
     it('fails to return an array of resources', function(){
@@ -85,7 +85,7 @@ describe('Resource', function() {
         resourceInstance = response;
       });
       $httpBackend.flush();
-      expect(resourceInstance).toEqual(instanceJSON.data);
+      expect(resourceInstance.data.data).toEqual(instanceJSON.data);
     });
 
     it('fails to call resource instance url from findById', function(){
@@ -107,7 +107,7 @@ describe('Resource', function() {
         resourceInstance = response;
       });
       $httpBackend.flush();
-      expect(resourceInstance).toEqual(instanceJSON.data);
+      expect(resourceInstance.data.data).toEqual(instanceJSON.data);
     });
 
     it('fails create on resource list url from create', function(){
@@ -129,7 +129,7 @@ describe('Resource', function() {
         resourceInstance = response;
       });
       $httpBackend.flush();
-      expect(resourceInstance).toEqual(instanceJSON.data);
+      expect(resourceInstance.data.data).toEqual(instanceJSON.data);
     });
 
     it('fails update on resource instance url from update', function(){
@@ -151,7 +151,7 @@ describe('Resource', function() {
         resourceInstance = response;
       });
       $httpBackend.flush();
-      expect(resourceInstance).toEqual(instanceJSON.data);
+      expect(resourceInstance.data.data).toEqual(instanceJSON.data);
     });
 
     it('fails delete on resource instance url from destroy', function(){

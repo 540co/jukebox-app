@@ -30,7 +30,7 @@
     }
 
     function getSongComplete(data) {
-      vm.song = data;
+      vm.song = data.data.data;
     }
 
     function requestFailed(err) {

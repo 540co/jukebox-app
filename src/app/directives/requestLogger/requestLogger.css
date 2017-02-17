@@ -84,3 +84,8 @@
   }
 
 }
+
+.api-call {
+  white-space: nowrap;
+  overflow-x: auto;
+}

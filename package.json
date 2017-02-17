@@ -2,7 +2,8 @@
   "name": "jukebox",
   "version": "0.0.0",
   "dependencies": {
-    "gulp-coverage": "^0.3.38"
+    "gulp-coverage": "^0.3.38",
+    "lodash": "^3.10.1"
   },
   "scripts": {
     "test": "gulp test"

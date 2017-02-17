@@ -5,29 +5,45 @@
     .module('app')
     .controller('SongController', SongController);
 
-    SongController.$inject = ['$log', 'playlistService', 'songService'];
+    SongController.$inject = ['$log', 'pagerService', 'playlistService', 'songService', '$http'];
 
   /** @ngInject */
-  function SongController($log, playlistService, songService) {
+  function SongController($log, pagerService, playlistService, songService, $http) {
     var vm = this;
-    vm.songs = null;
+
+    var linkHeader = null;
+    var totalCount = null;
+
     vm.addPlaylistSongs = addPlaylistSongs;
+    vm.onChange = onChange;
+    vm.songs = null;
 
     activate();
 
     ////////////////////////////////////////////////////////////////////////////
 
     function activate() {
+      vm.currentPage = 1;
       getSongs();
     }
 
-    function getSongs() {
-      return songService.all()
+    function getSongs(override) {
+      return songService.all(override)
         .then(getSongsComplete, requestFailed);
     }
 
     function getSongsComplete(data) {
-      vm.songs = data;
+      // set total count and link header
+      totalCount = data.data.meta.pagination.totalCount;
+      linkHeader = data.headers('Link');
+
+      vm.pager = pagerService.getPager(totalCount, linkHeader);
+      vm.songs = data.data.data;
+    }
+
+    function onChange(path, page) {
+      getSongs(path);
+      vm.currentPage = page;
     }
 
     function requestFailed(err) {
@@ -49,7 +65,6 @@
       request.data = [{'id': data}];
       return request;
     }
-
 
   }
 })();
