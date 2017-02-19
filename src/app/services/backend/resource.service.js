@@ -49,9 +49,12 @@
        *************************************************************************
        */
 
-      function apiList(override) {
+      function apiList(override, query) {
         if(override){
           return $http.get(override);
+        }
+        else if (query) {
+          return $http.get(listUrl(path) + query);
         }
         else {
           return $http.get(listUrl(path));
@@ -80,8 +83,8 @@
        *************************************************************************
        */
 
-      function all(override) {
-        return apiList(override)
+      function all(override, query) {
+        return apiList(override, query)
           .then(requestComplete)
           .catch(requestFailed);
       }

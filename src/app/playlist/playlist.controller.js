@@ -15,6 +15,7 @@
 
     vm.onChange = onChange;
     vm.playlists = null;
+    vm.sortPlaylist = sortPlaylist;
 
     activate();
 
@@ -25,8 +26,8 @@
       vm.currentPage = 1;
     }
 
-    function getPlaylists(override) {
-      return playlistService.all(override)
+    function getPlaylists(override, query) {
+      return playlistService.all(override, query)
         .then(getPlaylistsComplete, requestFailed);
     }
 
@@ -48,6 +49,12 @@
       vm.currentPage = page;
     }
 
+    function sortPlaylist(value) {
+      var query = '?sort=' + value;
+      getPlaylists(null, query);
+      
+      vm.currentPage = 1;
+    }
 
   }
 })();

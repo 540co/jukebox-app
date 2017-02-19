@@ -17,6 +17,7 @@
     vm.addPlaylistSongs = addPlaylistSongs;
     vm.onChange = onChange;
     vm.songs = null;
+    vm.sortSongs = sortSongs;
 
     activate();
 
@@ -27,8 +28,8 @@
       getSongs();
     }
 
-    function getSongs(override) {
-      return songService.all(override)
+    function getSongs(override, query) {
+      return songService.all(override, query)
         .then(getSongsComplete, requestFailed);
     }
 
@@ -64,6 +65,13 @@
       var request = {};
       request.data = [{'id': data}];
       return request;
+    }
+
+    function sortSongs(value) {
+      var query = '?sort=' + value;
+      getSongs(null, query);
+
+      vm.currentPage = 1;
     }
 
   }
