@@ -15,6 +15,7 @@
 
     vm.albums = null;
     vm.onChange = onChange;
+    vm.sortAlbums = sortAlbums;
 
     activate();
 
@@ -25,8 +26,8 @@
       vm.currentPage = 1;
     }
 
-    function getAlbums(override) {
-      return albumService.all(override)
+    function getAlbums(override, query) {
+      return albumService.all(override, query)
         .then(getAlbumsComplete, getAlbumsFailed);
     }
 
@@ -47,6 +48,11 @@
       vm.currentPage = page;
     }
 
+    function sortAlbums(value) {
+      var query = '?sort=' + value;
+      getAlbums(null, query);
 
+      vm.currentPage = 1;
+    }
   }
 })();

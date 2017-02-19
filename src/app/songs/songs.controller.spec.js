@@ -57,6 +57,27 @@
       expect(playlistService.addPlaylistSongs).toHaveBeenCalled();
     });
 
+    it('should call paginate onChange with new link and page', function() {
+      spyOn(songService, 'all').and.callThrough();
+      vm = controller();
+      vm.onChange('http://google.com', 2);
+      expect(songService.all).toHaveBeenCalledWith('http://google.com', undefined);
+      expect(vm.currentPage).toEqual(2);
+    });
+
+    it('should call songs with acending sort query', function() {
+      spyOn(songService, 'all').and.callThrough();
+      vm = controller();
+      vm.sortSongs('name');
+      expect(songService.all).toHaveBeenCalledWith(null, '?sort=name');
+    });
+
+    it('should call playlists with descending sort query', function() {
+      spyOn(songService, 'all').and.callThrough();
+      vm = controller();
+      vm.sortSongs('-name');
+      expect(songService.all).toHaveBeenCalledWith(null, '?sort=-name');
+    });
 
     it('should fail to get songs', function() {
       spyOn(songService, 'all').and.callFake(function() {

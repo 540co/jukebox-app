@@ -10,13 +10,9 @@
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                   	<span id="search_concept">View</span> <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">10</a></li>
-                    <li><a href="#">25</a></li>
-                    <li><a href="#">50</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">All</a></li>
+                  <ul class="dropdown-menu" role="menu" >
+                    <li><a ng-click="vm.sortArtist('name')">Ascending</a></li>
+                    <li><a ng-click="vm.sortArtist('-name')">Descending</a></li>
                   </ul>
               </div>
               <input type="hidden" name="search_param" value="all" id="search_param">
@@ -33,7 +29,9 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>ARTIST</th>
+              <th>
+                  ARTIST
+              </th>
             </tr>
           </thead>
           <tbody>

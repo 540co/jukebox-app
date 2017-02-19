@@ -14,8 +14,9 @@
     var linkHeader = null;
     var totalCount = null;
 
-    vm.artists = null;
-    vm.onChange = onChange;
+    vm.artists   = null;
+    vm.onChange  = onChange;
+    vm.sortArtist = sortArtist;
 
     activate();
 
@@ -26,8 +27,8 @@
       getArtists();
     }
 
-    function getArtists(override) {
-      return artistService.all(override)
+    function getArtists(override, query) {
+      return artistService.all(override, query)
         .then(getArtistsComplete, getArtistsFailed);
     }
 
@@ -49,6 +50,12 @@
       vm.currentPage = page;
     }
 
+    function sortArtist(value) {
+      var query = '?sort=' + value;
+      getArtists(null, query);
+
+      vm.currentPage = 1;
+    }
 
   }
 })();
