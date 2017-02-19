@@ -31,6 +31,28 @@
     //   expect(vm.albums.length).toEqual(2);
     // });
 
+    it('should call paginate onChange with new link and page', function() {
+      spyOn(albumService, 'all').and.callThrough();
+      vm = controller();
+      vm.onChange('http://google.com', 2);
+      expect(albumService.all).toHaveBeenCalledWith('http://google.com', undefined);
+      expect(vm.currentPage).toEqual(2);
+    });
+
+    it('should call artists with acending sort query', function() {
+      spyOn(albumService, 'all').and.callThrough();
+      vm = controller();
+      vm.sortAlbums('title');
+      expect(albumService.all).toHaveBeenCalledWith(null, '?sort=title');
+    });
+
+    it('should call artists with descending sort query', function() {
+      spyOn(albumService, 'all').and.callThrough();
+      vm = controller();
+      vm.sortAlbums('-title');
+      expect(albumService.all).toHaveBeenCalledWith(null, '?sort=-title');
+    });
+
     it('should fail to get albums', function() {
       spyOn(albumService, 'all').and.callFake(function() {
         return {
