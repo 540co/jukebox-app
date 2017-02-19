@@ -48,10 +48,10 @@
         <nav>
           <ul class="pager">
             <p>{{vm.currentPage}} of {{vm.pager.totalPages}}</p>
-            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.firstLink)">First</button></li>
+            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.firstLink, 1)">First</button></li>
             <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.prevLink, (vm.currentPage - 1))" ng-disabled="!vm.pager.prevLink" >&lsaquo;</button></li>
             <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.nextLink, (vm.currentPage + 1))" ng-disabled="!vm.pager.nextLink">&rsaquo;</button></li>
-            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.lastLink)">Last</button></li>
+            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.lastLink, vm.pager.totalPages)">Last</button></li>
           </ul>
         </nav>
       </div>
