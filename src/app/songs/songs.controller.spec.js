@@ -72,11 +72,18 @@
       expect(songService.all).toHaveBeenCalledWith(null, '?sort=name');
     });
 
-    it('should call playlists with descending sort query', function() {
+    it('should call songs with descending sort query', function() {
       spyOn(songService, 'all').and.callThrough();
       vm = controller();
       vm.sortSongs('-name');
       expect(songService.all).toHaveBeenCalledWith(null, '?sort=-name');
+    });
+
+    it('should call songs with filter search query', function() {
+      spyOn(songService, 'all').and.callThrough();
+      vm = controller();
+      vm.filterSearch('Spellbound');
+      expect(songService.all).toHaveBeenCalledWith(null, '?filters=title==Spellbound');
     });
 
     it('should fail to get songs', function() {

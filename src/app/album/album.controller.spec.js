@@ -39,18 +39,25 @@
       expect(vm.currentPage).toEqual(2);
     });
 
-    it('should call artists with acending sort query', function() {
+    it('should call albums with acending sort query', function() {
       spyOn(albumService, 'all').and.callThrough();
       vm = controller();
       vm.sortAlbums('title');
       expect(albumService.all).toHaveBeenCalledWith(null, '?sort=title');
     });
 
-    it('should call artists with descending sort query', function() {
+    it('should call albums with descending sort query', function() {
       spyOn(albumService, 'all').and.callThrough();
       vm = controller();
       vm.sortAlbums('-title');
       expect(albumService.all).toHaveBeenCalledWith(null, '?sort=-title');
+    });
+
+    it('should call albums with filter search query', function() {
+      spyOn(albumService, 'all').and.callThrough();
+      vm = controller();
+      vm.filterSearch('Let There Be Rock');
+      expect(albumService.all).toHaveBeenCalledWith(null, '?filters=title==Let There Be Rock');
     });
 
     it('should fail to get albums', function() {

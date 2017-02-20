@@ -53,6 +53,13 @@
       expect(artistService.all).toHaveBeenCalledWith(null, '?sort=-name');
     });
 
+    it('should call artists with filter search query', function() {
+      spyOn(artistService, 'all').and.callThrough();
+      vm = controller();
+      vm.filterSearch('AC/DC');
+      expect(artistService.all).toHaveBeenCalledWith(null, '?filters=name==AC/DC');
+    });
+
     it('should fail to get artists', function() {
       spyOn(artistService, 'all').and.callFake(function() {
         return {

@@ -53,6 +53,13 @@
       expect(playlistService.all).toHaveBeenCalledWith(null, '?sort=-name');
     });
 
+    it('should call playlists with filter search query', function() {
+      spyOn(playlistService, 'all').and.callThrough();
+      vm = controller();
+      vm.filterSearch('Coding Jamz');
+      expect(playlistService.all).toHaveBeenCalledWith(null, '?filters=name==Coding Jamz');
+    });
+
     it('should fail to get playlists', function() {
       spyOn(playlistService, 'all').and.callFake(function() {
         return {
