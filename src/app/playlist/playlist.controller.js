@@ -16,6 +16,7 @@
     vm.onChange = onChange;
     vm.playlists = null;
     vm.sortPlaylist = sortPlaylist;
+    vm.filterSearch = filterSearch;
 
     activate();
 
@@ -52,7 +53,16 @@
     function sortPlaylist(value) {
       var query = '?sort=' + value;
       getPlaylists(null, query);
-      
+
+      vm.currentPage = 1;
+    }
+
+    function filterSearch(value) {
+      var filter = '==';
+      var filterProperty = 'name';
+      var query = '?filters=' + filterProperty + filter + value;
+
+      getPlaylists(null, query);
       vm.currentPage = 1;
     }
 

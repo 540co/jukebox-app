@@ -2,27 +2,32 @@
 
 <section id="playlists" class="playlists">
   <div class="container">
-      <h2>Playlists</h2>
-      <div class="row" id="song-search">
-        <div class="col-xs-6">
-    	    <div class="input-group">
-              <div class="input-group-btn search-panel">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                  	<span id="search_concept">View</span> <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a ng-click="vm.sortPlaylist('name')">Ascending</a></li>
-                    <li><a ng-click="vm.sortPlaylist('-name')">Descending</a></li>
-                  </ul>
-              </div>
-              <input type="hidden" name="search_param" value="all" id="search_param">
-              <input type="text" class="form-control" name="x" placeholder="Search" ng-model="searchPlaylist">
-              <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
-              </span>
+    <h2>Playlists</h2>
+
+    <!-- search bar -->
+    <div class="row" id="song-search">
+      <div class="col-xs-6">
+        <form class="input-group" ng-submit="vm.filterSearch(vm.searchPlaylist)">
+          <div class="input-group-btn search-panel">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <span id="search_concept">View</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a ng-click="vm.sortPlaylist('name')">Ascending</a></li>
+              <li><a ng-click="vm.sortPlaylist('-name')">Descending</a></li>
+            </ul>
           </div>
+          <input type="hidden" name="search_param" value="all" id="search_param">
+          <input type="text" class="form-control" name="x" placeholder="Search" ng-model="vm.searchPlaylist">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="vm.filterSearch(vm.searchPlaylist)">
+              <span class="fa fa-search"></span>
+            </button>
+          </span>
+        </form>
       </div>
-  	</div>
+    </div>
+    <!-- end search bar -->
 
     <div class="row">
       <div class="col-md-8">
@@ -42,15 +47,18 @@
           </tbody>
         </table>
 
+        <!-- pagination links -->
         <nav>
           <ul class="pager">
             <p>{{vm.currentPage}} of {{vm.pager.totalPages}}</p>
             <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.firstLink, 1)">First</button></li>
-            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.prevLink, (vm.currentPage - 1))" ng-disabled="!vm.pager.prevLink" >&lsaquo;</button></li>
+            <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.prevLink, (vm.currentPage - 1))" ng-disabled="!vm.pager.prevLink">&lsaquo;</button></li>
             <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.nextLink, (vm.currentPage + 1))" ng-disabled="!vm.pager.nextLink">&rsaquo;</button></li>
             <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.lastLink, vm.pager.totalPages)">Last</button></li>
           </ul>
         </nav>
+        <!-- end pagination links -->
+
       </div>
     </div>
   </div>
