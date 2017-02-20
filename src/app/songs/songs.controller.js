@@ -18,6 +18,7 @@
     vm.onChange = onChange;
     vm.songs = null;
     vm.sortSongs = sortSongs;
+    vm.filterSearch = filterSearch;
 
     activate();
 
@@ -71,6 +72,15 @@
       var query = '?sort=' + value;
       getSongs(null, query);
 
+      vm.currentPage = 1;
+    }
+
+    function filterSearch(value) {
+      var filter = '==';
+      var filterProperty = 'title';
+      var query = '?filters=' + filterProperty + filter + value;
+
+      getSongs(null, query);
       vm.currentPage = 1;
     }
 

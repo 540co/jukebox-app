@@ -17,6 +17,7 @@
     vm.artists   = null;
     vm.onChange  = onChange;
     vm.sortArtist = sortArtist;
+    vm.filterSearch = filterSearch;
 
     activate();
 
@@ -57,5 +58,13 @@
       vm.currentPage = 1;
     }
 
+    function filterSearch(value) {
+      var filter = '==';
+      var filterProperty = 'name';
+      var query = '?filters=' + filterProperty + filter + value;
+
+      getArtists(null, query);
+      vm.currentPage = 1;
+    }
   }
 })();

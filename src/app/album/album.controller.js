@@ -16,6 +16,7 @@
     vm.albums = null;
     vm.onChange = onChange;
     vm.sortAlbums = sortAlbums;
+    vm.filterSearch = filterSearch;
 
     activate();
 
@@ -52,6 +53,15 @@
       var query = '?sort=' + value;
       getAlbums(null, query);
 
+      vm.currentPage = 1;
+    }
+
+    function filterSearch(value) {
+      var filter = '==';
+      var filterProperty = 'title';
+      var query = '?filters=' + filterProperty + filter + value;
+
+      getAlbums(null, query);
       vm.currentPage = 1;
     }
   }
