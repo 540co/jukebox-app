@@ -1,20 +1,25 @@
 <section id="artist-detail" class="artist-detail" ng-if="vm.albums">
   <div class="row">
     <div class="col-md-12">
-      <h4 class="text-center">Artist</h4>
 
       <div class="text-center song-card">
+        <div class="song-card-heading">
+          <p class="text-center">Artist</p>
+        </div>
+
         <h3>{{vm.artist.name}}</h3>
       </div>
 
       <br>
       <br>
-      
-      <h4 class="text-center">Albums</h4>
 
       <div class="row">
         <div class="col-md-12">
           <div class="song-card">
+            <div class="song-card-heading">
+              <p class="text-center">Albums</p>
+            </div>
+
             <div class="row album-list" ng-repeat="album in vm.albums">
               <div class="col-sm-2 col-xs-3">
                 <img ng-src="{{album.coverArt}}" class="img-responsive img-rounded cover-art">
