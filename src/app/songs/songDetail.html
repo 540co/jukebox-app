@@ -6,9 +6,9 @@
       <h4 class="text-center">Song Details</h4>
 
       <div class="text-center song-card">
-        <h4><i class="fa fa-music"></i> Title</h4>
+        <h4>Title</h4>
         <hr>
-        <h3>{{vm.song.title}}</h3>
+        <p class="lead">{{vm.song.title}}</p>
       </div>
       <!-- <div class="btn-group" uib-dropdown>
             <button id="split-button" type="button" class="btn btn-default">Add</button>
@@ -28,17 +28,17 @@
   <div class="row">
     <div class="col-md-12">
       <div class="song-card text-center">
-        <h4><i class="fa fa-user"></i> Artist</h4>
+        <h4>Artist</h4>
         <a class="jb-orange" ui-sref="artistDetail({artistId: vm.song.artist.id})">{{vm.song.artist.name}}</a>
 
         <hr>
 
-        <h4><i class="fa fa-play-circle"></i> Album</h4>
+        <h4>Album</h4>
         <a class="jb-green" ui-sref="albumDetail({albumId: vm.song.album.id})">{{vm.song.album.title}}</a>
 
         <hr>
 
-        <h4><i class="fa fa-clock-o"></i> Duration</h4>
+        <h4>Duration</h4>
         <p>{{vm.song.duration}}</p>
       </div>
     </div>
