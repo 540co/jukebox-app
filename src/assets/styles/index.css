@@ -522,6 +522,7 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 ----------------------------------------*/
 .info {
   margin-bottom: 50px;
+  margin-top: 75px;
 }
 .info label > a {
   color: #ffffff;
