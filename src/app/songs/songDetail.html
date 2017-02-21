@@ -1,40 +1,24 @@
 <!-- <jukebox-navbar></jukebox-navbar> -->
 
 <section id="song-detail">
-  <div class="row">
-    <div class="col-md-12">
-      <h4 class="text-center">Song Details</h4>
 
-      <div class="text-center song-card">
-        <h4>Title</h4>
-        <hr>
-        <p class="lead">{{vm.song.title}}</p>
-      </div>
-      <!-- <div class="btn-group" uib-dropdown>
-            <button id="split-button" type="button" class="btn btn-default">Add</button>
-             <button type="button" class="btn btn-default" uib-dropdown-toggle>
-               <span class="caret"></span>
-               <span class="sr-only">Split button!</span>
-             </button>
-             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-               <li role="menuitem"><a href="#">New Playlist</a></li>
-               <li class="divider"></li>
-               <li role="menuitem" ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, vm.song.id)">{{playlist.name}}</a></li>
-             </ul>
-          </div> -->
-    </div>
-  </div>
-  <br>
+  <h4 class="text-center">Song Details</h4>
+
   <div class="row">
     <div class="col-md-12">
       <div class="song-card text-center">
+        <h4>Title</h4>
+        <p>{{vm.song.title}}</p>
+
+        <hr>
+
         <h4>Artist</h4>
-        <a class="jb-orange" ui-sref="artistDetail({artistId: vm.song.artist.id})">{{vm.song.artist.name}}</a>
+        <a ui-sref="artistDetail({artistId: vm.song.artist.id})">{{vm.song.artist.name}}</a>
 
         <hr>
 
         <h4>Album</h4>
-        <a class="jb-green" ui-sref="albumDetail({albumId: vm.song.album.id})">{{vm.song.album.title}}</a>
+        <a ui-sref="albumDetail({albumId: vm.song.album.id})">{{vm.song.album.title}}</a>
 
         <hr>
 

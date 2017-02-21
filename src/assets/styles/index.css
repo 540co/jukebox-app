@@ -327,6 +327,7 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 .song-card {
   background: fff;
   padding: 10px;
+  padding-top: 20px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
