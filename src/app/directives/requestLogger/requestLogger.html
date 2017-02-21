@@ -20,13 +20,18 @@
         <div class="collapse">
           <p collapse-toggler class="dropdown" ng-click="requestBodyClicked = !requestBodyClicked">&nbsp;&nbsp;<span ng-class="{'fa fa-caret-right': !requestBodyClicked, 'fa fa-caret-down': requestBodyClicked}" ></span> Body</p>
           <pre class="collapse" ng-if="call.config.data">{{call.config.data | json}}</pre>
-          <pre class="collapse" ng-if="!call.config.data">Request body was not sent</pre>
+          <pre class="collapse" ng-if="!call.config.data">Request body not included</pre>
         </div>
 
       </div>
       <div class="collapse">
         <p collapse-toggler class="dropdown" ng-click="responseClicked = !responseClicked"><span ng-class="{'fa fa-caret-right': !responseClicked, 'fa fa-caret-down': responseClicked}" ></span> Response</p>
         <p class="collapse">&nbsp;&nbsp;Status Code: {{call.status}}</p>
+
+        <div class="collapse">
+          <p collapse-toggler class="dropdown" ng-click="responseHeaderClicked = !responseHeaderClicked">&nbsp;&nbsp;<span ng-class="{'fa fa-caret-right': !responseHeaderClicked, 'fa fa-caret-down': responseHeaderClicked}" ></span> Headers</p>
+          <pre class="collapse">{{call.headers() | json}}</pre>
+        </div>
 
         <div class="collapse">
           <p collapse-toggler class="dropdown" ng-click="responseBodyClicked = !responseBodyClicked">&nbsp;&nbsp;<span ng-class="{'fa fa-caret-right': !responseBodyClicked, 'fa fa-caret-down': responseBodyClicked}" ></span> Body</p>

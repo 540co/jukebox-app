@@ -1,42 +1,46 @@
-<jukebox-navbar></jukebox-navbar>
+<!-- <jukebox-navbar></jukebox-navbar> -->
 
 <section id="song-detail">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <br><br>
-        <div class="album-art-wrapper">
-          <img ng-src="{{vm.song.album.coverArt}}" width="225px" class="img-responsive" alt="Album cover art">
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="text-center">Song Details</h4>
+
+      <div class="text-center song-card">
+        <h4><i class="fa fa-music"></i> Title</h4>
+        <hr>
+        <h3>{{vm.song.title}}</h3>
       </div>
-      <div class="col-md-8">
-        <br>
-        <h2><i class="fa fa-music"></i> {{vm.song.title}}</h2>
+      <!-- <div class="btn-group" uib-dropdown>
+            <button id="split-button" type="button" class="btn btn-default">Add</button>
+             <button type="button" class="btn btn-default" uib-dropdown-toggle>
+               <span class="caret"></span>
+               <span class="sr-only">Split button!</span>
+             </button>
+             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+               <li role="menuitem"><a href="#">New Playlist</a></li>
+               <li class="divider"></li>
+               <li role="menuitem" ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, vm.song.id)">{{playlist.name}}</a></li>
+             </ul>
+          </div> -->
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="song-card text-center">
+        <h4><i class="fa fa-user"></i> Artist</h4>
+        <a class="jb-orange" ui-sref="artistDetail({artistId: vm.song.artist.id})">{{vm.song.artist.name}}</a>
 
-        <div class="song-content-wrapper lead">
-          <p>Artist: <a class="jb-orange" ui-sref="artistDetail({artistId: vm.song.artist.id})">{{vm.song.artist.name}}</a></p>
+        <hr>
 
-          <p>Album: <a class="jb-green" ui-sref="albumDetail({albumId: vm.song.album.id})">{{vm.song.album.title}}</a></p>
+        <h4><i class="fa fa-play-circle"></i> Album</h4>
+        <a class="jb-green" ui-sref="albumDetail({albumId: vm.song.album.id})">{{vm.song.album.title}}</a>
 
-          <p>Duration: {{vm.song.duration}}</p>
-          <br>
+        <hr>
 
-
-          <div class="btn-group" uib-dropdown>
-           <button id="split-button" type="button" class="btn btn-default">Add</button>
-           <button type="button" class="btn btn-default" uib-dropdown-toggle>
-             <span class="caret"></span>
-             <span class="sr-only">Split button!</span>
-           </button>
-           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-             <li role="menuitem"><a href="#">New Playlist</a></li>
-             <li class="divider"></li>
-             <li role="menuitem" ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, vm.song.id)">{{playlist.name}}</a></li>
-           </ul>
-         </div>
-        </div>
+        <h4><i class="fa fa-clock-o"></i> Duration</h4>
+        <p>{{vm.song.duration}}</p>
       </div>
-      <!-- end col -->
     </div>
   </div>
 </section>
