@@ -3,40 +3,24 @@
 <section id="artist-detail" class="artist-detail" ng-if="vm.albums">
   <div class="row">
     <div class="col-md-12">
-      <h4 class="text-center">Artist Details</h4>
+      <h4 class="text-center">Artist</h4>
 
       <div class="text-center song-card">
-        <h4><i class="fa fa-user"></i> Artist</h4>
-        <hr>
         <h3>{{vm.artist.name}}</h3>
       </div>
 
       <br><br>
-      <h4 class="text-center">Artist Albums</h4>
-<!--
-      <div class="row album-list" ng-repeat="album in vm.albums">
-
-        <div class="col-sm-2 col-xs-3">
-          <img ng-src="{{album.coverArt}}" class="img-responsive img-rounded cover-art">
-        </div>
-
-        <div class="col-sm-9 col-xs-9">
-          <h4>{{album.title}}</h4>
-          <a ui-sref="albumDetail({albumId: album.id})">Details</a>
-        </div>
-      </div> -->
-
-
-
+      <h4 class="text-center">Albums</h4>
+      
       <div class="row">
-        <div class="col-md-12" ng-repeat="album in vm.albums" >
+        <div class="col-md-12">
           <div class="song-card">
-            <div class="row">
+            <div class="row album-list" ng-repeat="album in vm.albums">
               <div class="col-sm-2 col-xs-3">
                 <img ng-src="{{album.coverArt}}" class="img-responsive img-rounded cover-art">
               </div>
 
-              <div class="col-sm-8 col-xs-9">
+              <div class="col-sm-10 col-xs-9">
                 <h4>{{album.title}}</h4>
                 <a ui-sref="albumDetail({albumId: album.id})">Details</a>
               </div>
@@ -47,10 +31,6 @@
 
         </div>
       </div>
-
-
-
-
     </div>
     <!-- end col -->
   </div>
