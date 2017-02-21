@@ -5,7 +5,7 @@
     <h2>Albums</h2>
 
     <!-- search bar -->
-    <div class="row" id="album-search">
+    <div class="row search-bar">
       <div class="col-md-6">
         <form class="input-group" ng-submit="vm.filterSearch(vm.searchAlbum)">
           <div class="input-group-btn search-panel">
@@ -31,7 +31,6 @@
 
     <div class="row">
       <div class="col-md-8">
-        <br>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -45,7 +44,7 @@
                 <a ui-sref="albumDetail({albumId: album.id})">{{album.title}}</a>
               </td>
               <td>
-                <a ui-sref="artistDetail({artistId: album.artist.id})">{{album.artist.name}}</a>
+                <a ui-sref="artists.detail({artistId: album.artist.id})">{{album.artist.name}}</a>
               </td>
             </tr>
           </tbody>

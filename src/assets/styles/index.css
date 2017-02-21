@@ -68,6 +68,11 @@ a {
 }
 
 button:focus, a:focus, p:focus, div:focus{outline:0;}
+
+#songs, #artists, #playlists, #albums {
+  margin-top: 75px;
+}
+
 /*----------------------------------------
   2. Login
 ----------------------------------------*/
@@ -245,7 +250,8 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 .music-card > .info > .title {
   font-size: 1.3em;
   font-weight: 400;
-  padding-bottom: 5px;
+  padding-bottom: 0;
+  padding-top: 20px;
 }
 .music-card > .info > .artist {
   color: #52C0AE;
@@ -258,7 +264,7 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
   5. Artist
 ----------------------------------------*/
 
-#artist-search, #album-search {
+.search-bar {
   margin-top: 25px;
   margin-bottom: 40px;
 }
@@ -272,26 +278,42 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
   border-bottom: solid 1px #e8e8e8;
 }
 
+#artist-detail, #song-detail {
+  margin-top: 30px;
+}
+
+.album-list {
+  margin-bottom: 10px;
+}
+
+.album-detail {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 
 /*----------------------------------------
   6. Album
 ----------------------------------------*/
-.album-content-wrapper {
-  padding-top: 95px
+#albums {
+  margin-bottom: 50px;
 }
 
-#album-detail, #song-detail {
+.album-art-wrapper {
+  margin-top: 35px;
+}
+
+#album-detail, #song-detail, #playlist-detail {
   margin-bottom: 50px;
+}
+
+#playlist-detail, #album-detail {
+  margin-top: 75px;
 }
 
 /*----------------------------------------
   7. Songs
 ----------------------------------------*/
-#song-detail {
-  /*background: #e8e8e8;*/
-  padding-bottom: 50px;
-  /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);*/
-}
 
 .song-content-wrapper {
   margin-top: 25px;
@@ -300,6 +322,16 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 .song-content-wrapper p {
   font-size: 16px;
   margin: 5px;
+}
+
+.song-card {
+  background: fff;
+  padding: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.song-card h1, h2, h3, h4, h5, h6{
+  margin-top: 0;
 }
 
 /*----------------------------------------

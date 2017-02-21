@@ -5,7 +5,7 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand"><a ui-sref="myPlaylists">PLAYLISTS</a></li>
-      <li ng-repeat="playlist in vm.playlists">
+      <li ng-repeat="playlist in vm.playlists" ui-sref-active="active">
         <a ui-sref="myPlaylists.detail({playlistId: playlist.id})">{{playlist.name}}</a>
       </li>
     </ul>

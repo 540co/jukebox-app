@@ -32,8 +32,8 @@
         controller: 'ArtistController',
         controllerAs: 'vm'
       })
-      .state('artistDetail', {
-        url: '/artists/:artistId',
+      .state('artists.detail', {
+        url: '/:artistId',
         templateUrl: 'app/artist/artistDetail.html',
         controller: 'ArtistDetailController',
         controllerAs: 'vm',
@@ -62,14 +62,14 @@
         controller: 'SongController',
         controllerAs: 'vm'
       })
-      .state('songDetail', {
-        url: '/songs/:songId',
+      .state('songs.detail', {
+        url: '/:songId',
         templateUrl: 'app/songs/songDetail.html',
         controller: 'SongDetailController',
         controllerAs: 'vm',
         params: {
           songId: null
-        },
+        }
       })
       .state('playlists', {
         url: '/playlists',
