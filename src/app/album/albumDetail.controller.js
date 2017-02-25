@@ -14,18 +14,19 @@
     vm.songs = null;
 
     var albumId = $stateParams.albumId;
+    var fieldsQuery = '?fields=artist,coverArt,releasedOn,songs,title';
 
     activate();
 
     ////////////////////////////////////////////////////////////////////////////
 
     function activate() {
-      getAlbum();
+      getAlbum(albumId, fieldsQuery);
       getAlbumSongs(albumId);
     }
 
-    function getAlbum() {
-      return albumService.findById(albumId)
+    function getAlbum(id, query) {
+      return albumService.findById(albumId, query)
         .then(getAlbumComplete, requestFailed);
     }
 

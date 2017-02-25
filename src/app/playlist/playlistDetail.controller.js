@@ -15,18 +15,19 @@
     vm.addPlaylistSongs = addPlaylistSongs;
 
     var playlistId = $stateParams.playlistId;
+    var fieldsQuery = '?fields=name,songs,user';
 
     activate();
 
     ////////////////////////////////////////////////////////////////////////////
 
     function activate() {
-      getPlaylist(playlistId);
+      getPlaylist(playlistId, fieldsQuery);
       getPlaylistSongs(playlistId);
     }
 
-    function getPlaylist(id) {
-      return playlistService.findById(id)
+    function getPlaylist(id, query) {
+      return playlistService.findById(id, query)
         .then(getPlaylistComplete, requestFailed);
     }
 

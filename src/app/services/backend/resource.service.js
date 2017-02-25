@@ -61,8 +61,13 @@
         }
       }
 
-      function apiInstanceById(id) {
-        return $http.get(instanceUrl(path, id));
+      function apiInstanceById(id, query) {
+        if(query) {
+          return $http.get(instanceUrl(path, id) + query);
+        }
+        else {
+          return $http.get(instanceUrl(path, id));
+        }
       }
 
       function apiCreate(data) {
@@ -89,8 +94,8 @@
           .catch(requestFailed);
       }
 
-      function findById(id) {
-        return apiInstanceById(id)
+      function findById(id, query) {
+        return apiInstanceById(id, query)
           .then(requestComplete)
           .catch(requestFailed);
       }
