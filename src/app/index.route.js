@@ -14,11 +14,9 @@
         controller: 'LoginController',
         controllerAs: 'vm'
       })
-      .state('info', {
-        url: '/info',
-        templateUrl: 'app/info/info.html',
-        controller: 'InfoController',
-        controllerAs: 'vm'
+      .state('reference', {
+        url: '/reference',
+        templateUrl: 'app/reference/reference.html'
       })
       .state('home', {
         url: '/',

@@ -14,18 +14,19 @@
     vm.albums = null;
 
     var artistId = $stateParams.artistId;
+    var fieldsQuery = '?fields=albums,name';
 
     activate();
 
     ////////////////////////////////////////////////////////////////////////////
 
     function activate() {
-      getArtist();
+      getArtist(artistId, fieldsQuery);
       getArtistAlbums(artistId);
     }
 
-    function getArtist() {
-      return artistService.findById(artistId)
+    function getArtist(id, query) {
+      return artistService.findById(artistId, query)
         .then(getArtistComplete, getArtistFailed);
     }
 

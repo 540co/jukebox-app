@@ -251,7 +251,6 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
   font-size: 1.3em;
   font-weight: 400;
   padding-bottom: 0;
-  padding-top: 20px;
 }
 .music-card > .info > .artist {
   color: #52C0AE;
@@ -529,10 +528,14 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 /*----------------------------------------
   10. Info
 ----------------------------------------*/
-.info {
+.handbook {
   margin-bottom: 50px;
   margin-top: 75px;
 }
-.info label > a {
+.handbook label > a {
   color: #ffffff;
+}
+
+.handbook a {
+  color: #5091da;
 }
