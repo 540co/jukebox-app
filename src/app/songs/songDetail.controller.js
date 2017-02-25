@@ -10,12 +10,14 @@
   /** @ngInject */
   function SongDetailController($log, $stateParams, songService, playlistService) {
     var vm = this;
-    vm.song = null;
-
-    vm.addPlaylistSongs = addPlaylistSongs;
-
     var songId = $stateParams.songId;
     var fieldsQuery = '?fields=album,artist,duration,title';
+    
+    // scope variables
+    vm.song = null;
+
+    // scope functions
+    vm.addPlaylistSongs = addPlaylistSongs;
 
     activate();
 

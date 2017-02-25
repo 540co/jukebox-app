@@ -10,11 +10,12 @@
   /** @ngInject */
   function ArtistDetailController($stateParams, artistService) {
     var vm = this;
-    vm.artist = null;
-    vm.albums = null;
-
     var artistId = $stateParams.artistId;
     var fieldsQuery = '?fields=albums,name';
+
+    // scope variables
+    vm.artist = null;
+    vm.albums = null;
 
     activate();
 

@@ -10,11 +10,12 @@
   /** @ngInject */
   function MyPlaylistEditController($log, $rootScope, $state, $stateParams, toastr, playlistService) {
     var vm = this;
-    vm.cancel = cancel;
-    vm.submit = submit;
-
     var currentUser = null;
     var playlistId = null;
+    
+    // scope functions
+    vm.cancel = cancel;
+    vm.submit = submit;
 
     activate();
 

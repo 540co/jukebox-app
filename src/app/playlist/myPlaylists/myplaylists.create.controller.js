@@ -10,10 +10,11 @@
   /** @ngInject */
   function MyPlaylistCreateController($log, $rootScope, $state, toastr, playlistService) {
     var vm = this;
+    var currentUser = null;
+
+    // scope functions
     vm.cancel = cancel;
     vm.submit = submit;
-
-    var currentUser = null;
 
     activate();
 

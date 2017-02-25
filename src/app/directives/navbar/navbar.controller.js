@@ -10,10 +10,14 @@
   function NavbarController($state, authService) {
     var vm = this;
 
+    // scope variables
     vm.logout = logout;
 
     ////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Logs current user out
+     */
     function logout() {
       authService.clearCredentials();
       $state.go('login');

@@ -20,7 +20,7 @@
         <div class="collapse">
           <p collapse-toggler class="dropdown" ng-click="requestBodyClicked = !requestBodyClicked">&nbsp;&nbsp;<span ng-class="{'fa fa-caret-right': !requestBodyClicked, 'fa fa-caret-down': requestBodyClicked}" ></span> Body</p>
           <pre class="collapse" ng-if="call.config.data">{{call.config.data | json}}</pre>
-          <pre class="collapse" ng-if="!call.config.data">Request body not included</pre>
+          <pre class="collapse" ng-if="!call.config.data">"Request body not included"</pre>
         </div>
 
       </div>

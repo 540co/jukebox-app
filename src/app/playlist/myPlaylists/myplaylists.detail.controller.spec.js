@@ -8,15 +8,18 @@
     var mockPlaylist = {'title': 'playlist1'};
     var mockSongs = [{'title': 'foo'}, {'title': 'bar'}];
     var $log;
+    var $state;
 
     beforeEach(module('app'));
-    beforeEach(inject(function(_$controller_, _$log_, _playlistService_) {
+    beforeEach(inject(function(_$controller_, _$log_, _$state_, _playlistService_) {
       $log = _$log_;
       playlistService = _playlistService_;
+      $state = _$state_;
 
       controller = function () {
         return _$controller_('MyPlaylistDetailController', {
           $log:$log,
+          $state: $state,
           playlistService: playlistService
         });
       };
@@ -79,6 +82,7 @@
     });
 
     it('should delete a song to a playlist', function() {
+      spyOn($state, 'reload');
       spyOn($log, 'log');
       spyOn(playlistService, 'removePlaylistSongs').and.callFake(function() {
         return {
@@ -90,7 +94,9 @@
       vm = controller();
       vm.destroyPlaylistSongs('2', '3');
 
+      expect(playlistService.removePlaylistSongs).toHaveBeenCalled();
       expect($log.log).toHaveBeenCalled();
+      expect($state.reload).toHaveBeenCalled();
     });
 
     it('should fail to delete a song to a playlist', function() {

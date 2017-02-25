@@ -10,14 +10,16 @@
   /** @ngInject */
   function ArtistController(artistService, pagerService) {
     var vm = this;
-
     var linkHeader = null;
     var totalCount = null;
 
-    vm.artists   = null;
+    // scope variables
+    vm.artists = null;
+
+    // scope functions
+    vm.filterSearch = filterSearch;
     vm.onChange  = onChange;
     vm.sortArtist = sortArtist;
-    vm.filterSearch = filterSearch;
 
     activate();
 

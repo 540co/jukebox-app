@@ -5,17 +5,20 @@
     .module('app')
     .controller('PlaylistDetailController', PlaylistDetailController);
 
-    PlaylistDetailController.$inject = ['$log', '$stateParams', 'playlistService'];
+    PlaylistDetailController.$inject = ['$log', 'toastr', '$stateParams', 'playlistService'];
 
   /** @ngInject */
-  function PlaylistDetailController($log, $stateParams, playlistService) {
+  function PlaylistDetailController($log, toastr, $stateParams, playlistService) {
     var vm = this;
-    vm.playlist = null;
-    vm.songs = null;
-    vm.addPlaylistSongs = addPlaylistSongs;
-
     var playlistId = $stateParams.playlistId;
     var fieldsQuery = '?fields=name,songs,user';
+
+    // scope variables
+    vm.playlist = null;
+    vm.songs = null;
+
+    // scope functions
+    vm.addPlaylistSongs = addPlaylistSongs;
 
     activate();
 
@@ -74,7 +77,6 @@
      * Add song to playlist
      */
     function addPlaylistSongs(id, data){
-      console.log(data);
       var requestData = formatRequest(data);
       playlistService.addPlaylistSongs(id, requestData)
         .then(addSongComplete, addSongFailed);
@@ -84,14 +86,14 @@
      * Success callback for playlistService.addPlaylistSongs
      */
     function addSongComplete(data) {
-      $log.log('Added song to playlist');
+      toastr.success('Song added to playlist.', 'Success!');
     }
 
     /**
      * Error callback for playlistService.addPlaylistSongs
      */
     function addSongFailed(err) {
-      $log.error('err', err);
+      toastr.error('Unable to add song to playlist', err);
     }
 
     /**

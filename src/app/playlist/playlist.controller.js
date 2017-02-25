@@ -13,10 +13,13 @@
     var linkHeader = null;
     var totalCount = null;
 
-    vm.onChange = onChange;
+    // scope variables
     vm.playlists = null;
-    vm.sortPlaylist = sortPlaylist;
+
+    // scope functions
     vm.filterSearch = filterSearch;
+    vm.onChange = onChange;
+    vm.sortPlaylist = sortPlaylist;
 
     activate();
 

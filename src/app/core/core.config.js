@@ -6,9 +6,18 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider) {
+  function config($logProvider, toastrConfig) {
     // Enable log
     $logProvider.debugEnabled(true);
+
+    // toastr config
+    angular.extend(toastrConfig, {
+      closeButton: true,
+      closeHtml: '<button>&times;</button>',
+      extendedTimeOut: 2000,
+      progressBar: true,
+      tapToDismiss: true,
+    });
   }
 
 })();

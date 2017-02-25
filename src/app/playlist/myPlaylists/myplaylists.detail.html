@@ -17,7 +17,8 @@
   <div class="row">
     <div class="col-md-6">
       <br>
-      <table class="table table-striped">
+      <p ng-if="vm.songs == 0">There are no songs for this playlist.</p>
+      <table class="table table-striped" ng-if="vm.songs != 0">
         <thead>
           <tr>
             <th>#</th>
@@ -39,11 +40,10 @@
                   <i class="fa fa-ellipsis-h"></i>
                 </a>
                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                  <li role="menuitem"><a href="#">Go to Artist</a></li>
                   <li role="menuitem"><a ui-sref="songs.detail({songId: song.id})">Go to Song</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">Add to Playlist</a>
+                    <a tabindex="-1">Add to Playlist</a>
                     <ul class="dropdown-menu">
                       <li><a tabindex="-1" href="#">New Playlist</a></li>
                       <li class="divider"></li>
@@ -51,7 +51,6 @@
                     </ul>
                     <li class="divider"></li>
                     <li role="menuitem"><a ng-click="vm.destroyPlaylistSongs(vm.playlist.id, song.id)">Remove from this Playlist</a></li>
-                    <li role="menuitem"><a href="#">Share...</a></li>
                   </li>
                 </ul>
               </div>
