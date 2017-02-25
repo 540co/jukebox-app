@@ -25,26 +25,48 @@
       getAlbumSongs(albumId);
     }
 
+    /**
+     * Fetch album by Id
+     */
     function getAlbum(id, query) {
       return albumService.findById(albumId, query)
-        .then(getAlbumComplete, requestFailed);
+        .then(getAlbumComplete, getAlbumFailed);
     }
 
+    /**
+     * Success callback for albumService.findById
+     */
     function getAlbumComplete(data) {
       vm.album = data.data.data;
     }
 
-    function getAlbumSongs(id) {
-      return albumService.getAlbumSongs(id)
-        .then(getAlbumSongsComplete, requestFailed);
+    /**
+     * Error callback for albumService.findById
+     */
+    function getAlbumFailed(err) {
+      console.log('Unable to fetch album', err);
     }
 
+    /**
+     * Fetch all songs for an album
+     */
+    function getAlbumSongs(id) {
+      return albumService.getAlbumSongs(id)
+        .then(getAlbumSongsComplete, getAlbumSongsFailed);
+    }
+
+    /**
+     * Success callback for albumService.getAlbumSongs
+     */
     function getAlbumSongsComplete(data) {
       vm.songs = data;
     }
 
-    function requestFailed(err) {
-      console.log('err', err);
+    /**
+     * Error callback for albumService.getAlbumSongs
+     */
+    function getAlbumSongsFailed(err) {
+      console.log('Unable to fetch songs for album', err);
     }
 
   }

@@ -12,6 +12,7 @@
   		'ngMessages',
   		'ngSanitize',
   		'ngTouch',
+      'toastr',
   		'ui.router',
       'ui.bootstrap'
 	]);

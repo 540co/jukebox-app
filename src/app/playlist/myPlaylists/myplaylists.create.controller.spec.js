@@ -5,7 +5,7 @@
     var vm = null;
     var playlistService = null;
     var controller = null;
-    var mockPlaylist = {'id': '123456', 'name': 'playlist1'};
+    var mockPlaylist = {'data':{'data':{'data':{'id': '123456', 'name': 'playlist1'}}}};
     var $log;
     var $rootScope;
     var $state;

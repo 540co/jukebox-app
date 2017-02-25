@@ -23,17 +23,26 @@
       getPlaylists(currentUser);
     }
 
+    /**
+     * Fetch current user's playlists
+     */
     function getPlaylists(id) {
       return userService.getUserPlaylists(id)
         .then(getPlaylistsComplete, requestFailed);
     }
 
+    /**
+     * Success callback for userService.getUserPlaylists
+     */
     function getPlaylistsComplete(data) {
       vm.playlists = data;
     }
 
+    /**
+     * Error callback for userService.getUserPlaylists
+     */
     function requestFailed(err) {
-      console.log('err', err);
+      console.error('Unable to retrieve playlists.', err);
     }
 
   }
