@@ -5,10 +5,10 @@
     .module('app')
     .controller('MyPlaylistEditController', MyPlaylistEditController);
 
-    MyPlaylistEditController.$inject = ['$log', '$rootScope','$state', '$stateParams', 'playlistService'];
+    MyPlaylistEditController.$inject = ['$log', '$rootScope','$state', '$stateParams', 'toastr', 'playlistService'];
 
   /** @ngInject */
-  function MyPlaylistEditController($log, $rootScope, $state, $stateParams, playlistService) {
+  function MyPlaylistEditController($log, $rootScope, $state, $stateParams, toastr, playlistService) {
     var vm = this;
     vm.cancel = cancel;
     vm.submit = submit;
@@ -31,14 +31,22 @@
      */
     function fetchPlaylist(id){
       playlistService.findById(id)
-        .then(fetchPlaylistComplete, requestFailed);
+        .then(fetchPlaylistComplete, fetchPlaylistFailed);
     }
 
     /**
      * Success callback for playlistService.findById
      */
     function fetchPlaylistComplete(data) {
-      setPlaylistModel(data);
+      setPlaylistModel(data.data.data);
+    }
+
+    /**
+     * Failed callback for playlistService.findById
+     */
+    function fetchPlaylistFailed(err) {
+      toastr.error('Unable to fetch playlist.', 'Oops!');
+      $log.error('There was an issue fetching the playlist', err);
     }
 
     /**
@@ -54,23 +62,24 @@
      */
     function updatePlaylist(id, data){
       playlistService.update(id, data)
-        .then(updatePlaylistComplete, requestFailed);
+        .then(updatePlaylistComplete, updatePlaylistFailed);
     }
 
     /**
      * Success callback for playlistService.update
      */
     function updatePlaylistComplete(data) {
+      toastr.success('Playlist updated!', 'Success');
       $log.log('Playlist updated!');
       $state.reload();
-      // $state.go('myPlaylists.detail', {playlistId: data.id}, {reload:true});
     }
 
     /**
      * Failed callback for playlistService.create
      */
-    function requestFailed(err) {
-      $log.error('err', err);
+    function updatePlaylistFailed(err) {
+      toastr.success('Unable to update playlist.', 'Oops!');
+      $log.error('Unable to update playlist.', err);
     }
 
     /**

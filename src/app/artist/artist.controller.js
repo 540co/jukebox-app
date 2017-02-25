@@ -28,11 +28,17 @@
       getArtists();
     }
 
+    /**
+     * Fetch all artists from servive
+     */
     function getArtists(override, query) {
       return artistService.all(override, query)
         .then(getArtistsComplete, getArtistsFailed);
     }
 
+    /**
+     * Success callback for artistService.all
+     */
     function getArtistsComplete(data) {
       // set total count and link header
       totalCount = data.data.meta.pagination.totalCount;
@@ -42,15 +48,24 @@
       vm.artists = data.data.data;
     }
 
+    /**
+     * Error callback for artistService.all
+     */
     function getArtistsFailed(err) {
       console.log('err', err);
     }
 
+    /**
+     * Pagination helper function
+     */
     function onChange(path, page) {
       getArtists(path);
       vm.currentPage = page;
     }
 
+    /**
+     * Sort artists
+     */
     function sortArtist(value) {
       var query = '?sort=' + value;
       getArtists(null, query);
@@ -58,6 +73,9 @@
       vm.currentPage = 1;
     }
 
+    /**
+     * Filter artists
+     */
     function filterSearch(value) {
       var filter = '==';
       var filterProperty = 'name';

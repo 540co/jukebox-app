@@ -25,30 +25,48 @@
       getArtistAlbums(artistId);
     }
 
+    /**
+     * Fetch artist by Id
+     */
     function getArtist(id, query) {
       return artistService.findById(artistId, query)
         .then(getArtistComplete, getArtistFailed);
     }
 
+    /**
+     * Success callback for artistService.findById
+     */
     function getArtistComplete(data) {
       vm.artist = data.data.data;
     }
 
+    /**
+     * Error callback for artistService.findById
+     */
     function getArtistFailed(err) {
-      console.log('err', err);
+      console.log('Unable to fetch artist', err);
     }
 
+    /**
+     * Fetch all artist's albums
+     */
     function getArtistAlbums(id) {
       return artistService.getArtistAlbums(artistId)
         .then(getArtistAlbumsComplete, getArtistAlbumsFailed);
     }
 
+    /**
+     * Success callback for artistService.getArtistAlbums
+     */
     function getArtistAlbumsComplete(data) {
       vm.albums = data;
     }
 
+    /**
+     * Error callback for artistService.getArtistAlbums
+     */
     function getArtistAlbumsFailed(err) {
-      console.log('err', err);
+      console.log('Unable to fetch albums for artist', err);
     }
 
   }

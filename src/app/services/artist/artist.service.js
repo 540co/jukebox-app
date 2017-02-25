@@ -45,6 +45,7 @@
     }
 
     function requestFailed(e) {
+      $rootScope.calls.push(e);
       return $q.reject(e);
     }
 

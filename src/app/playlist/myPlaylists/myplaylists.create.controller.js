@@ -5,10 +5,10 @@
     .module('app')
     .controller('MyPlaylistCreateController', MyPlaylistCreateController);
 
-    MyPlaylistCreateController.$inject = ['$log', '$rootScope','$state', 'playlistService'];
+    MyPlaylistCreateController.$inject = ['$log', '$rootScope','$state', 'toastr', 'playlistService'];
 
   /** @ngInject */
-  function MyPlaylistCreateController($log, $rootScope, $state, playlistService) {
+  function MyPlaylistCreateController($log, $rootScope, $state, toastr, playlistService) {
     var vm = this;
     vm.cancel = cancel;
     vm.submit = submit;
@@ -35,15 +35,17 @@
      * Success callback for playlistService.create
      */
     function createPlaylistComplete(data) {
+      $state.go('myPlaylists.detail', {playlistId: data.data.data.id}, {reload:true});
+      toastr.success('Playlist created!', 'Success');
       $log.log('Playlist created!');
-      $state.go('myPlaylists.detail', {playlistId: data.id}, {reload:true});
     }
 
     /**
      * Failed callback for playlistService.create
      */
     function requestFailed(err) {
-      $log.error('err', err);
+      toastr.error('There was an issue creating the playlist.', 'Oops!');
+      $log.error('Unable to create playlist.', err);
     }
 
     /**

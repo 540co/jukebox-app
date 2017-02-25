@@ -34,13 +34,17 @@
       spyOn(authService, 'login').and.callFake(function() {
         return {
           then: function(successCallback, errorCallback) {
-            errorCallback({});
+            errorCallback({
+              'data': {
+                'error': 'foo'
+              }
+            });
           }
         };
       });
 
       vm.login('admin', 'bad');
-      expect(vm.loginError).toEqual('Login failed! Please login again.');
+      expect(vm.loginError).toEqual(jasmine.any(String));
     });
 
   });

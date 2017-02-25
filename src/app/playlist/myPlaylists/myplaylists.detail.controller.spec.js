@@ -21,7 +21,7 @@
         });
       };
     }));
-    
+
     // TODO: Figure out how to mock Link headers
     // it('should get playlist details on controller init', function() {
     //   spyOn(playlistService, 'findById').and.callFake(function() {
@@ -108,12 +108,11 @@
       expect($log.error).toHaveBeenCalled();
     });
 
-
     it('should fail to get playlist songs', function() {
       spyOn(playlistService, 'getPlaylistSongs').and.callFake(function() {
         return {
-          then: function(success, err) {
-            err({});
+          then: function(removeSongComplete, removeSongFailed) {
+            removeSongFailed({});
           }
         };
       });
