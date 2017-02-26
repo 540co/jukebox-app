@@ -34,6 +34,7 @@
           <li>Creating Resources</li>
           <li>Updating Resources</li>
           <li>Deleting Resources</li>
+          <li>Errors</li>
         </ul>
 
         <hr>
@@ -44,7 +45,28 @@
           When retrieving a list of resource objects, the response will include a subset of the attributes for that resource.
           More information about summary representations can be explained here: <a href="https://eads.540.co/#summary-representations" target="_blank">https://eads.540.co/#summary-representations</a>
         </p>
-        <p>Example: <code>GET /artists</code></p>
+        <p>Example:</p>
+        <pre>GET /albums HTTP/1.1
+Accept: application/json
+
+{
+  "meta": {
+    "resourceType": "Album",
+    "responseTime": 39
+  },
+  "data": [
+    {
+      "id": "1",
+      "href": "/albums/1",
+      "title": "For Those About to Rock We Salute You"
+    },
+    {
+      "id": "2",
+      "href": "/albums/2",
+      "title": "Green River"
+    }
+  ]
+}</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
@@ -63,7 +85,32 @@
           More information about detailed representations can be explained here: <a href="https://eads.540.co/#detailed-representations" target="_blank">https://eads.540.co/#detailed-representations</a>
         </p>
 
-        <p>Example: <code>GET /albums/4</code></p>
+        <p>Example:</p>
+        <pre>GET /albums/1 HTTP/1.1
+Accept: application/json
+
+{
+  "meta": {
+    "resourceType": "Album",
+    "responseTime": 22
+  },
+  "data": {
+    "id": "1",
+    "href": "/albums/1",
+    "title": "For Those About to Rock We Salute You",
+    "coverArt": "https://ia800500.us.archive.org/2/items/mbid-6282e607-18b3-39c2-822b-b8d7bc00c343/mbid-6282e607-18b3-39c2-822b-b8d7bc00c343-1132379641_thumb500.jpg",
+    "releasedAt": "1981-11-23",
+    "artist": {
+      "id": "247",
+      "href": "/artists/247",
+      "name": "AC/DC"
+    },
+    "songs": {
+      "href": "/albums/1/songs",
+      "totalCount": 10
+    }
+  }
+}</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
@@ -82,7 +129,9 @@
           More information about partial resources can be explained here: <a href="https://eads.540.co/#partial-resources" target="_blank">https://eads.540.co/#partial-resources</a>
         </p>
 
-        <p>Example: <code>GET /albums/4?fields=title,coverArt,releasedOn</code></p>
+        <p>Example:</p>
+        <pre>GET /albums/4?fields=title,coverArt,releasedOn HTTP/1.1
+Accept: application/json</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
@@ -102,6 +151,8 @@
         </p>
 
         <p>Example: <code>GET /songs?limit=10&offset=20</code></p>
+        <pre>GET /songs?limit=10&mp;offset=20 HTTP/1.1
+Accept: application/json</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
@@ -120,7 +171,9 @@
           More information about filtering can be explained here: <a href="https://eads.540.co/#filtering" target="_blank">https://eads.540.co/#filtering</a>
         </p>
 
-        <p>Example: <code>GET /albums?filters=artist.name%3D%3DAC/DC</code></p>
+        <p>Example:</p>
+        <pre>GET /albums?filters=artist.name%3D%3DAC/DC HTTP/1.1
+Accept: application/json</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
@@ -139,7 +192,9 @@
           More information about sorting can be explained here: <a href="https://eads.540.co/#sorting" target="_blank">https://eads.540.co/#sorting</a>
         </p>
 
-        <p>Example: <code>GET /albums?sort=title</code></p>
+        <p>Example:</p>
+        <pre>GET /albums?sort=title HTTP/1.1
+Accept: application/json</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
@@ -158,7 +213,21 @@
           More information about creating resources can be explained here: <a href="https://eads.540.co/#creating-resources" target="_blank">https://eads.540.co/#creating-resources</a>
         </p>
 
-        <p>Example: <code>POST /playlists</code></p>
+        <p>Example:</p>
+        <pre>POST /albums HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "data": {
+    "title": "Journeyman",
+    "coverArt": "https://ia902304.us.archive.org/2/items/mbid-55767db4-d426-3988-bf4c-5121964cac1d/mbid-55767db4-d426-3988-bf4c-5121964cac1d-8414673474_thumb500.jpg",
+    "releasedAt": "1989-11-07",
+    "artist": {
+      "id": "175"
+    }
+  }
+}</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
@@ -174,7 +243,17 @@
           More information about creating resources can be explained here: <a href="https://eads.540.co/#updating-resources" target="_blank">https://eads.540.co/#updating-resources</a>
         </p>
 
-        <p>Example: <code>PATCH /playlists/1</code></p>
+        <p>Example:</p>
+
+        <pre>PATCH /albums/1 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "data": {
+    "title": "My Updated Title"
+  }
+}</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
@@ -190,11 +269,39 @@
           More information about creating resources can be explained here: <a href="https://eads.540.co/#updating-resources" target="_blank">https://eads.540.co/#updating-resources</a>
         </p>
 
-        <p>Example: <code>DELETE /playlists/4</code></p>
+        <p>Example:</p>
+        <pre>DELETE /albums/1 HTTP/1.1
+Accept: application/json</pre>
 
         <p>Jukebox Pages:</p>
         <div class="jb-page-ref">
           <label class="label label-default"><a ui-sref="myPlaylists.detail({playlistId: 28})">My Playlists Detail</a></label>
+        </div>
+
+        <hr>
+
+        <!-- Errors -->
+        <h4>10. Errors</h4>
+        <p>
+          The API <code>MAY</code> choose to stop processing as soon as a problem is encountered, or it <code>MAY</code> continue processing and encounter multiple problems. When the API encounters multiple problems for a single request, the most generally applicable HTTP error code <code>SHOULD</code> be used in the response.
+          More information about processing errors can be explained here: <a href="https://eads.540.co/#errors" target="_blank">https://eads.540.co/#errors</a>
+        </p>
+
+        <p>Example:</p>
+        <pre>{
+  "error": {
+    "developerMessage" : "A detailed description of the problem with suggestions on how to solve.",
+    "userMessage" : "An informational message for end-users.",
+    "errorCode" : 9583,
+    "moreInfo" : "https://link/to/additional/information"
+  }
+}</pre>
+
+        <p>Jukebox Pages:</p>
+        <div class="jb-page-ref">
+          <label class="label label-default"><a ui-sref="login">Login</a></label>
+          <label class="label label-default"><a ui-sref="myPlaylists.create">Create Playist</a></label>
+          <label class="label label-default"><a ui-sref="myPlaylists">Edit Playist</a></label>
         </div>
       </div>
     </div>

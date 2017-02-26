@@ -6,14 +6,12 @@
     var playlistService = null;
     var controller = null;
     var mockPlaylist = {'data':{'data':{'data': {'name': 'playlist1'}}}};
-    var $log;
     var $rootScope;
     var $state;
     var $stateParams;
 
     beforeEach(module('app'));
-    beforeEach(inject(function(_$controller_, _$log_, _$state_, _playlistService_) {
-      $log = _$log_;
+    beforeEach(inject(function(_$controller_, _$state_, _playlistService_) {
       playlistService = _playlistService_;
       $rootScope = {
         'globals': {
@@ -30,7 +28,6 @@
 
       controller = function () {
         return _$controller_('MyPlaylistEditController', {
-          $log:$log,
           playlistService: playlistService,
           $rootScope: $rootScope,
           $state: $state,
@@ -71,20 +68,17 @@
     });
 
     it('should fail to edit a playlist', function() {
-      spyOn($log, 'error');
-
       spyOn(playlistService, 'update').and.callFake(function() {
         return {
           then: function(success, err) {
-            err({});
+            err({'data':{'error':{}}});
           }
         };
       });
 
       vm = controller();
-
       vm.submit();
-      expect($log.error).toHaveBeenCalled();
+      expect(playlistService.update).toHaveBeenCalled();
     });
 
     it('should cancel the form', function() {
