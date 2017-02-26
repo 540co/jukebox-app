@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.playlist')
     .controller('MyPlaylistEditController', MyPlaylistEditController);
 
     MyPlaylistEditController.$inject = ['$log', '$rootScope','$state', '$stateParams', 'toastr', 'playlistService'];
@@ -12,7 +12,7 @@
     var vm = this;
     var currentUser = null;
     var playlistId = null;
-    
+
     // scope functions
     vm.cancel = cancel;
     vm.submit = submit;

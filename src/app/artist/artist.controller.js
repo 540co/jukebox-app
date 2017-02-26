@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.artist')
     .controller('ArtistController', ArtistController);
 
     ArtistController.$inject = ['artistService', 'pagerService'];

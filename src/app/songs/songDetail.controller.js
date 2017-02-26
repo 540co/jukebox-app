@@ -2,17 +2,17 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.songs')
     .controller('SongDetailController', SongDetailController);
 
-    SongDetailController.$inject = ['$log', '$stateParams', 'songService', 'playlistService'];
+    SongDetailController.$inject = ['$log', '$stateParams', 'playlistService', 'songService'];
 
   /** @ngInject */
-  function SongDetailController($log, $stateParams, songService, playlistService) {
+  function SongDetailController($log, $stateParams, playlistService, songService) {
     var vm = this;
     var songId = $stateParams.songId;
     var fieldsQuery = '?fields=album,artist,duration,title';
-    
+
     // scope variables
     vm.song = null;
 

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.playlist')
     .controller('MyPlaylistController', MyPlaylistController);
 
     MyPlaylistController.$inject = ['$log', '$rootScope', 'userService'];

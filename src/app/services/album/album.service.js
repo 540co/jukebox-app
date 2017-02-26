@@ -4,16 +4,16 @@
   angular.module('app.services')
     .service('albumService', albumService);
 
-  albumService.$inject = ['$http', '$q', 'configService', 'Resource', '$rootScope'];
+  albumService.$inject = ['$http', '$q', '$rootScope', 'configService', 'Resource'];
 
-  function albumService($http, $q, configService, Resource, $rootScope) {
+  function albumService($http, $q, $rootScope, configService, Resource) {
 
     var path = '/albums';
     var service = new Resource(path);
     var appConfig = configService.getConfig();
 
-    service.getAlbumSongs = getAlbumSongs;
-    service.listSongUrl = listSongUrl;
+    service.getAlbumSongs  = getAlbumSongs;
+    service.listSongUrl    = listSongUrl;
 
    /**
     * URL Helper Method

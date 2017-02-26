@@ -11,7 +11,7 @@
   8. Side Menu
   9. Dropdown Submenu
   10. Info
-  11. Toaster
+  11. Toastr Override
 ----------------------------------------*/
 
 /*----------------------------------------
@@ -263,7 +263,6 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 /*----------------------------------------
   5. Artist
 ----------------------------------------*/
-
 .search-bar {
   margin-top: 25px;
   margin-bottom: 40px;
@@ -314,7 +313,6 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 /*----------------------------------------
   7. Songs
 ----------------------------------------*/
-
 .song-content-wrapper {
   margin-top: 25px;
 }
@@ -389,7 +387,6 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 }
 
 /* Sidebar Styles */
-
 .sidebar-nav {
     position: absolute;
     top: 0;
@@ -466,17 +463,11 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
         position: relative;
         margin-right: 0;
     }
-
-    /*#menu-toggle {
-      display: none;
-    }*/
 }
-
 
 /*----------------------------------------
   9. Dropdown Submenu
 ----------------------------------------*/
-
 .dropdown-submenu {
     position: relative;
 }
@@ -525,7 +516,6 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
     border-radius: 6px 0 6px 6px;
 }
 
-
 /*----------------------------------------
   10. Info
 ----------------------------------------*/
@@ -542,7 +532,7 @@ button:focus, a:focus, p:focus, div:focus{outline:0;}
 }
 
 /*----------------------------------------
-  10. Info
+  11. Toastr override
 ----------------------------------------*/
 /*
   Overrides default classes

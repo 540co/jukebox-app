@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.playlist')
     .controller('PlaylistController', PlaylistController);
 
     PlaylistController.$inject = ['pagerService', 'playlistService'];

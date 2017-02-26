@@ -2,13 +2,13 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.playlist')
     .controller('PlaylistDetailController', PlaylistDetailController);
 
-    PlaylistDetailController.$inject = ['$log', 'toastr', '$stateParams', 'playlistService'];
+    PlaylistDetailController.$inject = ['$log', '$stateParams', 'toastr', 'playlistService'];
 
   /** @ngInject */
-  function PlaylistDetailController($log, toastr, $stateParams, playlistService) {
+  function PlaylistDetailController($log, $stateParams, toastr, playlistService) {
     var vm = this;
     var playlistId = $stateParams.playlistId;
     var fieldsQuery = '?fields=name,songs,user';

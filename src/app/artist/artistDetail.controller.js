@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.artist')
     .controller('ArtistDetailController', ArtistDetailController);
 
     ArtistDetailController.$inject = ['$stateParams', 'artistService'];

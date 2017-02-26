@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.songs')
     .controller('SongController', SongController);
 
     SongController.$inject = ['$log', 'toastr', 'pagerService', 'playlistService', 'songService'];

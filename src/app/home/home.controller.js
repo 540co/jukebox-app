@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.home')
     .controller('HomeController', HomeController);
 
     HomeController.$inject = ['$rootScope', 'userService'];

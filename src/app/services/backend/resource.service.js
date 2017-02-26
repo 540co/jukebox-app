@@ -5,12 +5,13 @@
     .module('app.services')
     .service('Resource', Resource);
 
-  Resource.$inject = ['$http', '$q', 'configService', '$rootScope'];
+  Resource.$inject = ['$http', '$q', '$rootScope', 'configService'];
 
-  function Resource($http, $q, configService, $rootScope) {
+  function Resource($http, $q, $rootScope, configService) {
     var appConfig = configService.getConfig();
-    $rootScope.calls = [];
-    $rootScope.requests = [];
+
+    $rootScope.calls     = [];
+    $rootScope.requests  = [];
 
     function Resource(path) {
       this.path = path;
