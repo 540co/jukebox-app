@@ -42,9 +42,10 @@
      * Error callback for authService.login
      */
     function loginFailed(e) {
-      // console.log(e);
+      var developerMessage = e.data.error.developerMessage;
+      
       vm.loginError = 'There was an issue logging in. Please check your username and password and try again.';
-      toastr.error(e.data.error, 'Oops!');
+      toastr.error(developerMessage, 'Oops!');
     }
 
   }

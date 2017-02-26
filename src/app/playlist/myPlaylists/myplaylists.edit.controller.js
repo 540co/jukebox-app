@@ -5,10 +5,10 @@
     .module('app.playlist')
     .controller('MyPlaylistEditController', MyPlaylistEditController);
 
-    MyPlaylistEditController.$inject = ['$log', '$rootScope','$state', '$stateParams', 'toastr', 'playlistService'];
+    MyPlaylistEditController.$inject = ['$rootScope','$state', '$stateParams', 'toastr', 'playlistService'];
 
   /** @ngInject */
-  function MyPlaylistEditController($log, $rootScope, $state, $stateParams, toastr, playlistService) {
+  function MyPlaylistEditController($rootScope, $state, $stateParams, toastr, playlistService) {
     var vm = this;
     var currentUser = null;
     var playlistId = null;
@@ -47,7 +47,6 @@
      */
     function fetchPlaylistFailed(err) {
       toastr.error('Unable to fetch playlist.', 'Oops!');
-      $log.error('There was an issue fetching the playlist', err);
     }
 
     /**
@@ -71,16 +70,16 @@
      */
     function updatePlaylistComplete(data) {
       toastr.success('Playlist updated!', 'Success');
-      $log.log('Playlist updated!');
       $state.reload();
     }
 
     /**
      * Failed callback for playlistService.create
      */
-    function updatePlaylistFailed(err) {
-      toastr.success('Unable to update playlist.', 'Oops!');
-      $log.error('Unable to update playlist.', err);
+    function updatePlaylistFailed(e) {
+      var developerMessage = e.data.error.developerMessage;
+      toastr.error(developerMessage, 'Oops!');
+      vm.loginError = 'There was an issue updating your playlist. Please check the name and try again.';
     }
 
     /**

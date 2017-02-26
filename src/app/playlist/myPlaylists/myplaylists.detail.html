@@ -45,8 +45,8 @@
                   <li class="dropdown-submenu">
                     <a tabindex="-1">Add to Playlist</a>
                     <ul class="dropdown-menu">
-                      <li><a tabindex="-1" href="#">New Playlist</a></li>
-                      <li class="divider"></li>
+                      <!-- <li><a tabindex="-1" href="#">New Playlist</a></li>
+                      <li class="divider"></li> -->
                       <li ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, song.id)">{{playlist.name}}</a></li>
                     </ul>
                     <li class="divider"></li>
