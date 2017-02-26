@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.album')
     .controller('AlbumController', AlbumController);
 
     AlbumController.$inject = ['albumService', 'pagerService'];
@@ -13,10 +13,13 @@
     var linkHeader = null;
     var totalCount = null;
 
+    // scope variables
     vm.albums = null;
+
+    // scope functions
+    vm.filterSearch = filterSearch;
     vm.onChange = onChange;
     vm.sortAlbums = sortAlbums;
-    vm.filterSearch = filterSearch;
 
     activate();
 

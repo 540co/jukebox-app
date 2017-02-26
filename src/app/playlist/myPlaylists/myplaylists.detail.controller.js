@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.playlist')
     .controller('MyPlaylistDetailController', MyPlaylistDetailController);
 
     MyPlaylistDetailController.$inject = ['$log', '$state', '$stateParams', 'toastr', 'playlistService'];
@@ -10,16 +10,16 @@
   /** @ngInject */
   function MyPlaylistDetailController($log, $state, $stateParams, toastr, playlistService) {
     var vm = this;
+    var playlistId = $stateParams.playlistId;
+
+    // scope variables
     vm.playlist = null;
     vm.songs = null;
 
+    // scope functions
     vm.addPlaylistSongs = addPlaylistSongs;
-    vm.destroyPlaylistSongs = destroyPlaylistSongs;
-
-    // vm.editPlaylist = editPlaylist;
     vm.destroyPlaylist = destroyPlaylist;
-
-    var playlistId = $stateParams.playlistId;
+    vm.destroyPlaylistSongs = destroyPlaylistSongs;
 
     activate();
 
@@ -87,6 +87,7 @@
      * Success callback for playlistService.removePlaylistSongs
      */
     function removeSongComplete(data) {
+      $state.reload();
       toastr.success('Removed song from playlist.', 'Success!');
       $log.log('Deleted song from playlist');
     }

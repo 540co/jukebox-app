@@ -76,6 +76,9 @@
     }
 
 
+    /**
+     * Parses link headers and returns as object
+     */
     function parseLinkHeader(header) {
       if (header.length === 0) {
         throw new Error("input must not be of zero length");

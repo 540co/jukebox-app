@@ -2,23 +2,25 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.songs')
     .controller('SongController', SongController);
 
-    SongController.$inject = ['$log', 'pagerService', 'playlistService', 'songService', '$http'];
+    SongController.$inject = ['$log', 'toastr', 'pagerService', 'playlistService', 'songService'];
 
   /** @ngInject */
-  function SongController($log, pagerService, playlistService, songService, $http) {
+  function SongController($log, toastr, pagerService, playlistService, songService) {
     var vm = this;
-
     var linkHeader = null;
     var totalCount = null;
 
-    vm.addPlaylistSongs = addPlaylistSongs;
-    vm.onChange = onChange;
+    // scope variables
     vm.songs = null;
-    vm.sortSongs = sortSongs;
+
+    // scope functions
+    vm.addPlaylistSongs = addPlaylistSongs;
     vm.filterSearch = filterSearch;
+    vm.onChange = onChange;
+    vm.sortSongs = sortSongs;
 
     activate();
 
@@ -29,11 +31,17 @@
       getSongs();
     }
 
+    /**
+     * Fetch songs from service
+     */
     function getSongs(override, query) {
       return songService.all(override, query)
-        .then(getSongsComplete, requestFailed);
+        .then(getSongsComplete, getSongsFailed);
     }
 
+    /**
+     * Success callback for songService.all
+     */
     function getSongsComplete(data) {
       // set total count and link header
       totalCount = data.data.meta.pagination.totalCount;
@@ -43,31 +51,56 @@
       vm.songs = data.data.data;
     }
 
+    /**
+     * Error callback for songService.all
+     */
+    function getSongsFailed(err) {
+      $log.log('Unable to fetch songs', err);
+    }
+
+    /**
+     * Pagination helper function
+     */
     function onChange(path, page) {
       getSongs(path);
       vm.currentPage = page;
     }
 
-    function requestFailed(err) {
-      console.log('err', err);
-    }
-
+    /**
+     * Fetch all songs for a playlist
+     */
     function addPlaylistSongs(id, data){
       var requestData = formatRequest(data);
       playlistService.addPlaylistSongs(id, requestData)
-        .then(addSongComplete, requestFailed);
+        .then(addSongComplete, addSongFailed);
     }
 
+    /**
+     * Success callback for playlistService.addPlaylistSongs
+     */
     function addSongComplete(data) {
-      $log.log('Added song to playlist');
+      toastr.success('Song added to playlist.', 'Success!');
     }
 
+    /**
+     * Error callback for playlistService.addPlaylistSongs
+     */
+    function addSongFailed(err) {
+      $log.error('Unable to add song to playlist', err);
+    }
+
+    /**
+     * Format request body to add songs to playlist
+     */
     function formatRequest(data) {
       var request = {};
       request.data = [{'id': data}];
       return request;
     }
 
+    /**
+     * Sort songs
+     */
     function sortSongs(value) {
       var query = '?sort=' + value;
       getSongs(null, query);
@@ -75,6 +108,9 @@
       vm.currentPage = 1;
     }
 
+    /**
+     * Filter songs
+     */
     function filterSearch(value) {
       var filter = '==';
       var filterProperty = 'title';

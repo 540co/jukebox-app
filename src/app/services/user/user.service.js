@@ -12,10 +12,10 @@
     var service = new Resource(path);
     var appConfig = configService.getConfig();
 
-    service.getCurrentUser = getCurrentUser;
-    service.getUserPlaylists = getUserPlaylists;
-    service.listCurrentUrl = listCurrentUrl;
-    service.listPlaylistUrl = listPlaylistUrl;
+    service.getCurrentUser    = getCurrentUser;
+    service.getUserPlaylists  = getUserPlaylists;
+    service.listCurrentUrl    = listCurrentUrl;
+    service.listPlaylistUrl   = listPlaylistUrl;
 
    /**
     * URL Helper Method

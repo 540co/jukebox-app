@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.playlist')
     .controller('MyPlaylistController', MyPlaylistController);
 
     MyPlaylistController.$inject = ['$log', '$rootScope', 'userService'];
@@ -11,6 +11,8 @@
   function MyPlaylistController($log, $rootScope, userService) {
     var vm = this;
     var currentUser = null;
+
+    // scope variables
     vm.playlists = null;
 
     activate();

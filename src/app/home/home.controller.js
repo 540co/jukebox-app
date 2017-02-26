@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.home')
     .controller('HomeController', HomeController);
 
     HomeController.$inject = ['$rootScope', 'userService'];
@@ -10,9 +10,10 @@
   /** @ngInject */
   function HomeController($rootScope, userService) {
     var vm = this;
+    var currentUser = null;
 
-    var currentUser  = null;
-    vm.playlists     = null;
+    // scope variables
+    vm.playlists = null;
 
     activate();
 

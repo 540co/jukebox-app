@@ -4,9 +4,9 @@
   angular.module('app.services')
     .service('playlistService', playlistService);
 
-  playlistService.$inject = ['$http', '$q', 'configService', 'Resource', '$rootScope'];
+  playlistService.$inject = ['$http', '$q', '$rootScope', 'configService', 'Resource'];
 
-  function playlistService($http, $q, configService, Resource, $rootScope) {
+  function playlistService($http, $q, $rootScope, configService, Resource) {
 
     var path = '/playlists';
     var service = new Resource(path);
@@ -15,8 +15,7 @@
     service.addPlaylistSongs     = addPlaylistSongs;
     service.getPlaylistSongs     = getPlaylistSongs;
     service.removePlaylistSongs  = removePlaylistSongs;
-
-    service.listSongUrl = listSongUrl;
+    service.listSongUrl          = listSongUrl;
 
    /**
     * URL Helper Method
@@ -60,7 +59,7 @@
       // content-type: text/plain;charset=UTF-8 for whatever wierd reason
       var config = {
         "data": requestData,
-         "headers":  {'content-type':'application/json'}
+        "headers":  {'content-type':'application/json'}
       };
 
       return apiDestroyPlaylistSongs(playlistId, config)

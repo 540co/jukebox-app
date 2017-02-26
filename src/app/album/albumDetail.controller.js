@@ -2,19 +2,23 @@
   'use strict';
 
   angular
-    .module('app')
+    .module('app.album')
     .controller('AlbumDetailController', AlbumDetailController);
 
-    AlbumDetailController.$inject = ['$stateParams', 'albumService'];
+    AlbumDetailController.$inject = ['$stateParams', 'toastr', 'albumService', 'playlistService'];
 
   /** @ngInject */
-  function AlbumDetailController($stateParams, albumService) {
+  function AlbumDetailController($stateParams, toastr, albumService, playlistService) {
     var vm = this;
+    var albumId = $stateParams.albumId;
+    var fieldsQuery = '?fields=artist,coverArt,releasedOn,songs,title';
+
+    // scope functions
     vm.album = null;
     vm.songs = null;
 
-    var albumId = $stateParams.albumId;
-    var fieldsQuery = '?fields=artist,coverArt,releasedOn,songs,title';
+    // scope functions
+    vm.addPlaylistSongs = addPlaylistSongs;
 
     activate();
 
@@ -67,6 +71,38 @@
      */
     function getAlbumSongsFailed(err) {
       console.log('Unable to fetch songs for album', err);
+    }
+
+    /**
+     * Fetch all songs for a playlist
+     */
+    function addPlaylistSongs(id, data){
+      var requestData = formatRequest(data);
+      playlistService.addPlaylistSongs(id, requestData)
+        .then(addSongComplete, addSongFailed);
+    }
+
+    /**
+     * Success callback for playlistService.addPlaylistSongs
+     */
+    function addSongComplete(data) {
+      toastr.success('Song added to playlist.', 'Success!');
+    }
+
+    /**
+     * Error callback for playlistService.addPlaylistSongs
+     */
+    function addSongFailed(err) {
+      toastr.error('Unable to add song to playlist.', 'Oops!');
+    }
+
+    /**
+     * Format request body to add songs to playlist
+     */
+    function formatRequest(data) {
+      var request = {};
+      request.data = [{'id': data}];
+      return request;
     }
 
   }

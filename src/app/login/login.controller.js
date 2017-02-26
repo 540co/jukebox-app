@@ -11,12 +11,12 @@
   function LoginController($state, authService, toastr) {
     var vm = this;
 
-    // variables
+    // scope variables
     vm.loginError = null;
     vm.password = null;
     vm.username = null;
 
-    // functions
+    // scope functions
     vm.login = login;
 
     ////////////////////////////////////////////////////////////////////////////

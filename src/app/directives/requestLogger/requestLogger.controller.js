@@ -9,10 +9,15 @@
 
   function RequestLoggerController($rootScope) {
     var vm = this;
+
+    // scope variables
     vm.clearLog = clearLog;
 
     ////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * Clears request logger
+     */
     function clearLog() {
       $rootScope.calls = [];
     }
