@@ -15,7 +15,8 @@
       closeButton: true,
       closeHtml: '<button>&times;</button>',
       extendedTimeOut: 2000,
-      progressBar: true,
+      timeOut: 2000,
+      progressBar: false,
       tapToDismiss: true,
     });
   }
