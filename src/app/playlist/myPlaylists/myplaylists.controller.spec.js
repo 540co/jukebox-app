@@ -3,9 +3,10 @@
 
   describe('My Playlist Controller', function(){
     var vm = null;
-    var userService = null;
-    var controller = null;
-    var rootScope = null;
+
+    var controller   = null;
+    var rootScope    = null;
+    var userService  = null;
 
     beforeEach(module('app'));
     beforeEach(inject(function(_$controller_, _userService_) {
@@ -30,6 +31,7 @@
       });
 
       vm = controller();
+
       expect(vm.playlists.length).toEqual(2);
     });
 
@@ -43,7 +45,8 @@
       });
 
       vm = controller();
-      expect(vm.playlists).toBe(null);
+      
+      expect(vm.playlists.length).toEqual(0);
     });
   });
 })();

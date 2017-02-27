@@ -13,7 +13,7 @@
     var currentUser = null;
 
     // scope variables
-    vm.playlists = null;
+    vm.playlists = [];
 
     activate();
 

@@ -5,16 +5,16 @@
     .module('app.songs')
     .controller('SongController', SongController);
 
-    SongController.$inject = ['$log', 'toastr', 'pagerService', 'playlistService', 'songService'];
+    SongController.$inject = ['toastr', 'pagerService', 'playlistService', 'songService'];
 
   /** @ngInject */
-  function SongController($log, toastr, pagerService, playlistService, songService) {
+  function SongController(toastr, pagerService, playlistService, songService) {
     var vm = this;
     var linkHeader = null;
     var totalCount = null;
 
     // scope variables
-    vm.songs = null;
+    vm.songs = [];
 
     // scope functions
     vm.addPlaylistSongs = addPlaylistSongs;
@@ -55,7 +55,7 @@
      * Error callback for songService.all
      */
     function getSongsFailed(err) {
-      $log.log('Unable to fetch songs', err);
+      console.log('Unable to fetch songs', err);
     }
 
     /**
@@ -86,7 +86,7 @@
      * Error callback for playlistService.addPlaylistSongs
      */
     function addSongFailed(err) {
-      $log.error('Unable to add song to playlist', err);
+      toastr.error('Unable to add song to playlist', 'Oops!');
     }
 
     /**

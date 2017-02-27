@@ -15,7 +15,7 @@
 
     // scope variables
     vm.playlist = null;
-    vm.songs = null;
+    vm.songs = [];
 
     // scope functions
     vm.addPlaylistSongs = addPlaylistSongs;

@@ -3,15 +3,18 @@
 
   describe('My Playlist Create Controller', function(){
     var vm = null;
-    var playlistService = null;
-    var controller = null;
+
+    var $rootScope        = null;
+    var $state           = null;
+    var controller       = null;
+    var playlistService  = null;
+    var toastr           = null;
+
+    // mock variables
     var mockPlaylist = {'data':{'data':{'data':{'id': '123456', 'name': 'playlist1'}}}};
-    var $rootScope;
-    var $state;
 
     beforeEach(module('app'));
-    beforeEach(inject(function(_$controller_, _$state_, _playlistService_) {
-      playlistService = _playlistService_;
+    beforeEach(inject(function(_$controller_, _$state_, _playlistService_, _toastr_) {
       $rootScope = {
         'globals': {
           'currentUser': {
@@ -21,17 +24,21 @@
         }
       };
       $state = _$state_;
+      playlistService = _playlistService_;
+      toastr = _toastr_;
 
       controller = function () {
         return _$controller_('MyPlaylistCreateController', {
-          playlistService: playlistService,
           $rootScope: $rootScope,
-          $state: $state
+          $state: $state,
+          playlistService: playlistService,
+          toastr: toastr
         });
       };
     }));
 
     it('should create a new playlist', function() {
+      spyOn(toastr, 'success');
       spyOn(playlistService, 'create').and.callFake(function() {
         return {
           then: function(success) {
@@ -44,10 +51,13 @@
 
       vm.playlist = mockPlaylist;
       vm.submit();
+
       expect(playlistService.create).toHaveBeenCalled();
+      expect(toastr.success).toHaveBeenCalled();
     });
 
     it('should fail to create a new playlist', function() {
+      spyOn(toastr, 'error');
       spyOn(playlistService, 'create').and.callFake(function() {
         return {
           then: function(success, err) {
@@ -60,7 +70,9 @@
 
       vm.playlist = mockPlaylist;
       vm.submit();
+
       expect(playlistService.create).toHaveBeenCalled();
+      expect(toastr.error).toHaveBeenCalled();
     });
 
 
@@ -68,8 +80,8 @@
       spyOn($state, 'go');
 
       vm = controller();
-
       vm.cancel();
+      
       expect($state.go).toHaveBeenCalledWith('myPlaylists', jasmine.any(Object));
     });
   });

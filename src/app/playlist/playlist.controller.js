@@ -14,7 +14,7 @@
     var totalCount = null;
 
     // scope variables
-    vm.playlists = null;
+    vm.playlists = [];
 
     // scope functions
     vm.filterSearch = filterSearch;
