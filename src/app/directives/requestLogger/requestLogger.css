@@ -3,7 +3,7 @@
   margin-top: -25px;
   position: fixed;
   height: 500px;
-  width: 480px;
+  width: 540px;
   bottom: 0;
   right: 50px;
   background: white;
@@ -55,7 +55,6 @@
   height: 45px;
   overflow-y: hidden;
 }
-
 
 @media(max-width:668px) {
   .request-logger{

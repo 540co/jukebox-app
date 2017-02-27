@@ -14,6 +14,10 @@
         controller: 'LoginController',
         controllerAs: 'vm'
       })
+      .state('help', {
+        url: '/help',
+        templateUrl: 'app/help/jukeboxExplorer.html'
+      })
       .state('reference', {
         url: '/reference',
         templateUrl: 'app/reference/reference.html'
