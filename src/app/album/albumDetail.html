@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-sm-9">
         <h2>{{vm.album.title}}</h2>
-        <p>By <a ui-sref="artistDetail({artistId: vm.album.artist.id})"><strong class="jb-orange">{{vm.album.artist.name}}</strong></a> • {{vm.album.releasedOn | date:'yyyy'}} • {{vm.album.songs.totalCount}} songs</p>
+        <p>By <a ui-sref="artists.detail({artistId: vm.album.artist.id})"><strong class="jb-orange">{{vm.album.artist.name}}</strong></a> • {{vm.album.releasedOn | date:'yyyy'}} • {{vm.album.songs.totalCount}} songs</p>
       </div>
     </div>
     <hr>
