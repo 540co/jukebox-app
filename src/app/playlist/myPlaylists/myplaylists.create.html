@@ -14,7 +14,7 @@
           <p ng-show="vm.jukeboxPlaylistForm.name.$error.maxlength" class="help-block">50 is the maximum length</p>
         </div>
 
-        <p ng-if="vm.loginError" class="text-danger">{{vm.loginError}}</p>
+        <p ng-if="vm.errorMessage" class="text-danger">{{vm.errorMessage}}</p>
         <div class="pull-right">
           <button type="button" class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
           <button class="btn btn-primary" type="submit" ng-disabled="vm.jukeboxPlaylistForm.$invalid || vm.jukeboxPlaylistForm.$pristine" ng-click="vm.submit()">Create</button>

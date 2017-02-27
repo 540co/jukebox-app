@@ -5,15 +5,15 @@
     .module('app.playlist')
     .controller('MyPlaylistController', MyPlaylistController);
 
-    MyPlaylistController.$inject = ['$log', '$rootScope', 'userService'];
+    MyPlaylistController.$inject = ['$rootScope', 'userService'];
 
   /** @ngInject */
-  function MyPlaylistController($log, $rootScope, userService) {
+  function MyPlaylistController($rootScope, userService) {
     var vm = this;
     var currentUser = null;
 
     // scope variables
-    vm.playlists = null;
+    vm.playlists = [];
 
     activate();
 
@@ -43,7 +43,7 @@
      * Error callback for userService.getUserPlaylists
      */
     function requestFailed(err) {
-      $log.error('Unable to fetch playlists.', err);
+      console.log('Unable to fetch playlists.', err);
     }
 
 

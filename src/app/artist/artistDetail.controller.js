@@ -15,7 +15,7 @@
 
     // scope variables
     vm.artist = null;
-    vm.albums = null;
+    vm.albums = [];
 
     activate();
 

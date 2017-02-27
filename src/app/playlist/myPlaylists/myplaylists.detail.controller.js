@@ -14,7 +14,7 @@
 
     // scope variables
     vm.playlist = null;
-    vm.songs = null;
+    vm.songs = [];
 
     // scope functions
     vm.addPlaylistSongs = addPlaylistSongs;
@@ -128,7 +128,7 @@
     /**
      * Destroy playlist from service
      */
-    function destroyPlaylist(){
+    function destroyPlaylist(playlistId){
       playlistService.destroy(playlistId)
         .then(destroyPlaylistComplete, destroyPlaylistFailed);
     }

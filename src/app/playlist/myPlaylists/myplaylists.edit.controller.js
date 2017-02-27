@@ -79,7 +79,7 @@
     function updatePlaylistFailed(e) {
       var developerMessage = e.data.error.developerMessage;
       toastr.error(developerMessage, 'Oops!');
-      vm.loginError = 'There was an issue updating your playlist. Please check the name and try again.';
+      vm.errorMessage = 'There was an issue updating your playlist. Please check the name and try again.';
     }
 
     /**
