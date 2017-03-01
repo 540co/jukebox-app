@@ -17,7 +17,8 @@ gulp.task('inject-reload', ['inject'], function() {
 
 gulp.task('inject', ['scripts'], function () {
   var injectStyles = gulp.src([
-    path.join(conf.paths.src, '/assets/**/*.css')
+    path.join(conf.paths.src, '/assets/**/*.css'),
+    path.join(conf.paths.src, '/app/**/*.css')
   ], { read: false });
 
   var injectScripts = gulp.src([
@@ -25,6 +26,7 @@ gulp.task('inject', ['scripts'], function () {
     path.join(conf.paths.src, '/app/**/*.js'),
     path.join('!' + conf.paths.src, '/app/**/*.spec.js'),
     path.join('!' + conf.paths.src, '/app/**/*.mock.js'),
+    path.join('!' + conf.paths.src, '/app/**/app.config-example.js'),
   ])
   .pipe($.angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 

@@ -1,20 +1,34 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-fixed-top material-navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed materail-navbar__toogle" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar materail-navbar__icon-bar"></span>
+        <span class="icon-bar materail-navbar__icon-bar"></span>
+        <span class="icon-bar materail-navbar__icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">jukebox</a>
+      <a class="navbar-brand" href="#">Jukebox</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">About</a></li>
+        <li><a ui-sref="artists">Artists</a></li>
+        <li><a ui-sref="albums">Albums</a></li>
+        <li><a ui-sref="songs">Songs</a></li>
+        <li><a ui-sref="playlists">Playlists</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="reference">Reference</a></li>
+        <li><a ui-sref="help">Help</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{globals.currentUser.firstName}} {{globals.currentUser.lastName}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="myPlaylists">My playlists</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a ng-click="vm.logout()">Log out</a></li>
+          </ul>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -6,12 +6,19 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, AngularyticsProvider) {
+  function config($logProvider, toastrConfig) {
     // Enable log
     $logProvider.debugEnabled(true);
 
-    // Enable Google Analytics Tracking for SPA
-    AngularyticsProvider.setEventHandlers(['Console', 'GoogleUniversal']);
+    // toastr config
+    angular.extend(toastrConfig, {
+      closeButton: true,
+      closeHtml: '<button>&times;</button>',
+      extendedTimeOut: 2000,
+      timeOut: 2000,
+      progressBar: false,
+      tapToDismiss: true,
+    });
   }
 
 })();

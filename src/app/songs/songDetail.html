@@ -1,0 +1,29 @@
+<section id="song-detail">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="song-card text-center">
+        <div class="song-card-heading">
+          <p class="text-center">Song Details</p>
+        </div>
+
+        <h4>{{vm.song.title}}</h4>
+        <p>Title</p>
+
+        <hr>
+
+        <h4><a ui-sref="artists.detail({artistId: vm.song.artist.id})">{{vm.song.artist.name}}</a></h4>
+        <p>Artist</p>
+
+        <hr>
+
+        <h4><a ui-sref="albumDetail({albumId: vm.song.album.id})">{{vm.song.album.title}}</a></h4>
+        <p>Album</p>
+
+        <hr>
+
+        <h4>{{vm.song.duration}}</h4>
+        <p>Duration</p>
+      </div>
+    </div>
+  </div>
+</section>

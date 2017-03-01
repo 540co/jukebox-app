@@ -1,10 +1,11 @@
 (function() {
   'use strict';
 
-  describe('directive navbar', function() {
+  describe('Directive Navbar', function() {
     var $compile, $scope;
 
-    beforeEach(module('app.directives', 'jukebox'));
+    // NOTE: need to manually inject all modules the navbar deals with (gulp is not injecting correctly)
+    beforeEach(module('jukebox', 'app'));
     beforeEach(
       inject(function(_$compile_, _$rootScope_) {
         $compile = _$compile_;

@@ -5,13 +5,24 @@
     .module('app.core')
     .run(runBlock);
 
+    runBlock.$inject = ['$rootScope', '$location', '$cookies', '$http'];
+
   /** @ngInject */
-  function runBlock($log, Angularytics) {
+  function runBlock($rootScope, $location, $cookies, $http) {
+    // keep user logged in after page refresh
+    $rootScope.globals = $cookies.getObject('globals') || {};
 
-    $log.debug('runBlock end');
-
-    Angularytics.init();
-
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in
+        var loggedIn = $rootScope.globals.currentUser;
+        if (!loggedIn) {
+            $http.defaults.headers.common.Authorization = 'Basic';
+            $location.path('/login');
+        } else {
+          // set default auth header for http requests
+          $http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.globals.sessionId;
+        }
+    });
   }
 
 })();

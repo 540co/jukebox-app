@@ -1,0 +1,90 @@
+.request-logger {
+  padding-bottom: 25px;
+  margin-top: -25px;
+  position: fixed;
+  height: 500px;
+  width: 500px;
+  bottom: 0;
+  right: 50px;
+  background: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
+  z-index: 10;
+  transition: all 0.5s ease;
+}
+
+.request-logger .log-body {
+  clear: left;
+  min-height: 42px;
+  padding: 15px 15px;
+  color: #f1f1f1;
+  font-family: Monaco, monospace;
+  font-size: 12px;
+  line-height: 19px;
+  word-wrap: break-word;
+  background-color: #222;
+  margin-top: 0;
+  border: none;
+  overflow-y: scroll;
+  height: 500px;
+  width: 100%;
+}
+
+.request-logger .request-type {
+  margin-right: 10px;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.log-header {
+  height: 44px;
+  margin: 0;
+  padding: .7em .8em .6em;
+  background-color: #444;
+  color: white;
+}
+
+.rl-open {
+  height: 500px;
+}
+
+.rl-closed {
+  height: 45px;
+  overflow-y: hidden;
+}
+
+@media(max-width:668px) {
+  .request-logger{
+    padding-bottom: 25px;
+    margin-top: -25px;
+    position: fixed;
+    height: 300px;
+    width: 280px;
+    bottom: 0;
+    right: 50px;
+    background: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
+    z-index: 10;
+    transition: all 0.5s ease;
+  }
+
+  /*.rl-open {
+    height: 500px;
+  }*/
+
+  .rl-closed {
+    height: 45px;
+    overflow-y: hidden;
+  }
+
+}
+
+.api-call {
+  white-space: nowrap;
+  overflow-x: auto;
+}

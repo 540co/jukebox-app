@@ -3,14 +3,18 @@
 
   angular
     .module('app.core', [
-    	'angularytics',
-		'ngAnimate',
-		'ngAria',
-		'ngCookies',
-		'ngMessages',
-		'ngSanitize',
-		'ngTouch',
-		'ui.router'
+      'angular-md5',
+      'angulartics',
+      'angulartics.google.analytics',
+  		'ngAnimate',
+  		'ngAria',
+  		'ngCookies',
+  		'ngMessages',
+  		'ngSanitize',
+  		'ngTouch',
+      'toastr',
+  		'ui.router',
+      'ui.bootstrap'
 	]);
 
 })();

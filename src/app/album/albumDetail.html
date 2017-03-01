@@ -1,0 +1,61 @@
+<jukebox-navbar></jukebox-navbar>
+
+<section id="album-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+        <h2>{{vm.album.title}}</h2>
+        <p>By <a ui-sref="artists.detail({artistId: vm.album.artist.id})"><strong class="jb-orange">{{vm.album.artist.name}}</strong></a> • {{vm.album.releasedOn | date:'yyyy'}} • {{vm.album.songs.totalCount}} songs</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-7 col-xs-12">
+        <div class="album-content-wrapper">
+          <table class="table table-striped table-responsive">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>SONG</th>
+                <th class="text-center"><i class="fa fa-clock-o"></i></th>
+                <th class="text-center"><i class="fa fa-pencil"></i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="song in vm.songs">
+                <td>{{$index + 1}}</td>
+                <td><a ui-sref="songs.detail({songId: song.id})">{{song.title}}</a></td>
+                <td class="text-center">{{song.duration}}</td>
+                <td class="text-center">
+                  <div class="dropdown">
+                    <a id="dropdownLabel" data-toggle="dropdown">
+                      <i class="fa fa-ellipsis-h"></i>
+                    </a>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                      <li role="menuitem"><a ui-sref="songs.detail({songId: song.id})">Go to Song</a></li>
+                      <li class="divider"></li>
+                      <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">Add to Playlist</a>
+                        <ul class="dropdown-menu">
+                          <!-- <li><a tabindex="-1" href="#">New Playlist</a></li>
+                          <li class="divider"></li> -->
+                          <li ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, song.id)">{{playlist.name}}</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-5 col-xs-12">
+        <div class="album-art-wrapper">
+          <img ng-src="{{vm.album.coverArt}}" class="img-responsive img-rounded" width="300px" alt="Album cover art">
+        </div>
+      </div>
+      <!-- end col -->
+    </div>
+  </div>
+</section>

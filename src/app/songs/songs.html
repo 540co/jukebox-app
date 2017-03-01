@@ -1,0 +1,96 @@
+<jukebox-navbar></jukebox-navbar>
+
+<section id="songs">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Songs</h2>
+
+        <!-- search Bar -->
+        <div class="row search-bar">
+          <div class="col-xs-12">
+            <form class="input-group" ng-submit="vm.filterSearch(vm.searchSong)">
+              <div class="input-group-btn search-panel">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  <span id="search_concept">View</span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a ng-click="vm.sortSongs('title')">Ascending</a></li>
+                  <li><a ng-click="vm.sortSongs('-title')">Descending</a></li>
+                </ul>
+              </div>
+              <input type="hidden" name="search_param" value="all" id="search_param">
+              <input type="text" class="form-control" name="x" placeholder="Search" ng-model="vm.searchSong">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="vm.filterSearch(vm.searchSong)">
+                  <span class="fa fa-search"></span>
+              </button>
+              </span>
+            </form>
+          </div>
+        </div>
+        <!-- end search bar -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>SONG</th>
+                  <th class="text-center"><i class="fa fa-clock-o"></i></th>
+                  <th class="text-center"><i class="fa fa-pencil"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="song in vm.songs">
+                  <td>
+                    <a ui-sref=".detail({songId: song.id})">{{song.title}}</a>
+                  </td>
+                  <td class="text-center">{{song.duration}}</td>
+                  <td class="text-center">
+                    <div class="dropdown">
+                      <a id="dropdownLabel" data-toggle="dropdown">
+                        <i class="fa fa-ellipsis-h"></i>
+                      </a>
+                      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                        <li role="menuitem"><a ui-sref="songs.detail({songId: song.id})">Go to Song</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-submenu">
+                          <a tabindex="-1" href="#">Add to Playlist</a>
+                          <ul class="dropdown-menu">
+                            <!-- <li><a tabindex="-1" href="#">New Playlist</a></li>
+                            <li class="divider"></li> -->
+                            <li ng-repeat="playlist in myPlaylists"><a ng-click="vm.addPlaylistSongs(playlist.id, song.id)">{{playlist.name}}</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- pagination links-->
+            <nav>
+              <p></p>
+              <ul class="pager">
+                <p>{{vm.currentPage}} of {{vm.pager.totalPages}}</p>
+                <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.firstLink, 1)">First</button></li>
+                <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.prevLink, (vm.currentPage - 1))" ng-disabled="!vm.pager.prevLink">&lsaquo;</button></li>
+                <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.nextLink, (vm.currentPage + 1))" ng-disabled="!vm.pager.nextLink">&rsaquo;</button></li>
+                <li><button class="btn btn-default" ng-click="vm.onChange(vm.pager.lastLink, vm.pager.totalPages)">Last</button></li>
+              </ul>
+            </nav>
+            <!-- end pagination links-->
+
+          </div>
+        </div>
+      </div>
+
+      <!-- artist detail nested view -  -->
+      <div class="col-md-6">
+        <div ui-view></div>
+      </div>
+    </div>
+  </div>
+</section>
